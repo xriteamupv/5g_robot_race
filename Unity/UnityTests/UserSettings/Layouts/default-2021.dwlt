@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
-    x: -506.66666
-    y: -917.3333
-    width: 2293.3335
-    height: 869.3334
+    x: 0.6666667
+    y: -820.8
+    width: 1536
+    height: 772.8
   m_ShowMode: 4
   m_Title: Console
   m_RootView: {fileID: 2}
@@ -44,8 +44,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 2293.3333
-    height: 869.3333
+    width: 1536
+    height: 772.8
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_UseTopView: 1
@@ -69,7 +69,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 2293.3333
+    width: 1536
     height: 30
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -90,8 +90,8 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 849.3333
-    width: 2293.3333
+    y: 752.8
+    width: 1536
     height: 20
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -114,12 +114,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 30
-    width: 2293.3333
-    height: 819.3333
+    width: 1536
+    height: 722.8
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 83
+  controlID: 19
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -139,12 +139,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1827.3334
-    height: 819.3333
+    width: 1224
+    height: 722.8
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 110
+  controlID: 44
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -164,12 +164,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1827.3334
-    height: 496
+    width: 1224
+    height: 436
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 111
+  controlID: 45
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -187,10 +187,10 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 634
-    height: 496
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+    width: 424.8
+    height: 436
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -211,12 +211,12 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 634
+    x: 424.8
     y: 0
-    width: 1193.3334
-    height: 496
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+    width: 799.2
+    height: 436
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -240,9 +240,9 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 496
-    width: 1827.3334
-    height: 323.3333
+    y: 436
+    width: 1224
+    height: 286.8
   m_MinSize: {x: 101, y: 121}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 18}
@@ -266,12 +266,12 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1827.3334
+    x: 1224
     y: 0
-    width: 465.99988
-    height: 819.3333
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+    width: 312
+    height: 722.8
+  m_MinSize: {x: 101, y: 121}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 19}
@@ -298,10 +298,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1320.6667
-    y: -887.3333
-    width: 464.99988
-    height: 798.3333
+    x: 1224.6666
+    y: -790.4
+    width: 311
+    height: 701.8
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -314,8 +314,8 @@ MonoBehaviour:
   currentStatusEntriesHasUpdate: 0
   repositoryProgressHasUpdate: 0
   appManagerProgressHasUpdate: 0
-  changeTab: 5
-  activeTab: 5
+  changeTab: 3
+  activeTab: 3
   initProjectView:
     hasCompletedInitialCheck: 0
     isUserDataPresent: 0
@@ -509,8 +509,179 @@ MonoBehaviour:
         keys: []
         values: []
       folders:
-        keys: []
-        values: []
+        keys:
+        - Unity
+        - Unity\UnityTests
+        - Unity\UnityTests\.vs
+        - Unity\UnityTests\.vs\UnityTests
+        - Unity\UnityTests\.vs\UnityTests\FileContentIndex
+        - Unity\UnityTests\.vs\UnityTests\v17
+        - Unity\UnityTests\ProjectSettings
+        - Unity\UnityTests\UserSettings
+        - Unity\UnityTests\UserSettings\Layouts
+        values:
+        - path: Unity
+          label: Unity
+          level: 0
+          isFolder: 1
+          isContainer: 0
+          isCollapsed: 0
+          isHidden: 0
+          isActive: 0
+          treeIsCheckable: 1
+          checkState: 0
+          isLocked: 0
+          gitStatusEntry:
+            path: 
+            fullPath: 
+            projectPath: 
+            originalPath: 
+            indexStatus: 0
+            workTreeStatus: 0
+        - path: Unity\UnityTests
+          label: UnityTests
+          level: 1
+          isFolder: 1
+          isContainer: 0
+          isCollapsed: 0
+          isHidden: 0
+          isActive: 0
+          treeIsCheckable: 1
+          checkState: 0
+          isLocked: 0
+          gitStatusEntry:
+            path: 
+            fullPath: 
+            projectPath: 
+            originalPath: 
+            indexStatus: 0
+            workTreeStatus: 0
+        - path: Unity\UnityTests\.vs
+          label: .vs
+          level: 2
+          isFolder: 1
+          isContainer: 0
+          isCollapsed: 0
+          isHidden: 0
+          isActive: 0
+          treeIsCheckable: 1
+          checkState: 0
+          isLocked: 0
+          gitStatusEntry:
+            path: 
+            fullPath: 
+            projectPath: 
+            originalPath: 
+            indexStatus: 0
+            workTreeStatus: 0
+        - path: Unity\UnityTests\.vs\UnityTests
+          label: UnityTests
+          level: 3
+          isFolder: 1
+          isContainer: 0
+          isCollapsed: 0
+          isHidden: 0
+          isActive: 0
+          treeIsCheckable: 1
+          checkState: 0
+          isLocked: 0
+          gitStatusEntry:
+            path: 
+            fullPath: 
+            projectPath: 
+            originalPath: 
+            indexStatus: 0
+            workTreeStatus: 0
+        - path: Unity\UnityTests\.vs\UnityTests\FileContentIndex
+          label: FileContentIndex
+          level: 4
+          isFolder: 1
+          isContainer: 0
+          isCollapsed: 0
+          isHidden: 0
+          isActive: 0
+          treeIsCheckable: 1
+          checkState: 0
+          isLocked: 0
+          gitStatusEntry:
+            path: 
+            fullPath: 
+            projectPath: 
+            originalPath: 
+            indexStatus: 0
+            workTreeStatus: 0
+        - path: Unity\UnityTests\.vs\UnityTests\v17
+          label: v17
+          level: 4
+          isFolder: 1
+          isContainer: 0
+          isCollapsed: 0
+          isHidden: 0
+          isActive: 0
+          treeIsCheckable: 1
+          checkState: 0
+          isLocked: 0
+          gitStatusEntry:
+            path: 
+            fullPath: 
+            projectPath: 
+            originalPath: 
+            indexStatus: 0
+            workTreeStatus: 0
+        - path: Unity\UnityTests\ProjectSettings
+          label: ProjectSettings
+          level: 2
+          isFolder: 1
+          isContainer: 0
+          isCollapsed: 0
+          isHidden: 0
+          isActive: 0
+          treeIsCheckable: 1
+          checkState: 0
+          isLocked: 0
+          gitStatusEntry:
+            path: 
+            fullPath: 
+            projectPath: 
+            originalPath: 
+            indexStatus: 0
+            workTreeStatus: 0
+        - path: Unity\UnityTests\UserSettings
+          label: UserSettings
+          level: 2
+          isFolder: 1
+          isContainer: 0
+          isCollapsed: 0
+          isHidden: 0
+          isActive: 0
+          treeIsCheckable: 1
+          checkState: 0
+          isLocked: 0
+          gitStatusEntry:
+            path: 
+            fullPath: 
+            projectPath: 
+            originalPath: 
+            indexStatus: 0
+            workTreeStatus: 0
+        - path: Unity\UnityTests\UserSettings\Layouts
+          label: Layouts
+          level: 3
+          isFolder: 1
+          isContainer: 0
+          isCollapsed: 0
+          isHidden: 0
+          isActive: 0
+          treeIsCheckable: 1
+          checkState: 0
+          isLocked: 0
+          gitStatusEntry:
+            path: 
+            fullPath: 
+            projectPath: 
+            originalPath: 
+            indexStatus: 0
+            workTreeStatus: 0
       checkedFileNodes:
         keys: []
         values: []
@@ -539,6 +710,420 @@ MonoBehaviour:
           originalPath: 
           indexStatus: 0
           workTreeStatus: 0
+      - path: Unity
+        label: Unity
+        level: 0
+        isFolder: 1
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 1
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: 
+          fullPath: 
+          projectPath: 
+          originalPath: 
+          indexStatus: 0
+          workTreeStatus: 0
+      - path: Unity\UnityTests
+        label: UnityTests
+        level: 1
+        isFolder: 1
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 1
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: 
+          fullPath: 
+          projectPath: 
+          originalPath: 
+          indexStatus: 0
+          workTreeStatus: 0
+      - path: Unity\UnityTests\.vs
+        label: .vs
+        level: 2
+        isFolder: 1
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 1
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: 
+          fullPath: 
+          projectPath: 
+          originalPath: 
+          indexStatus: 0
+          workTreeStatus: 0
+      - path: Unity\UnityTests\.vs\ProjectSettings.json
+        label: ProjectSettings.json
+        level: 3
+        isFolder: 0
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 1
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: Unity\UnityTests\.vs\ProjectSettings.json
+          fullPath: C:\Users\XR\Unity\5g_robot_race_newvel\5g_robot_race_newvel\Unity\UnityTests\.vs\ProjectSettings.json
+          projectPath: .vs\ProjectSettings.json
+          originalPath: 
+          indexStatus: 1
+          workTreeStatus: 1
+      - path: Unity\UnityTests\.vs\slnx.sqlite
+        label: slnx.sqlite
+        level: 3
+        isFolder: 0
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 1
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: Unity\UnityTests\.vs\slnx.sqlite
+          fullPath: C:\Users\XR\Unity\5g_robot_race_newvel\5g_robot_race_newvel\Unity\UnityTests\.vs\slnx.sqlite
+          projectPath: .vs\slnx.sqlite
+          originalPath: 
+          indexStatus: 1
+          workTreeStatus: 1
+      - path: Unity\UnityTests\.vs\UnityTests
+        label: UnityTests
+        level: 3
+        isFolder: 1
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 1
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: 
+          fullPath: 
+          projectPath: 
+          originalPath: 
+          indexStatus: 0
+          workTreeStatus: 0
+      - path: Unity\UnityTests\.vs\UnityTests\FileContentIndex
+        label: FileContentIndex
+        level: 4
+        isFolder: 1
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 1
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: 
+          fullPath: 
+          projectPath: 
+          originalPath: 
+          indexStatus: 0
+          workTreeStatus: 0
+      - path: Unity\UnityTests\.vs\UnityTests\FileContentIndex\2519b416-39f3-4b56-a01d-d609726569b7.vsidx
+        label: 2519b416-39f3-4b56-a01d-d609726569b7.vsidx
+        level: 5
+        isFolder: 0
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 1
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: Unity\UnityTests\.vs\UnityTests\FileContentIndex\2519b416-39f3-4b56-a01d-d609726569b7.vsidx
+          fullPath: C:\Users\XR\Unity\5g_robot_race_newvel\5g_robot_race_newvel\Unity\UnityTests\.vs\UnityTests\FileContentIndex\2519b416-39f3-4b56-a01d-d609726569b7.vsidx
+          projectPath: .vs\UnityTests\FileContentIndex\2519b416-39f3-4b56-a01d-d609726569b7.vsidx
+          originalPath: 
+          indexStatus: 0
+          workTreeStatus: 5
+      - path: Unity\UnityTests\.vs\UnityTests\FileContentIndex\4b42e56a-e0ee-4367-911f-1c86a8504bb7.vsidx
+        label: 4b42e56a-e0ee-4367-911f-1c86a8504bb7.vsidx
+        level: 5
+        isFolder: 0
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 1
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: Unity\UnityTests\.vs\UnityTests\FileContentIndex\4b42e56a-e0ee-4367-911f-1c86a8504bb7.vsidx
+          fullPath: C:\Users\XR\Unity\5g_robot_race_newvel\5g_robot_race_newvel\Unity\UnityTests\.vs\UnityTests\FileContentIndex\4b42e56a-e0ee-4367-911f-1c86a8504bb7.vsidx
+          projectPath: .vs\UnityTests\FileContentIndex\4b42e56a-e0ee-4367-911f-1c86a8504bb7.vsidx
+          originalPath: 
+          indexStatus: 1
+          workTreeStatus: 1
+      - path: Unity\UnityTests\.vs\UnityTests\FileContentIndex\5f1402c5-ea1a-4d37-a7de-c25cd1b8bee2.vsidx
+        label: 5f1402c5-ea1a-4d37-a7de-c25cd1b8bee2.vsidx
+        level: 5
+        isFolder: 0
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 1
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: Unity\UnityTests\.vs\UnityTests\FileContentIndex\5f1402c5-ea1a-4d37-a7de-c25cd1b8bee2.vsidx
+          fullPath: C:\Users\XR\Unity\5g_robot_race_newvel\5g_robot_race_newvel\Unity\UnityTests\.vs\UnityTests\FileContentIndex\5f1402c5-ea1a-4d37-a7de-c25cd1b8bee2.vsidx
+          projectPath: .vs\UnityTests\FileContentIndex\5f1402c5-ea1a-4d37-a7de-c25cd1b8bee2.vsidx
+          originalPath: 
+          indexStatus: 0
+          workTreeStatus: 5
+      - path: Unity\UnityTests\.vs\UnityTests\FileContentIndex\da7aa3b2-9e51-4f12-b67b-461302989e36.vsidx
+        label: da7aa3b2-9e51-4f12-b67b-461302989e36.vsidx
+        level: 5
+        isFolder: 0
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 1
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: Unity\UnityTests\.vs\UnityTests\FileContentIndex\da7aa3b2-9e51-4f12-b67b-461302989e36.vsidx
+          fullPath: C:\Users\XR\Unity\5g_robot_race_newvel\5g_robot_race_newvel\Unity\UnityTests\.vs\UnityTests\FileContentIndex\da7aa3b2-9e51-4f12-b67b-461302989e36.vsidx
+          projectPath: .vs\UnityTests\FileContentIndex\da7aa3b2-9e51-4f12-b67b-461302989e36.vsidx
+          originalPath: 
+          indexStatus: 1
+          workTreeStatus: 1
+      - path: Unity\UnityTests\.vs\UnityTests\FileContentIndex\read.lock
+        label: read.lock
+        level: 5
+        isFolder: 0
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 1
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: Unity\UnityTests\.vs\UnityTests\FileContentIndex\read.lock
+          fullPath: C:\Users\XR\Unity\5g_robot_race_newvel\5g_robot_race_newvel\Unity\UnityTests\.vs\UnityTests\FileContentIndex\read.lock
+          projectPath: .vs\UnityTests\FileContentIndex\read.lock
+          originalPath: 
+          indexStatus: 0
+          workTreeStatus: 5
+      - path: Unity\UnityTests\.vs\UnityTests\v17
+        label: v17
+        level: 4
+        isFolder: 1
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 1
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: 
+          fullPath: 
+          projectPath: 
+          originalPath: 
+          indexStatus: 0
+          workTreeStatus: 0
+      - path: Unity\UnityTests\.vs\UnityTests\v17\.wsuo
+        label: .wsuo
+        level: 5
+        isFolder: 0
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 1
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: Unity\UnityTests\.vs\UnityTests\v17\.wsuo
+          fullPath: C:\Users\XR\Unity\5g_robot_race_newvel\5g_robot_race_newvel\Unity\UnityTests\.vs\UnityTests\v17\.wsuo
+          projectPath: .vs\UnityTests\v17\.wsuo
+          originalPath: 
+          indexStatus: 1
+          workTreeStatus: 1
+      - path: Unity\UnityTests\.vs\UnityTests\v17\workspaceFileList.bin
+        label: workspaceFileList.bin
+        level: 5
+        isFolder: 0
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 1
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: Unity\UnityTests\.vs\UnityTests\v17\workspaceFileList.bin
+          fullPath: C:\Users\XR\Unity\5g_robot_race_newvel\5g_robot_race_newvel\Unity\UnityTests\.vs\UnityTests\v17\workspaceFileList.bin
+          projectPath: .vs\UnityTests\v17\workspaceFileList.bin
+          originalPath: 
+          indexStatus: 1
+          workTreeStatus: 1
+      - path: Unity\UnityTests\.vs\VSWorkspaceState.json
+        label: VSWorkspaceState.json
+        level: 3
+        isFolder: 0
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 1
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: Unity\UnityTests\.vs\VSWorkspaceState.json
+          fullPath: C:\Users\XR\Unity\5g_robot_race_newvel\5g_robot_race_newvel\Unity\UnityTests\.vs\VSWorkspaceState.json
+          projectPath: .vs\VSWorkspaceState.json
+          originalPath: 
+          indexStatus: 1
+          workTreeStatus: 1
+      - path: Unity\UnityTests\GStreamerLog.txt
+        label: GStreamerLog.txt
+        level: 2
+        isFolder: 0
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 1
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: Unity\UnityTests\GStreamerLog.txt
+          fullPath: C:\Users\XR\Unity\5g_robot_race_newvel\5g_robot_race_newvel\Unity\UnityTests\GStreamerLog.txt
+          projectPath: GStreamerLog.txt
+          originalPath: 
+          indexStatus: 0
+          workTreeStatus: 3
+      - path: Unity\UnityTests\ProjectSettings
+        label: ProjectSettings
+        level: 2
+        isFolder: 1
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 1
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: 
+          fullPath: 
+          projectPath: 
+          originalPath: 
+          indexStatus: 0
+          workTreeStatus: 0
+      - path: Unity\UnityTests\ProjectSettings\PackageManagerSettings.asset
+        label: PackageManagerSettings.asset
+        level: 3
+        isFolder: 0
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 1
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: Unity\UnityTests\ProjectSettings\PackageManagerSettings.asset
+          fullPath: C:\Users\XR\Unity\5g_robot_race_newvel\5g_robot_race_newvel\Unity\UnityTests\ProjectSettings\PackageManagerSettings.asset
+          projectPath: ProjectSettings\PackageManagerSettings.asset
+          originalPath: 
+          indexStatus: 0
+          workTreeStatus: 3
+      - path: Unity\UnityTests\ProjectSettings\ProjectVersion.txt
+        label: ProjectVersion.txt
+        level: 3
+        isFolder: 0
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 1
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: Unity\UnityTests\ProjectSettings\ProjectVersion.txt
+          fullPath: C:\Users\XR\Unity\5g_robot_race_newvel\5g_robot_race_newvel\Unity\UnityTests\ProjectSettings\ProjectVersion.txt
+          projectPath: ProjectSettings\ProjectVersion.txt
+          originalPath: 
+          indexStatus: 0
+          workTreeStatus: 3
+      - path: Unity\UnityTests\UserSettings
+        label: UserSettings
+        level: 2
+        isFolder: 1
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 1
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: 
+          fullPath: 
+          projectPath: 
+          originalPath: 
+          indexStatus: 0
+          workTreeStatus: 0
+      - path: Unity\UnityTests\UserSettings\Layouts
+        label: Layouts
+        level: 3
+        isFolder: 1
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 1
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: 
+          fullPath: 
+          projectPath: 
+          originalPath: 
+          indexStatus: 0
+          workTreeStatus: 0
+      - path: Unity\UnityTests\UserSettings\Layouts\default-2021.dwlt
+        label: default-2021.dwlt
+        level: 4
+        isFolder: 0
+        isContainer: 0
+        isCollapsed: 0
+        isHidden: 0
+        isActive: 0
+        treeIsCheckable: 1
+        checkState: 0
+        isLocked: 0
+        gitStatusEntry:
+          path: Unity\UnityTests\UserSettings\Layouts\default-2021.dwlt
+          fullPath: C:\Users\XR\Unity\5g_robot_race_newvel\5g_robot_race_newvel\Unity\UnityTests\UserSettings\Layouts\default-2021.dwlt
+          projectPath: UserSettings\Layouts\default-2021.dwlt
+          originalPath: 
+          indexStatus: 0
+          workTreeStatus: 3
       selectedNode:
         path: 
         label: 
@@ -558,16 +1143,100 @@ MonoBehaviour:
           originalPath: 
           indexStatus: 0
           workTreeStatus: 0
-    gitStatusEntries: []
-    changedFilesText: No changed files
+    gitStatusEntries:
+    - path: Unity\UnityTests\.vs\ProjectSettings.json
+      fullPath: C:\Users\XR\Unity\5g_robot_race_newvel\5g_robot_race_newvel\Unity\UnityTests\.vs\ProjectSettings.json
+      projectPath: .vs\ProjectSettings.json
+      originalPath: 
+      indexStatus: 1
+      workTreeStatus: 1
+    - path: Unity\UnityTests\.vs\slnx.sqlite
+      fullPath: C:\Users\XR\Unity\5g_robot_race_newvel\5g_robot_race_newvel\Unity\UnityTests\.vs\slnx.sqlite
+      projectPath: .vs\slnx.sqlite
+      originalPath: 
+      indexStatus: 1
+      workTreeStatus: 1
+    - path: Unity\UnityTests\.vs\UnityTests\FileContentIndex\2519b416-39f3-4b56-a01d-d609726569b7.vsidx
+      fullPath: C:\Users\XR\Unity\5g_robot_race_newvel\5g_robot_race_newvel\Unity\UnityTests\.vs\UnityTests\FileContentIndex\2519b416-39f3-4b56-a01d-d609726569b7.vsidx
+      projectPath: .vs\UnityTests\FileContentIndex\2519b416-39f3-4b56-a01d-d609726569b7.vsidx
+      originalPath: 
+      indexStatus: 0
+      workTreeStatus: 5
+    - path: Unity\UnityTests\.vs\UnityTests\FileContentIndex\4b42e56a-e0ee-4367-911f-1c86a8504bb7.vsidx
+      fullPath: C:\Users\XR\Unity\5g_robot_race_newvel\5g_robot_race_newvel\Unity\UnityTests\.vs\UnityTests\FileContentIndex\4b42e56a-e0ee-4367-911f-1c86a8504bb7.vsidx
+      projectPath: .vs\UnityTests\FileContentIndex\4b42e56a-e0ee-4367-911f-1c86a8504bb7.vsidx
+      originalPath: 
+      indexStatus: 1
+      workTreeStatus: 1
+    - path: Unity\UnityTests\.vs\UnityTests\FileContentIndex\5f1402c5-ea1a-4d37-a7de-c25cd1b8bee2.vsidx
+      fullPath: C:\Users\XR\Unity\5g_robot_race_newvel\5g_robot_race_newvel\Unity\UnityTests\.vs\UnityTests\FileContentIndex\5f1402c5-ea1a-4d37-a7de-c25cd1b8bee2.vsidx
+      projectPath: .vs\UnityTests\FileContentIndex\5f1402c5-ea1a-4d37-a7de-c25cd1b8bee2.vsidx
+      originalPath: 
+      indexStatus: 0
+      workTreeStatus: 5
+    - path: Unity\UnityTests\.vs\UnityTests\FileContentIndex\da7aa3b2-9e51-4f12-b67b-461302989e36.vsidx
+      fullPath: C:\Users\XR\Unity\5g_robot_race_newvel\5g_robot_race_newvel\Unity\UnityTests\.vs\UnityTests\FileContentIndex\da7aa3b2-9e51-4f12-b67b-461302989e36.vsidx
+      projectPath: .vs\UnityTests\FileContentIndex\da7aa3b2-9e51-4f12-b67b-461302989e36.vsidx
+      originalPath: 
+      indexStatus: 1
+      workTreeStatus: 1
+    - path: Unity\UnityTests\.vs\UnityTests\FileContentIndex\read.lock
+      fullPath: C:\Users\XR\Unity\5g_robot_race_newvel\5g_robot_race_newvel\Unity\UnityTests\.vs\UnityTests\FileContentIndex\read.lock
+      projectPath: .vs\UnityTests\FileContentIndex\read.lock
+      originalPath: 
+      indexStatus: 0
+      workTreeStatus: 5
+    - path: Unity\UnityTests\.vs\UnityTests\v17\.wsuo
+      fullPath: C:\Users\XR\Unity\5g_robot_race_newvel\5g_robot_race_newvel\Unity\UnityTests\.vs\UnityTests\v17\.wsuo
+      projectPath: .vs\UnityTests\v17\.wsuo
+      originalPath: 
+      indexStatus: 1
+      workTreeStatus: 1
+    - path: Unity\UnityTests\.vs\UnityTests\v17\workspaceFileList.bin
+      fullPath: C:\Users\XR\Unity\5g_robot_race_newvel\5g_robot_race_newvel\Unity\UnityTests\.vs\UnityTests\v17\workspaceFileList.bin
+      projectPath: .vs\UnityTests\v17\workspaceFileList.bin
+      originalPath: 
+      indexStatus: 1
+      workTreeStatus: 1
+    - path: Unity\UnityTests\.vs\VSWorkspaceState.json
+      fullPath: C:\Users\XR\Unity\5g_robot_race_newvel\5g_robot_race_newvel\Unity\UnityTests\.vs\VSWorkspaceState.json
+      projectPath: .vs\VSWorkspaceState.json
+      originalPath: 
+      indexStatus: 1
+      workTreeStatus: 1
+    - path: Unity\UnityTests\GStreamerLog.txt
+      fullPath: C:\Users\XR\Unity\5g_robot_race_newvel\5g_robot_race_newvel\Unity\UnityTests\GStreamerLog.txt
+      projectPath: GStreamerLog.txt
+      originalPath: 
+      indexStatus: 0
+      workTreeStatus: 3
+    - path: Unity\UnityTests\ProjectSettings\PackageManagerSettings.asset
+      fullPath: C:\Users\XR\Unity\5g_robot_race_newvel\5g_robot_race_newvel\Unity\UnityTests\ProjectSettings\PackageManagerSettings.asset
+      projectPath: ProjectSettings\PackageManagerSettings.asset
+      originalPath: 
+      indexStatus: 0
+      workTreeStatus: 3
+    - path: Unity\UnityTests\ProjectSettings\ProjectVersion.txt
+      fullPath: C:\Users\XR\Unity\5g_robot_race_newvel\5g_robot_race_newvel\Unity\UnityTests\ProjectSettings\ProjectVersion.txt
+      projectPath: ProjectSettings\ProjectVersion.txt
+      originalPath: 
+      indexStatus: 0
+      workTreeStatus: 3
+    - path: Unity\UnityTests\UserSettings\Layouts\default-2021.dwlt
+      fullPath: C:\Users\XR\Unity\5g_robot_race_newvel\5g_robot_race_newvel\Unity\UnityTests\UserSettings\Layouts\default-2021.dwlt
+      projectPath: UserSettings\Layouts\default-2021.dwlt
+      originalPath: 
+      indexStatus: 0
+      workTreeStatus: 3
+    changedFilesText: 14 changed files
     lastCurrentBranchChangedEvent:
-      updatedTimeString: 2023-12-01T14:26:31.170+01:00
+      updatedTimeString: 2023-12-05T13:26:54.666+01:00
       cacheType: 1
     lastStatusEntriesChangedEvent:
-      updatedTimeString: 2023-12-01T14:32:35.581+01:00
+      updatedTimeString: 2023-12-05T13:31:28.845+01:00
       cacheType: 6
     lastLocksChangedEvent:
-      updatedTimeString: 2023-12-01T14:32:25.217+01:00
+      updatedTimeString: 2023-12-05T13:26:55.893+01:00
       cacheType: 7
   historyView:
     currentLogHasUpdate: 0
@@ -45621,7 +46290,7 @@ MonoBehaviour:
       changingManually: 0
     hasRemote: 1
     lastCurrentRemoteChangedEvent:
-      updatedTimeString: 2023-12-01T14:26:31.170+01:00
+      updatedTimeString: 2023-12-05T11:48:29.836+01:00
       cacheType: 1
     newRepositoryRemoteUrl: https://github.com/xriteamupv/5g_robot_race.git
     repositoryRemoteName: origin
@@ -45634,7 +46303,7 @@ MonoBehaviour:
       newGitEmail: xr@iteam.upv.es
       needsSaving: 0
       lastCheckUserChangedEvent:
-        updatedTimeString: 2023-12-01T14:32:27.043+01:00
+        updatedTimeString: 2023-12-05T11:48:28.281+01:00
         cacheType: 8
     webTimeout: 100000
     gitTimeout: 5000
@@ -45688,7 +46357,7 @@ MonoBehaviour:
   currentRemoteUrl: https://github.com/xriteamupv/5g_robot_race.git
   statusAhead: 0
   statusBehind: 0
-  hasItemsToCommit: 0
+  hasItemsToCommit: 1
   isTrackingRemoteBranch: 1
   currentBranchContent:
     m_Text: main
@@ -45699,13 +46368,13 @@ MonoBehaviour:
     m_Image: {fileID: 0}
     m_Tooltip: Url of the origin remote
   lastCurrentBranchAndRemoteChangedEvent:
-    updatedTimeString: 2023-12-01T14:26:31.170+01:00
+    updatedTimeString: 2023-12-05T13:26:54.666+01:00
     cacheType: 1
   lastTrackingStatusChangedEvent:
-    updatedTimeString: 2023-12-01T14:32:35.599+01:00
+    updatedTimeString: 2023-12-05T13:31:28.871+01:00
     cacheType: 5
   lastStatusEntriesChangedEvent:
-    updatedTimeString: 2023-12-01T14:32:35.581+01:00
+    updatedTimeString: 2023-12-05T13:31:28.845+01:00
     cacheType: 6
   pullButtonContent:
     m_Text: Pull
@@ -45749,10 +46418,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: -506.66666
-    y: -887.3333
-    width: 633
-    height: 475
+    x: 0.6666667
+    y: -790.4
+    width: 423.8
+    height: 415
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -45762,7 +46431,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: f4f0ffff44f1ffff48f1ffff50f1ffff54f1ffff70f2ffff08f4ffff3afbffff
+      m_ExpandedIDs: 3afbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -45807,10 +46476,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 127.33334
-    y: -887.3333
-    width: 1191.3334
-    height: 475
+    x: 425.46667
+    y: -790.4
+    width: 797.2
+    height: 415
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -45821,7 +46490,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 1
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: -98.666626, y: -26}
+      snapOffsetDelta: {x: -100, y: -25.600006}
       snapCorner: 3
       id: Tool Settings
       index: 0
@@ -46012,9 +46681,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 40.433334, y: -14.916084, z: 14.79488}
+    m_Target: {x: 59.684174, y: 44.741463, z: -10.492966}
     speed: 2
-    m_Value: {x: 40.433334, y: -14.916084, z: 14.79488}
+    m_Value: {x: 59.684174, y: 44.741463, z: -10.492966}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -46061,13 +46730,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.23235923, y: 0.47792366, z: -0.13273215, w: 0.8366519}
+    m_Target: {x: 0.012546668, y: 0.23185147, z: -0.002989681, w: 0.97266984}
     speed: 2
-    m_Value: {x: 0.23235855, y: 0.47792223, z: -0.13273175, w: 0.8366494}
+    m_Value: {x: -0.012546668, y: -0.23185147, z: 0.002989681, w: -0.97266984}
   m_Size:
-    m_Target: 56.822342
+    m_Target: 90.915085
     speed: 2
-    m_Value: 56.822342
+    m_Value: 90.915085
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -46144,8 +46813,8 @@ MonoBehaviour:
     vZoomLockedByDefault: 0
     m_HBaseRangeMin: -221.33334
     m_HBaseRangeMax: 221.33334
-    m_VBaseRangeMin: -103.111115
-    m_VBaseRangeMax: 103.111115
+    m_VBaseRangeMin: -110.111115
+    m_VBaseRangeMax: 110.111115
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -46162,11 +46831,11 @@ MonoBehaviour:
     m_DrawArea:
       serializedVersion: 2
       x: 0
-      y: 21
+      y: 0
       width: 664
-      height: 309.33334
+      height: 330.33334
     m_Scale: {x: 3, y: 3}
-    m_Translation: {x: 332, y: 154.66667}
+    m_Translation: {x: 332, y: 165.16667}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
@@ -46174,9 +46843,9 @@ MonoBehaviour:
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
       x: -110.666664
-      y: -51.555557
+      y: -55.055557
       width: 221.33333
-      height: 103.111115
+      height: 110.111115
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_LastWindowPixelSize: {x: 996, y: 495.5}
@@ -46271,7 +46940,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 51.99997}
     m_SelectedIDs: ea690000
     m_LastClickedID: 27114
-    m_ExpandedIDs: 000000004a6c0000
+    m_ExpandedIDs: 000000005a6c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -46299,7 +46968,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000004a6c0000
+    m_ExpandedIDs: 000000005a6c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -46376,10 +47045,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: -506.66666
-    y: -391.3333
-    width: 1826.3334
-    height: 302.3333
+    x: 0.6666667
+    y: -354.4
+    width: 1223
+    height: 265.8
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
