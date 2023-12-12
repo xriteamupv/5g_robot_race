@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Logic : ScriptableObjects
+public class Logic : ScriptableObject
 {
 public string name;
 public string description; 
