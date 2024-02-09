@@ -6,16 +6,27 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public Text speed;
+    public Text lapTime;
     public Image battery;
     public Image leftLidar;
     public Image rightLidar;
     public PointerIndicator speedometer;
+
+    public Sprite leftRedLidar;
+    public Sprite rightRedLidar;
+    public Sprite leftYellowLidar;
+    public Sprite rightYellowLidar;
 
     public Sprite[] batterySprites;
 
     public void ChangeSpeed(float newSpeed)
     {
         speedometer.setValue(Mathf.Abs(newSpeed * 3.6f));
+    }
+
+    public void ChangeLapTime(string newLapTime)
+    {
+        lapTime.text = newLapTime;
     }
 
     public void ChangeBattery(int newBattery)
@@ -48,10 +59,10 @@ public class UIManager : MonoBehaviour
             leftLidar.enabled = true;
             if(state == 1)
             {
-                leftLidar.color = Color.yellow;
+                leftLidar.sprite = leftYellowLidar;
             } else
             {
-                leftLidar.color = Color.red;
+                leftLidar.sprite = leftRedLidar;
             }
         }
     }
@@ -67,11 +78,11 @@ public class UIManager : MonoBehaviour
             rightLidar.enabled = true;
             if (state == 1)
             {
-                rightLidar.color = Color.yellow;
+                rightLidar.sprite = rightYellowLidar;
             }
             else
             {
-                rightLidar.color = Color.red;
+                rightLidar.sprite = rightRedLidar;
             }
         }
     }
