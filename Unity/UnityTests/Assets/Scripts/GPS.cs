@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using UnityEngine;
 
 public class GPS : MonoBehaviour
@@ -63,10 +63,10 @@ public class GPS : MonoBehaviour
 
             latitude_offset = latitude - latitude_ref; //cambio del centro de coordenadas
             longitude_offset = longitude - longitude_ref; //cambio del centro de coordenadas
-            latitude_scale = 110850 * latitude_offset; //cambio de escala (metros por grado de latitud en Valencia)
-            longitude_scale = 85380 * longitude_offset; //cambio de escala (metros por grado de longitud en Valencia)
-            posY = Convert.ToSingle(latitude_scale * seno + longitude_scale * coseno); //rotación del eje de coordenadas
-            posX = Convert.ToSingle(latitude_scale * coseno - longitude_scale * seno); //rotación del eje de coordenadas
+            latitude_scale = 111195 * latitude_offset; //cambio de escala (metros por grado de latitud en Valencia)
+            longitude_scale = 85826 * longitude_offset; //cambio de escala (metros por grado de longitud en Valencia)
+            posY = Convert.ToSingle(latitude_scale * seno + longitude_scale * coseno); //rotaciï¿½n del eje de coordenadas
+            posX = Convert.ToSingle(latitude_scale * coseno - longitude_scale * seno); //rotaciï¿½n del eje de coordenadas
         }
 
         // finalOri = new Quaternion(oriX, -oriZ, oriY, oriW);
