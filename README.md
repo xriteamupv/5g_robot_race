@@ -54,6 +54,10 @@ On the other hand, two immersive cockpits will be located indoors for remotely c
 
 2. **Open the Unity project folder on the cockpit PC**
    - `C:\Users\XR\Unity\5g_robot_race_newvel\5g_robot_race_newvel`
+  
+3. **Build the project (or use an existent build)**
+   - Open the project from Unity Hub usign version 2022.3
+   - Click file -> Build Settings -> Save into `C:\Users\XR\Unity\5g_robot_race_newvel\5g_robot_race_newvel\Builds`
 
 3. **Modify configuration files**
    - `Unity\UnityTests\Assets\ips.txt` with `camera_IP`
