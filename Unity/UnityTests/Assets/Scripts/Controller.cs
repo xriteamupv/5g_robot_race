@@ -9,8 +9,6 @@ public class Controller : MonoBehaviour
     public CustomPipelinePlayer pipelinePlayer;
     public GameObject mainMenu;
     public GameObject robotScene;
-    public Transform robot1;
-    public Transform robot2;
 
     void Start()
     {
@@ -34,10 +32,10 @@ public class Controller : MonoBehaviour
     {
         ConvertTexture(pipelinePlayer.VideoTexture);
 
-        if(Input.GetButtonDown("Submit"))
-        {
-            SwitchToRobotScene();
-        }
+        //if(Input.GetButtonDown("Submit"))
+        //{
+        //    SwitchToRobotScene();
+        //}
 
     }
 
@@ -47,8 +45,6 @@ public class Controller : MonoBehaviour
         {
             mainMenu.SetActive(false);
             robotScene.SetActive(true);
-            robot1.localScale *= 4.0f;
-            robot2.localScale *= 4.0f;
         }
     }
 }

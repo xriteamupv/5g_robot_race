@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +17,7 @@ public class UIManager : MonoBehaviour
     public Sprite rightRedLidar;
     public Sprite leftYellowLidar;
     public Sprite rightYellowLidar;
+    public RectTransform steeringWheel;
 
     public Sprite[] batterySprites;
 
@@ -27,6 +29,11 @@ public class UIManager : MonoBehaviour
     public void ChangeLapTime(string newLapTime)
     {
         lapTime.text = newLapTime;
+    }
+
+    public void ChangeWheelRotation(float newValue)
+    {
+        steeringWheel.rotation = Quaternion.Euler(0, 0, newValue);
     }
 
     public void ChangeBattery(int newBattery)

@@ -29,17 +29,17 @@ public class ProxyConnection : MonoBehaviour
 
     public class Message
     {
-        public int battery1; // Bateria robot 1
-        public int[] lidar1; // Lidar robot 1
-        public double[] gps1; // Posicion y orientacion gps robot 1
-        public float speed1; // Velocidad robot 1
-        public string time1; // Tiempo de vuelta robot 1
+        public int battery1;
+        public int[] lidar1;
+        public double[] gps1;
+        public float speed1;
+        public string time1;
 
-        public int battery2; // Bateria robot 2
-        public int[] lidar2; // Lidar robot 2
-        public double[] gps2; // Posicion y orientacion gps robot 2
-        public float speed2; // Velocidad robot 2
-        public string time2; // Tiempo de vuelta robot 2
+        public int battery2;
+        public int[] lidar2;
+        public double[] gps2;
+        public float speed2;
+        public string time2;
     }
 
     private Message storedMessage;
@@ -83,6 +83,8 @@ public class ProxyConnection : MonoBehaviour
         string pedal = pedalInput.ToString().Replace(',', '.');
         string back = pedal2Input.ToString().Replace(',', '.');
         string wheel = wheelInput.ToString().Replace(',', '.');
+
+        ui.ChangeWheelRotation(-Input.GetAxis("Wheel") * 180.0f);
 
         string inputMessage;
         if(isRobot1)
@@ -220,7 +222,7 @@ public class ProxyConnection : MonoBehaviour
         if (isRobot1)
         {
             ui.ChangeSpeed(m.speed1);
-            ui.ChangeBattery(m.battery1);
+            //ui.ChangeBattery(m.battery1);
             ui.SetLeftLidar(m.lidar1[1]);
             ui.SetRightLidar(m.lidar1[0]);
             ui.ChangeLapTime(m.time1);
@@ -228,7 +230,7 @@ public class ProxyConnection : MonoBehaviour
         else
         {
             ui.ChangeSpeed(m.speed2);
-            ui.ChangeBattery(m.battery2);
+            //ui.ChangeBattery(m.battery2);
             ui.SetLeftLidar(m.lidar2[1]);
             ui.SetRightLidar(m.lidar2[0]);
             ui.ChangeLapTime(m.time2);

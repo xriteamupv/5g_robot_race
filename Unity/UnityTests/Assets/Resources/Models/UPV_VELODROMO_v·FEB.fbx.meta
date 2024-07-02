@@ -1,0 +1,215 @@
+fileFormatVersion: 2
+guid: 8c7a8496ff5338d44abd82573e61edde
+ModelImporter:
+  serializedVersion: 21202
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 0126221d28e7e7648bec13e4e4a162e9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: 828227ce7b4727b428dd38839f419a76, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.003
+    second: {fileID: 2100000, guid: 691b6339eb155ac48872707cc3a78571, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.004
+    second: {fileID: 2100000, guid: 9f2f6b932297e3e40ab5e0ad7bc2bd82, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.005
+    second: {fileID: 2100000, guid: 6a380f968827b104dab8ace0a0d70c61, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.012
+    second: {fileID: 2100000, guid: 148644720e757f748a4d4d9b3aaa28f5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.013
+    second: {fileID: 2100000, guid: 2257864108b86c9498143c97a66c071c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.014
+    second: {fileID: 2100000, guid: 1dd9473950f6911488267d020ccd7e25, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.015
+    second: {fileID: 2100000, guid: 64cf1f066ac59274cbb1eae78b6a105b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.016
+    second: {fileID: 2100000, guid: bb569cf4c78c0ec4eaf9cc1380dccf47, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: velodromo_lidar_pg_SUELO_2_A
+    second: {fileID: 2100000, guid: a87b76b380d39e04282962b640ceee1e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: velodromo_lidar_pg_SUELO_2_B
+    second: {fileID: 2100000, guid: a59d0e3a7e5296f4d8f62a3feaa19a30, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: velodromo_lidar_pg_SUELO_2_C
+    second: {fileID: 2100000, guid: e6fd7eee15cde044abbdd1041459033e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: velodromo_lidar_pg_SUELO_2_D
+    second: {fileID: 2100000, guid: 31754d155a420674d9a55d7b2ede8897, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: velodromo_lidar_pg_cemento
+    second: {fileID: 2100000, guid: 5e789549c17bf124293169f23c5a5cba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: velodromo_lidar_pg_cesped
+    second: {fileID: 2100000, guid: 8af5d07d06e9c07439ad360f56b465a4, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: velodromo_lidar_pg_SUELO_2_A_u0_v0_diffuse
+    second: {fileID: 2800000, guid: 7f4af86867f975c4f8b28edfba139836, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: velodromo_lidar_pg_SUELO_2_B_u0_v0_diffuse
+    second: {fileID: 2800000, guid: f69f1c38f8d9af04caf10fe43121be0b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: velodromo_lidar_pg_SUELO_2_C_u0_v0_diffuse
+    second: {fileID: 2800000, guid: de9279f5dcaad4542acde66242c84b3f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: velodromo_lidar_pg_SUELO_2_D_u0_v0_diffuse
+    second: {fileID: 2800000, guid: e7bcaa5ab10acd54e979a09336a6d236, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: velodromo_lidar_pg_cemento_u0_v0_diffuse
+    second: {fileID: 2800000, guid: 777493f9e050c4d42a18e40358ec2fc5, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: velodromo_lidar_pg_cesped_u0_v0_diffuse
+    second: {fileID: 2800000, guid: 218bab12229c3324ab1cb6ccb31396e7, type: 3}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
