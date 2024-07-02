@@ -17,9 +17,16 @@ public class UIManager : MonoBehaviour
     public Sprite rightRedLidar;
     public Sprite leftYellowLidar;
     public Sprite rightYellowLidar;
-    public RectTransform steeringWheel;
+    public GameObject steeringWheel;
 
     public Sprite[] batterySprites;
+    public float wheelSpeed = 500.0f;
+    private float wheelValue;
+
+    private void Awake()
+    {
+        StartCoroutine(RotateWheel());
+    }
 
     public void ChangeSpeed(float newSpeed)
     {
@@ -31,9 +38,19 @@ public class UIManager : MonoBehaviour
         lapTime.text = newLapTime;
     }
 
+    public IEnumerator RotateWheel()
+    {
+        while (true)
+        {
+            Quaternion newRotation = Quaternion.Lerp(steeringWheel.transform.rotation, Quaternion.Euler(0.0f, 0.0f, wheelValue), wheelSpeed * Time.deltaTime);
+            steeringWheel.transform.rotation = newRotation;
+            yield return null;
+        }
+    }
+
     public void ChangeWheelRotation(float newValue)
     {
-        steeringWheel.rotation = Quaternion.Euler(0, 0, newValue);
+        wheelValue = newValue;
     }
 
     public void ChangeBattery(int newBattery)
