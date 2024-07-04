@@ -69,7 +69,6 @@ public class ProxyConnection : MonoBehaviour
             UpdateValues(storedMessage);
             updateValues = false;
         }
-
     }
 
     private void WheelInput()

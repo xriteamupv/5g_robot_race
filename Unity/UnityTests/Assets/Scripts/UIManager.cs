@@ -19,6 +19,9 @@ public class UIManager : MonoBehaviour
     public Sprite rightYellowLidar;
     public GameObject steeringWheel;
 
+    public Transform leftHand;
+    public Transform rightHand;
+
     public Sprite[] batterySprites;
     public float wheelSpeed = 500.0f;
     private float wheelValue;
@@ -26,6 +29,19 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         StartCoroutine(RotateWheel());
+    }
+
+    private void Update()
+    {
+        if (Input.GetAxis("L2") > 0.0f && Input.GetAxis("R2") > 0.0f)
+        {
+            PlaceSteeringWheel();
+        }
+    }
+
+    public void PlaceSteeringWheel()
+    {
+        steeringWheel.transform.position = Vector3.Lerp(leftHand.position, rightHand.position, 0.5f);
     }
 
     public void ChangeSpeed(float newSpeed)
