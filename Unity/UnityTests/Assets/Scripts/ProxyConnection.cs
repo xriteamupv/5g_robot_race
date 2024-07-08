@@ -77,6 +77,7 @@ public class ProxyConnection : MonoBehaviour
         //if (Input.GetAxis("Pedal") == 0.0f && Input.GetAxis("Wheel") == 0.0f) return;
 
         float pedalInput = (Input.GetAxis("Pedal") - 1.0f) * -1.0f;
+        Debug.Log(pedalInput);
         float pedal2Input = (Input.GetAxis("Back") - 1.0f) * 1.0f;
         float wheelInput = Input.GetAxis("Wheel") * -3.0f;
         float lev = Input.GetAxis("lev");
@@ -125,7 +126,7 @@ public class ProxyConnection : MonoBehaviour
                 }
             }
         }
-        Debug.Log(inputMessage);
+        //Debug.Log(inputMessage);
         SendNetworkMessage(inputMessage);
     }
 
@@ -187,7 +188,7 @@ public class ProxyConnection : MonoBehaviour
                         // Convert byte array to string message. 							
                         string serverMessage = Encoding.ASCII.GetString(incommingData);
                         serverMessage = serverMessage.Replace('\'', '\"');
-                        Debug.Log(serverMessage);
+                        //Debug.Log(serverMessage);
                         if (!updateValues)
                         {
                             storedMessage = JsonUtility.FromJson<Message>(serverMessage);
@@ -210,14 +211,25 @@ public class ProxyConnection : MonoBehaviour
         gps.latitude = m.gps1[0];
         gps.longitude = m.gps1[1];
 
-        double degrees = orientationOffset + (m.gps1[2] * Mathf.Rad2Deg);
-        gps.transform.rotation = Quaternion.Euler(0.0f, -(float)degrees, 0.0f);
+        double roll = (m.gps1[2] * Mathf.Rad2Deg);
+        double pitch = (m.gps1[3] * Mathf.Rad2Deg); 
+        double yaw = orientationOffset + (m.gps1[4] * Mathf.Rad2Deg);
+        
+        //gps.transform.rotation = Quaternion.Euler(0.0f, -(float)yaw, 0.0f);
+        gps.transform.rotation = Quaternion.Euler((float)roll, -(float)yaw, (float)pitch);
 
         otherGPS.latitude = m.gps2[0];
         otherGPS.longitude = m.gps2[1];
 
-        degrees = orientationOffset + (m.gps2[2] * Mathf.Rad2Deg);
-        otherGPS.transform.rotation = Quaternion.Euler(0.0f, -(float)degrees, 0.0f);
+        roll = (m.gps2[2] * Mathf.Rad2Deg);
+        //Debug.Log("Roll: " + roll);
+        pitch = (m.gps2[3] * Mathf.Rad2Deg);
+        //Debug.Log("Pitch: " + pitch);
+        yaw = orientationOffset + (m.gps2[4] * Mathf.Rad2Deg);
+        //Debug.Log("Yaw: " + yaw);
+
+        //degrees = orientationOffset + (m.gps2[2] * Mathf.Rad2Deg);
+        otherGPS.transform.rotation = Quaternion.Euler((float)roll, -(float)yaw, (float)pitch);
 
         if (isRobot1)
         {
