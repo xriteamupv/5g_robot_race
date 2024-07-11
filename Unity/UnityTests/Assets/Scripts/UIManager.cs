@@ -22,13 +22,21 @@ public class UIManager : MonoBehaviour
     public Transform leftHand;
     public Transform rightHand;
 
+    public GameObject messageBox;
+    public Vector3 messageBoxMaxScale;
+    public float messageBoxSpeed = 500.0f;
+    public float messageBoxDistance = 50.0f;
+    public float messageBoxAngle = 0.3f;
+    public float messageBoxTime = 2.0f;
+
     public Sprite[] batterySprites;
-    public float wheelSpeed = 500.0f;
+    public float wheelSpeed = 5.0f;
     private float wheelValue;
 
     private void Awake()
     {
         StartCoroutine(RotateWheel());
+        messageBox.GetComponent<RectTransform>().localScale = Vector3.zero;
     }
 
     private void Update()
@@ -37,11 +45,46 @@ public class UIManager : MonoBehaviour
         {
             PlaceSteeringWheel();
         }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            StartCoroutine(ShowMessageBox(""));
+        }
     }
 
     public void PlaceSteeringWheel()
     {
         steeringWheel.transform.position = Vector3.Lerp(leftHand.position, rightHand.position, 0.5f);
+    }
+
+    public IEnumerator ShowMessageBox(string message)
+    {
+        RectTransform rectTransform = messageBox.GetComponent<RectTransform>();
+        float t = 0.0f;
+        rectTransform.position = Vector3.Lerp(Camera.main.transform.forward, Camera.main.transform.up, messageBoxAngle).normalized * messageBoxDistance;
+        Vector3 lookDirection = rectTransform.position - Camera.main.transform.position;
+        rectTransform.rotation = Quaternion.LookRotation(lookDirection.normalized, Vector3.up);
+        while (rectTransform.localScale.x < messageBoxMaxScale.x)
+        {
+            rectTransform.localScale = Vector3.Lerp(Vector3.zero, messageBoxMaxScale, t);
+            t += messageBoxSpeed * Time.deltaTime;
+            yield return null;
+        }
+        rectTransform.localScale = messageBoxMaxScale;
+        yield return new WaitForSeconds(messageBoxTime);
+        StartCoroutine(HideMessageBox());
+    }
+
+    public IEnumerator HideMessageBox()
+    {
+        RectTransform rectTransform = messageBox.GetComponent<RectTransform>();
+        float t = 0.0f;
+        while (rectTransform.localScale.x > 0.0f)
+        {
+            rectTransform.localScale = Vector3.Lerp(messageBoxMaxScale, Vector3.zero, t);
+            t += messageBoxSpeed * Time.deltaTime;
+            yield return null;
+        }
+        rectTransform.localScale = Vector3.zero;
     }
 
     public void ChangeSpeed(float newSpeed)
