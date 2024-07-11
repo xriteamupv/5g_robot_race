@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour
 
     public Transform leftHand;
     public Transform rightHand;
+    public Vector3 wheelOffset;
 
     public GameObject messageBox;
     public Vector3 messageBoxMaxScale;
@@ -54,6 +55,7 @@ public class UIManager : MonoBehaviour
     public void PlaceSteeringWheel()
     {
         steeringWheel.transform.position = Vector3.Lerp(leftHand.position, rightHand.position, 0.5f);
+        steeringWheel.transform.position += wheelOffset;
     }
 
     public IEnumerator ShowMessageBox(string message)
