@@ -21,10 +21,8 @@ public class ProxyConnection : MonoBehaviour
     private TcpClient socketConnection;
     private Thread clientReceiveThread;
 
-    public Position gps, otherGPS;
-    //public GPS otherGPS;
-    public GameObject padre; //objeto a rotar
-    public GameObject objetoAR; //objeto a posicionar
+    public GPS gps;
+    public GPS otherGPS;
     public UIManager ui;
     public float orientationOffset;
     public string selectedRobot;
@@ -49,8 +47,6 @@ public class ProxyConnection : MonoBehaviour
     private bool loop;
     private bool isRobot1;
 
-    public float rotationSpeed = 1.0f;
-    private Quaternion targetRotation;
 
     void Start()
     {
@@ -80,7 +76,6 @@ public class ProxyConnection : MonoBehaviour
         //if (Input.GetAxis("Pedal") == 0.0f && Input.GetAxis("Wheel") == 0.0f) return;
 
         float pedalInput = (Input.GetAxis("Pedal") - 1.0f) * -1.0f;
-        //Debug.Log(pedalInput);
         float pedal2Input = (Input.GetAxis("Back") - 1.0f) * 1.0f;
         float wheelInput = Input.GetAxis("Wheel") * -3.0f;
         float lev = Input.GetAxis("lev");
@@ -129,7 +124,7 @@ public class ProxyConnection : MonoBehaviour
                 }
             }
         }
-        //Debug.Log(inputMessage);
+        Debug.Log(inputMessage);
         SendNetworkMessage(inputMessage);
     }
 
@@ -191,11 +186,10 @@ public class ProxyConnection : MonoBehaviour
                         // Convert byte array to string message. 							
                         string serverMessage = Encoding.ASCII.GetString(incommingData);
                         serverMessage = serverMessage.Replace('\'', '\"');
-                        //Debug.Log(serverMessage);
+                        Debug.Log(serverMessage);
                         if (!updateValues)
                         {
                             storedMessage = JsonUtility.FromJson<Message>(serverMessage);
-                            //Debug.Log(storedMessage);
                             updateValues = true;
                         }
                     }
@@ -212,36 +206,17 @@ public class ProxyConnection : MonoBehaviour
     {
         if (m == null) return;
 
-        //gps.latitude = m.gps1[0];
-        //Debug.Log(m.gps1[0]);
-        //gps.longitude = m.gps1[1];
+        gps.latitude = m.gps1[0];
+        gps.longitude = m.gps1[1];
 
-        //double roll = (m.gps1[2] * Mathf.Rad2Deg);
-        //double pitch = (m.gps1[3] * Mathf.Rad2Deg); 
-        //double yaw = orientationOffset + (m.gps1[4] * Mathf.Rad2Deg);
-        //Debug.Log(yaw);
-        
-        //gps.transform.rotation = Quaternion.Euler(0.0f, -(float)yaw, 0.0f);
-        //gps.transform.rotation = Quaternion.Euler((float)roll, -(float)yaw, (float)pitch);
-        
+        double degrees = orientationOffset + (m.gps1[2] * Mathf.Rad2Deg);
+        gps.transform.rotation = Quaternion.Euler(0.0f, -(float)degrees, 0.0f);
 
         otherGPS.latitude = m.gps2[0];
         otherGPS.longitude = m.gps2[1];
 
-        //brujula
-        //double roll = (m.gps2[2] * Mathf.Rad2Deg);
-        //double pitch = (m.gps2[3] * Mathf.Rad2Deg);
-        //double yaw = orientationOffset + (m.gps2[4] * Mathf.Rad2Deg);
-        //targetRotation = Quaternion.Euler(0.0f, (float)yaw, 0.0f);
-        
-        targetRotation.y = (float)m.gps2[2];
-        targetRotation.w = (float)m.gps2[3];
-        targetRotation*=Quaternion.Euler(0f, (float)orientationOffset, 0f);
-        Debug.Log(targetRotation);
-
-        padre.transform.localRotation = Quaternion.Slerp(padre.transform.localRotation, targetRotation, Time.deltaTime * rotationSpeed);
-        //float newYaw = (float)yaw - padre.transform.rotation.eulerAngles.y;
-        //padre.transform.RotateAround(Vector3.zero, Vector3.up, newYaw);
+        degrees = orientationOffset + (m.gps2[2] * Mathf.Rad2Deg);
+        otherGPS.transform.rotation = Quaternion.Euler(0.0f, -(float)degrees, 0.0f);
 
         if (isRobot1)
         {
