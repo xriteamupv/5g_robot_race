@@ -73,3 +73,4 @@ Lib/*
 ipch/*
 Bin/*
 Dependencies/*
+Unity/UnityTests/GStreamerLog.txt
