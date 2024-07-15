@@ -19,13 +19,67 @@ public class UIManager : MonoBehaviour
     public Sprite rightYellowLidar;
     public GameObject steeringWheel;
 
+    public Transform leftHand;
+    public Transform rightHand;
+    public Vector3 wheelOffset;
+
+    public GameObject messageBox;
+    public Vector3 messageBoxMaxScale;
+    public float messageBoxSpeed = 500.0f;
+    public float messageBoxDistance = 50.0f;
+    public float messageBoxAngle = 0.3f;
+
     public Sprite[] batterySprites;
-    public float wheelSpeed = 500.0f;
+    public float wheelSpeed = 5.0f;
     private float wheelValue;
 
     private void Awake()
     {
         StartCoroutine(RotateWheel());
+        messageBox.GetComponent<RectTransform>().localScale = Vector3.zero;
+    }
+
+    private void Update()
+    {
+        if (Input.GetAxis("L2") > 0.0f && Input.GetAxis("R2") > 0.0f)
+        {
+            PlaceSteeringWheel();
+        }
+    }
+
+    public void PlaceSteeringWheel()
+    {
+        steeringWheel.transform.position = Vector3.Lerp(leftHand.position, rightHand.position, 0.5f);
+        steeringWheel.transform.position += wheelOffset;
+    }
+
+    public IEnumerator ShowMessageBox()
+    {
+        RectTransform rectTransform = messageBox.GetComponent<RectTransform>();
+        float t = 0.0f;
+        rectTransform.position = Vector3.Lerp(Camera.main.transform.forward, Camera.main.transform.up, messageBoxAngle).normalized * messageBoxDistance;
+        Vector3 lookDirection = rectTransform.position - Camera.main.transform.position;
+        rectTransform.rotation = Quaternion.LookRotation(lookDirection.normalized, Vector3.up);
+        while (rectTransform.localScale.x < messageBoxMaxScale.x)
+        {
+            rectTransform.localScale = Vector3.Lerp(Vector3.zero, messageBoxMaxScale, t);
+            t += messageBoxSpeed * Time.deltaTime;
+            yield return null;
+        }
+        rectTransform.localScale = messageBoxMaxScale;
+    }
+
+    public IEnumerator HideMessageBox()
+    {
+        RectTransform rectTransform = messageBox.GetComponent<RectTransform>();
+        float t = 0.0f;
+        while (rectTransform.localScale.x > 0.0f)
+        {
+            rectTransform.localScale = Vector3.Lerp(messageBoxMaxScale, Vector3.zero, t);
+            t += messageBoxSpeed * Time.deltaTime;
+            yield return null;
+        }
+        rectTransform.localScale = Vector3.zero;
     }
 
     public void ChangeSpeed(float newSpeed)
@@ -55,15 +109,15 @@ public class UIManager : MonoBehaviour
 
     public void ChangeBattery(int newBattery)
     {
-        if(newBattery > 75)
+        if (newBattery > 75)
         {
             battery.sprite = batterySprites[0];
-        } 
+        }
         else if (newBattery > 50)
         {
             battery.sprite = batterySprites[1];
         }
-        else if(newBattery > 25)
+        else if (newBattery > 25)
         {
             battery.sprite = batterySprites[2];
         }
@@ -75,19 +129,15 @@ public class UIManager : MonoBehaviour
 
     public void SetLeftLidar(int state)
     {
-        if(state == 0)
+        if (state == 0)
         {
-            leftLidar.enabled = false;
-        } else
+            StopAllCoroutines();
+            StartCoroutine(HideMessageBox());
+        }
+        else
         {
-            leftLidar.enabled = true;
-            if(state == 1)
-            {
-                leftLidar.sprite = leftYellowLidar;
-            } else
-            {
-                leftLidar.sprite = leftRedLidar;
-            }
+            StopAllCoroutines();
+            StartCoroutine(ShowMessageBox());
         }
     }
 
@@ -95,19 +145,13 @@ public class UIManager : MonoBehaviour
     {
         if (state == 0)
         {
-            rightLidar.enabled = false;
+            StopAllCoroutines();
+            StartCoroutine(HideMessageBox());
         }
         else
         {
-            rightLidar.enabled = true;
-            if (state == 1)
-            {
-                rightLidar.sprite = rightYellowLidar;
-            }
-            else
-            {
-                rightLidar.sprite = rightRedLidar;
-            }
+            StopAllCoroutines();
+            StartCoroutine(ShowMessageBox());
         }
     }
 }
