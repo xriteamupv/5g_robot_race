@@ -73,11 +73,18 @@ public class ProxyConnection : MonoBehaviour
 
     private void WheelInput()
     {
+
         //if (Input.GetAxis("Pedal") == 0.0f && Input.GetAxis("Wheel") == 0.0f) return;
 
         float pedalInput = (Input.GetAxis("Pedal") - 1.0f) * -1.0f;
         float pedal2Input = (Input.GetAxis("Back") - 1.0f) * 1.0f;
         float wheelInput = Input.GetAxis("Wheel") * -3.0f;
+
+        if(pedalInput < 0.1f)
+        {
+            wheelInput = 0.0f;
+        }
+
         float lev = Input.GetAxis("lev");
         string pedal = pedalInput.ToString().Replace(',', '.');
         string back = pedal2Input.ToString().Replace(',', '.');
