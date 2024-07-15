@@ -44,13 +44,18 @@ public class UIManager : MonoBehaviour
         if (Input.GetAxis("L2") > 0.0f && Input.GetAxis("R2") > 0.0f)
         {
             PlaceSteeringWheel();
+            Debug.Log("Test");
+        }
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            StartCoroutine(ShowMessageBox());
         }
     }
 
     public void PlaceSteeringWheel()
     {
         steeringWheel.transform.position = Vector3.Lerp(leftHand.position, rightHand.position, 0.5f);
-        steeringWheel.transform.position += wheelOffset;
+        //steeringWheel.transform.position += wheelOffset;
     }
 
     public IEnumerator ShowMessageBox()

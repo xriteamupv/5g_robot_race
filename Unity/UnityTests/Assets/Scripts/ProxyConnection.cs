@@ -89,7 +89,7 @@ public class ProxyConnection : MonoBehaviour
         string back = pedal2Input.ToString().Replace(',', '.');
         string wheel = wheelInput.ToString().Replace(',', '.');
 
-        ui.ChangeWheelRotation(-Input.GetAxis("Wheel") * 180.0f);
+        ui.ChangeWheelRotation(-Input.GetAxis("Wheel") * 360.0f);
 
         string inputMessage;
         if(isRobot1)

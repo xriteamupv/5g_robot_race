@@ -9,6 +9,7 @@ public class CameraBehaviour : MonoBehaviour
 
     void Update()
     {
+        transform.position = mainCamera.position;   
         transform.rotation = Quaternion.Euler(mainCamera.rotation.eulerAngles.x, mainCamera.rotation.eulerAngles.y + offset, mainCamera.rotation.eulerAngles.z);
     }
 }
