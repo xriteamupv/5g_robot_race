@@ -28,7 +28,6 @@ public class UIManager : MonoBehaviour
     public float messageBoxSpeed = 500.0f;
     public float messageBoxDistance = 50.0f;
     public float messageBoxAngle = 0.3f;
-    public float messageBoxTime = 2.0f;
 
     public Sprite[] batterySprites;
     public float wheelSpeed = 5.0f;
@@ -46,10 +45,6 @@ public class UIManager : MonoBehaviour
         {
             PlaceSteeringWheel();
         }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StartCoroutine(ShowMessageBox(""));
-        }
     }
 
     public void PlaceSteeringWheel()
@@ -58,7 +53,7 @@ public class UIManager : MonoBehaviour
         steeringWheel.transform.position += wheelOffset;
     }
 
-    public IEnumerator ShowMessageBox(string message)
+    public IEnumerator ShowMessageBox()
     {
         RectTransform rectTransform = messageBox.GetComponent<RectTransform>();
         float t = 0.0f;
@@ -72,8 +67,6 @@ public class UIManager : MonoBehaviour
             yield return null;
         }
         rectTransform.localScale = messageBoxMaxScale;
-        yield return new WaitForSeconds(messageBoxTime);
-        StartCoroutine(HideMessageBox());
     }
 
     public IEnumerator HideMessageBox()
@@ -138,17 +131,12 @@ public class UIManager : MonoBehaviour
     {
         if(state == 0)
         {
-            leftLidar.enabled = false;
+            StopAllCoroutines();
+            StartCoroutine(HideMessageBox());
         } else
         {
-            leftLidar.enabled = true;
-            if(state == 1)
-            {
-                leftLidar.sprite = leftYellowLidar;
-            } else
-            {
-                leftLidar.sprite = leftRedLidar;
-            }
+            StopAllCoroutines();
+            StartCoroutine(ShowMessageBox());
         }
     }
 
@@ -156,19 +144,13 @@ public class UIManager : MonoBehaviour
     {
         if (state == 0)
         {
-            rightLidar.enabled = false;
+            StopAllCoroutines();
+            StartCoroutine(HideMessageBox());
         }
         else
         {
-            rightLidar.enabled = true;
-            if (state == 1)
-            {
-                rightLidar.sprite = rightYellowLidar;
-            }
-            else
-            {
-                rightLidar.sprite = rightRedLidar;
-            }
+            StopAllCoroutines();
+            StartCoroutine(ShowMessageBox());
         }
     }
 }
