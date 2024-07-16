@@ -29,19 +29,23 @@ public class ProxyConnection : MonoBehaviour
     public float orientationOffset;
     public string selectedRobot;
 
+    public TrafficLight trafficSign;
+
+    private bool isTrafficEnabled = false;
+
     public class Message
     {
         public int battery1;
         public int[] lidar1;
         public double[] gps1;
         public float speed1;
-        public string time1;
+        public string[] time1;
 
         public int battery2;
         public int[] lidar2;
         public double[] gps2;
         public float speed2;
-        public string time2;
+        public string[] time2;
     }
 
     private Message storedMessage;
@@ -64,6 +68,8 @@ public class ProxyConnection : MonoBehaviour
         if(selectedRobot == "Robot 1") 
             isRobot1 = true;
         InvokeRepeating("WheelInput", 0.0f, 0.1f);
+
+        
     }
 
     private void Update()
@@ -73,14 +79,18 @@ public class ProxyConnection : MonoBehaviour
             UpdateValues(storedMessage);
             updateValues = false;
         }
-
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            SendNetworkMessage("timer");
+        }
+        trafficSign.enabled = isTrafficEnabled;
     }
 
     private void WheelInput()
     {
         //if (Input.GetAxis("Pedal") == 0.0f && Input.GetAxis("Wheel") == 0.0f) return;
 
-        float pedalInput = (Input.GetAxis("Pedal") - 1.0f) * -1.0f;
+        float pedalInput = (Input.GetAxis("Pedal") - 1.0f) * -1.0f; //cambiar multiplicador para modificar velocidad
         //Debug.Log(pedalInput);
         float pedal2Input = (Input.GetAxis("Back") - 1.0f) * 1.0f;
         float wheelInput = Input.GetAxis("Wheel") * -3.0f;
@@ -195,9 +205,16 @@ public class ProxyConnection : MonoBehaviour
                         //Debug.Log(serverMessage);
                         if (!updateValues)
                         {
+                            if (serverMessage == "start")
+                            {
+                                isTrafficEnabled = true;
+                            }
+                            else
+                            {
                             storedMessage = JsonUtility.FromJson<Message>(serverMessage);
                             //Debug.Log(storedMessage);
                             updateValues = true;
+                            }
                         }
                     }
                 }
@@ -238,7 +255,7 @@ public class ProxyConnection : MonoBehaviour
         targetRotation.y = (float)m.gps2[2];
         targetRotation.w = (float)m.gps2[3];
         targetRotation*=Quaternion.Euler(0f, (float)orientationOffset, 0f);
-        Debug.Log(targetRotation);
+        //Debug.Log(targetRotation);
 
         padre.transform.localRotation = Quaternion.Slerp(padre.transform.localRotation, targetRotation, Time.deltaTime * rotationSpeed);
         //float newYaw = (float)yaw - padre.transform.rotation.eulerAngles.y;
@@ -250,7 +267,7 @@ public class ProxyConnection : MonoBehaviour
             //ui.ChangeBattery(m.battery1);
             ui.SetLeftLidar(m.lidar1[1]);
             ui.SetRightLidar(m.lidar1[0]);
-            ui.ChangeLapTime(m.time1);
+            ui.ChangeLapTime(m.time1[m.time1.Length - 1]);
         }
         else
         {
@@ -258,7 +275,7 @@ public class ProxyConnection : MonoBehaviour
             //ui.ChangeBattery(m.battery2);
             ui.SetLeftLidar(m.lidar2[1]);
             ui.SetRightLidar(m.lidar2[0]);
-            ui.ChangeLapTime(m.time2);
+            ui.ChangeLapTime(m.time2[m.time2.Length - 1]);
         }
     }
 

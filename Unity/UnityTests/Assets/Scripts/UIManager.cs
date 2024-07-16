@@ -1,3 +1,4 @@
+using Bhaptics.SDK2;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -95,6 +96,7 @@ public class UIManager : MonoBehaviour
     public void ChangeLapTime(string newLapTime)
     {
         lapTime.text = newLapTime;
+        Debug.Log(newLapTime);
     }
 
     public IEnumerator RotateWheel()
@@ -143,6 +145,12 @@ public class UIManager : MonoBehaviour
         {
             StopAllCoroutines();
             StartCoroutine(ShowMessageBox());
+            BhapticsLibrary.PlayParam(BhapticsEvent.CARWARNINGLEFT,
+                                    intensity: 1f,   // The value multiplied by the original value
+                                    duration: 0.8f,    // The value multiplied by the original value
+                                    angleX: 0f,     // The value that rotates around global Vector3.up(0~360f)
+                                    offsetY: 0f  // The value to move up and down(-0.5~0.5)
+                                );
         }
     }
 
@@ -157,6 +165,12 @@ public class UIManager : MonoBehaviour
         {
             StopAllCoroutines();
             StartCoroutine(ShowMessageBox());
+            BhapticsLibrary.PlayParam(BhapticsEvent.CARWARNINGRIGHT,
+                                    intensity: 1f,   // The value multiplied by the original value
+                                    duration: 0.8f,    // The value multiplied by the original value
+                                    angleX: 0f,     // The value that rotates around global Vector3.up(0~360f)
+                                    offsetY: 0f  // The value to move up and down(-0.5~0.5)
+                                );
         }
     }
 }
