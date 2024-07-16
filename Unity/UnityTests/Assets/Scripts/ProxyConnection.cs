@@ -211,9 +211,9 @@ public class ProxyConnection : MonoBehaviour
                             }
                             else
                             {
-                            storedMessage = JsonUtility.FromJson<Message>(serverMessage);
-                            //Debug.Log(storedMessage);
-                            updateValues = true;
+                                storedMessage = JsonUtility.FromJson<Message>(serverMessage);
+                                Debug.Log(serverMessage);
+                                updateValues = true;
                             }
                         }
                     }
@@ -267,7 +267,10 @@ public class ProxyConnection : MonoBehaviour
             //ui.ChangeBattery(m.battery1);
             ui.SetLeftLidar(m.lidar1[1]);
             ui.SetRightLidar(m.lidar1[0]);
-            ui.ChangeLapTime(m.time1[m.time1.Length - 1]);
+            if (m.time1.Length > 0)
+            {
+                ui.ChangeLapTime(m.time1[m.time1.Length - 1]);
+            }
         }
         else
         {
@@ -275,7 +278,10 @@ public class ProxyConnection : MonoBehaviour
             //ui.ChangeBattery(m.battery2);
             ui.SetLeftLidar(m.lidar2[1]);
             ui.SetRightLidar(m.lidar2[0]);
-            ui.ChangeLapTime(m.time2[m.time2.Length - 1]);
+            if (m.time2.Length > 0)
+            {
+                ui.ChangeLapTime(m.time2[m.time2.Length - 1]);
+            }
         }
     }
 

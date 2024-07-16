@@ -34,10 +34,16 @@ public class UIManager : MonoBehaviour
     public float wheelSpeed = 5.0f;
     private float wheelValue;
 
+    private int lastLeftLidarState = 0;
+    private int lastRightLidarState = 0;
+
+    List<Coroutine> coroutineList;
+
     private void Awake()
     {
         StartCoroutine(RotateWheel());
         messageBox.GetComponent<RectTransform>().localScale = Vector3.zero;
+        coroutineList = new List<Coroutine>();
     }
 
     private void Update()
@@ -46,10 +52,6 @@ public class UIManager : MonoBehaviour
         {
             PlaceSteeringWheel();
             Debug.Log("Test");
-        }
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            StartCoroutine(ShowMessageBox());
         }
     }
 
@@ -136,41 +138,81 @@ public class UIManager : MonoBehaviour
 
     public void SetLeftLidar(int state)
     {
-        if (state == 0)
+        if(state != lastLeftLidarState)
         {
-            StopAllCoroutines();
-            StartCoroutine(HideMessageBox());
+            if (state == 0)
+            {
+                foreach (var l in coroutineList)
+                {
+                    if (l == null)
+                    {
+                        coroutineList.Remove(l);
+                        continue;
+                    }
+                    StopCoroutine(l);
+                }
+                coroutineList.Add(StartCoroutine(HideMessageBox()));
+            }
+            else
+            {
+                foreach (var l in coroutineList)
+                {
+                    if (l == null)
+                    {
+                        coroutineList.Remove(l);
+                        continue;
+                    }
+                    StopCoroutine(l);
+                }
+                coroutineList.Add(StartCoroutine(ShowMessageBox()));
+                BhapticsLibrary.PlayParam(BhapticsEvent.CARWARNINGLEFT,
+                                        intensity: 1f,   // The value multiplied by the original value
+                                        duration: 0.8f,    // The value multiplied by the original value
+                                        angleX: 0f,     // The value that rotates around global Vector3.up(0~360f)
+                                        offsetY: 0f  // The value to move up and down(-0.5~0.5)
+                                    );
+            }
         }
-        else
-        {
-            StopAllCoroutines();
-            StartCoroutine(ShowMessageBox());
-            BhapticsLibrary.PlayParam(BhapticsEvent.CARWARNINGLEFT,
-                                    intensity: 1f,   // The value multiplied by the original value
-                                    duration: 0.8f,    // The value multiplied by the original value
-                                    angleX: 0f,     // The value that rotates around global Vector3.up(0~360f)
-                                    offsetY: 0f  // The value to move up and down(-0.5~0.5)
-                                );
-        }
+        lastLeftLidarState = state;
     }
 
     public void SetRightLidar(int state)
     {
-        if (state == 0)
+        if(state != lastRightLidarState)
         {
-            StopAllCoroutines();
-            StartCoroutine(HideMessageBox());
+            if (state == 0)
+            {
+                foreach (var l in coroutineList)
+                {
+                    if (l == null)
+                    {
+                        coroutineList.Remove(l);
+                        continue;
+                    }
+                    StopCoroutine(l);
+                }
+                coroutineList.Add(StartCoroutine(HideMessageBox()));
+            }
+            else
+            {
+                foreach (var l in coroutineList)
+                {
+                    if (l == null)
+                    {
+                        coroutineList.Remove(l);
+                        continue;
+                    }
+                    StopCoroutine(l);
+                }
+                coroutineList.Add(StartCoroutine(ShowMessageBox()));
+                BhapticsLibrary.PlayParam(BhapticsEvent.CARWARNINGRIGHT,
+                                        intensity: 1f,   // The value multiplied by the original value
+                                        duration: 0.8f,    // The value multiplied by the original value
+                                        angleX: 0f,     // The value that rotates around global Vector3.up(0~360f)
+                                        offsetY: 0f  // The value to move up and down(-0.5~0.5)
+                                    );
+            }
         }
-        else
-        {
-            StopAllCoroutines();
-            StartCoroutine(ShowMessageBox());
-            BhapticsLibrary.PlayParam(BhapticsEvent.CARWARNINGRIGHT,
-                                    intensity: 1f,   // The value multiplied by the original value
-                                    duration: 0.8f,    // The value multiplied by the original value
-                                    angleX: 0f,     // The value that rotates around global Vector3.up(0~360f)
-                                    offsetY: 0f  // The value to move up and down(-0.5~0.5)
-                                );
-        }
+        lastRightLidarState = state;
     }
 }
