@@ -61,7 +61,7 @@ public class UIManager : MonoBehaviour
         //steeringWheel.transform.position += wheelOffset;
     }
 
-    public IEnumerator ShowMessageBox()
+    /*public IEnumerator ShowMessageBox()
     {
         RectTransform rectTransform = messageBox.GetComponent<RectTransform>();
         float t = 0.0f;
@@ -88,7 +88,7 @@ public class UIManager : MonoBehaviour
             yield return null;
         }
         rectTransform.localScale = Vector3.zero;
-    }
+    }*/
 
     public void ChangeSpeed(float newSpeed)
     {
@@ -136,7 +136,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void SetLeftLidar(int state)
+    /*public void SetLeftLidar(int state)
     {
         if(state != lastLeftLidarState)
         {
@@ -214,5 +214,5 @@ public class UIManager : MonoBehaviour
             }
         }
         lastRightLidarState = state;
-    }
+    }*/
 }

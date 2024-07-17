@@ -55,6 +55,7 @@ public class ProxyConnection : MonoBehaviour
 
     public float rotationSpeed = 1.0f;
     private Quaternion targetRotation;
+    public float robotSpeedMultiplier;
 
     void Start()
     {
@@ -62,6 +63,7 @@ public class ProxyConnection : MonoBehaviour
         //var o = JsonUtility.FromJson<Message>(s);
         updateValues = true;
         loop = true;
+        robotSpeedMultiplier = 0.0f;
 
         if (IP != "") Connect();
         //UpdateValues(o);
@@ -70,6 +72,18 @@ public class ProxyConnection : MonoBehaviour
         InvokeRepeating("WheelInput", 0.0f, 0.1f);
 
         
+    }
+
+    public void ChangeRobotSpeed(float newSpeed)
+    {
+        robotSpeedMultiplier = newSpeed;
+    }
+
+    public IEnumerator ChangeRobotSpeedCo(float newSpeed, float time)
+    {
+        yield return new WaitForSeconds(time);
+        robotSpeedMultiplier = newSpeed;
+        yield return null;
     }
 
     private void Update()
@@ -90,7 +104,7 @@ public class ProxyConnection : MonoBehaviour
     {
         //if (Input.GetAxis("Pedal") == 0.0f && Input.GetAxis("Wheel") == 0.0f) return;
 
-        float pedalInput = (Input.GetAxis("Pedal") - 1.0f) * -1.0f; //cambiar multiplicador para modificar velocidad
+        float pedalInput = (Input.GetAxis("Pedal") - 1.0f) * -robotSpeedMultiplier; //cambiar multiplicador para modificar velocidad
         //Debug.Log(pedalInput);
         float pedal2Input = (Input.GetAxis("Back") - 1.0f) * 1.0f;
         float wheelInput = Input.GetAxis("Wheel") * -3.0f;
@@ -263,10 +277,9 @@ public class ProxyConnection : MonoBehaviour
 
         if (isRobot1)
         {
-            ui.ChangeSpeed(m.speed1);
-            //ui.ChangeBattery(m.battery1);
-            ui.SetLeftLidar(m.lidar1[1]);
-            ui.SetRightLidar(m.lidar1[0]);
+            ui.ChangeSpeed(m.speed1); //ui.ChangeBattery(m.battery1);
+            //ui.SetLeftLidar(m.lidar1[1]);
+            //ui.SetRightLidar(m.lidar1[0]);
             if (m.time1.Length > 0)
             {
                 ui.ChangeLapTime(m.time1[m.time1.Length - 1]);
@@ -274,10 +287,9 @@ public class ProxyConnection : MonoBehaviour
         }
         else
         {
-            ui.ChangeSpeed(m.speed2);
-            //ui.ChangeBattery(m.battery2);
-            ui.SetLeftLidar(m.lidar2[1]);
-            ui.SetRightLidar(m.lidar2[0]);
+            ui.ChangeSpeed(m.speed2); //ui.ChangeBattery(m.battery2);
+            //ui.SetLeftLidar(m.lidar2[1]);
+            //ui.SetRightLidar(m.lidar2[0]);
             if (m.time2.Length > 0)
             {
                 ui.ChangeLapTime(m.time2[m.time2.Length - 1]);

@@ -12,12 +12,15 @@ public class TrafficLight : MonoBehaviour
     [SerializeField]
     private List<float> sectorTimes = new List<float>();
     private bool doOnce;
+    public ProxyConnection proxyConnection;
 
     // Start is called before the first frame update
     void Start()
     {
         time = 0.0f;
         doOnce = true;
+        proxyConnection = GameObject.Find("Controller").GetComponent<ProxyConnection>();
+        proxyConnection.ChangeRobotSpeed(0.0f);
     }
 
     // Update is called once per frame
@@ -39,6 +42,7 @@ public class TrafficLight : MonoBehaviour
                                     angleX: 0f,     // The value that rotates around global Vector3.up(0~360f)
                                     offsetY: 0f  // The value to move up and down(-0.5~0.5)
                                 );
+            proxyConnection.ChangeRobotSpeed(0.8f);
             doOnce = false;
         }
     }
