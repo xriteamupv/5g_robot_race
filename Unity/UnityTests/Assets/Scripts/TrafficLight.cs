@@ -43,6 +43,7 @@ public class TrafficLight : MonoBehaviour
                                     offsetY: 0f  // The value to move up and down(-0.5~0.5)
                                 );
             proxyConnection.ChangeRobotSpeed(0.8f);
+            StartCoroutine(GameObject.Find("Controller").GetComponent<UIManager>().ShowMessageBox(UIManager.Sign.kSignGo, true, 2.0f));
             doOnce = false;
         }
     }
