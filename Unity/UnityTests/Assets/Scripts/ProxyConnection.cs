@@ -277,9 +277,10 @@ public class ProxyConnection : MonoBehaviour
 
         if (isRobot1)
         {
-            ui.ChangeSpeed(m.speed1); //ui.ChangeBattery(m.battery1);
-            //ui.SetLeftLidar(m.lidar1[1]);
-            //ui.SetRightLidar(m.lidar1[0]);
+            ui.ChangeSpeed(m.speed1); 
+            //ui.ChangeBattery(m.battery1);
+            ui.SetLeftLidar(m.lidar1[1]);
+            ui.SetRightLidar(m.lidar1[0]);
             if (m.time1.Length > 0)
             {
                 ui.ChangeLapTime(m.time1[m.time1.Length - 1]);
@@ -287,9 +288,10 @@ public class ProxyConnection : MonoBehaviour
         }
         else
         {
-            ui.ChangeSpeed(m.speed2); //ui.ChangeBattery(m.battery2);
-            //ui.SetLeftLidar(m.lidar2[1]);
-            //ui.SetRightLidar(m.lidar2[0]);
+            ui.ChangeSpeed(m.speed2); 
+            //ui.ChangeBattery(m.battery2);
+            ui.SetLeftLidar(m.lidar2[1]);
+            ui.SetRightLidar(m.lidar2[0]);
             if (m.time2.Length > 0)
             {
                 ui.ChangeLapTime(m.time2[m.time2.Length - 1]);

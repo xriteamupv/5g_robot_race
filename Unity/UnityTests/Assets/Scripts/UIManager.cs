@@ -39,6 +39,17 @@ public class UIManager : MonoBehaviour
 
     List<Coroutine> coroutineList;
 
+    public enum Sign
+    {
+        kSignWarning,
+        kSignGo,
+        kSignFaster,
+        kSignSlower,
+        kSignWinner
+    }
+
+    public List<GameObject> signs;
+
     private void Awake()
     {
         StartCoroutine(RotateWheel());
@@ -61,9 +72,9 @@ public class UIManager : MonoBehaviour
         //steeringWheel.transform.position += wheelOffset;
     }
 
-    /*public IEnumerator ShowMessageBox()
+    public IEnumerator ShowMessageBox(Sign sign, bool hideAfterTime = false, float time = 0.0f)
     {
-        RectTransform rectTransform = messageBox.GetComponent<RectTransform>();
+        RectTransform rectTransform = signs[(int)sign].GetComponent<RectTransform>();
         float t = 0.0f;
         rectTransform.position = Vector3.Lerp(Camera.main.transform.forward, Camera.main.transform.up, messageBoxAngle).normalized * messageBoxDistance;
         Vector3 lookDirection = rectTransform.position - Camera.main.transform.position;
@@ -75,11 +86,23 @@ public class UIManager : MonoBehaviour
             yield return null;
         }
         rectTransform.localScale = messageBoxMaxScale;
+        if(hideAfterTime)
+        {
+            yield return new WaitForSeconds(time);
+            if(sign == Sign.kSignWarning)
+            {
+                coroutineList.Add(StartCoroutine(HideMessageBox(sign)));
+            }
+            else
+            {
+                StartCoroutine(HideMessageBox(sign));
+            }
+        }
     }
 
-    public IEnumerator HideMessageBox()
+    public IEnumerator HideMessageBox(Sign sign)
     {
-        RectTransform rectTransform = messageBox.GetComponent<RectTransform>();
+        RectTransform rectTransform = signs[(int)sign].GetComponent<RectTransform>();
         float t = 0.0f;
         while (rectTransform.localScale.x > 0.0f)
         {
@@ -88,7 +111,7 @@ public class UIManager : MonoBehaviour
             yield return null;
         }
         rectTransform.localScale = Vector3.zero;
-    }*/
+    }
 
     public void ChangeSpeed(float newSpeed)
     {
@@ -136,7 +159,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    /*public void SetLeftLidar(int state)
+    public void SetLeftLidar(int state)
     {
         if(state != lastLeftLidarState)
         {
@@ -144,27 +167,25 @@ public class UIManager : MonoBehaviour
             {
                 foreach (var l in coroutineList)
                 {
-                    if (l == null)
+                    if (l != null)
                     {
-                        coroutineList.Remove(l);
-                        continue;
+                        StopCoroutine(l);
                     }
-                    StopCoroutine(l);
                 }
-                coroutineList.Add(StartCoroutine(HideMessageBox()));
+                coroutineList.Clear();
+                coroutineList.Add(StartCoroutine(HideMessageBox(Sign.kSignWarning)));
             }
             else
             {
                 foreach (var l in coroutineList)
                 {
-                    if (l == null)
+                    if (l != null)
                     {
-                        coroutineList.Remove(l);
-                        continue;
+                        StopCoroutine(l);
                     }
-                    StopCoroutine(l);
                 }
-                coroutineList.Add(StartCoroutine(ShowMessageBox()));
+                coroutineList.Clear();
+                coroutineList.Add(StartCoroutine(ShowMessageBox(Sign.kSignWarning)));
                 BhapticsLibrary.PlayParam(BhapticsEvent.CARWARNINGLEFT,
                                         intensity: 1f,   // The value multiplied by the original value
                                         duration: 0.8f,    // The value multiplied by the original value
@@ -184,27 +205,25 @@ public class UIManager : MonoBehaviour
             {
                 foreach (var l in coroutineList)
                 {
-                    if (l == null)
+                    if (l != null)
                     {
-                        coroutineList.Remove(l);
-                        continue;
+                        StopCoroutine(l);
                     }
-                    StopCoroutine(l);
                 }
-                coroutineList.Add(StartCoroutine(HideMessageBox()));
+                coroutineList.Clear();
+                coroutineList.Add(StartCoroutine(HideMessageBox(Sign.kSignWarning)));
             }
             else
             {
                 foreach (var l in coroutineList)
                 {
-                    if (l == null)
+                    if (l != null)
                     {
-                        coroutineList.Remove(l);
-                        continue;
+                        StopCoroutine(l);
                     }
-                    StopCoroutine(l);
                 }
-                coroutineList.Add(StartCoroutine(ShowMessageBox()));
+                coroutineList.Clear();
+                coroutineList.Add(StartCoroutine(ShowMessageBox(Sign.kSignWarning)));
                 BhapticsLibrary.PlayParam(BhapticsEvent.CARWARNINGRIGHT,
                                         intensity: 1f,   // The value multiplied by the original value
                                         duration: 0.8f,    // The value multiplied by the original value
@@ -214,5 +233,5 @@ public class UIManager : MonoBehaviour
             }
         }
         lastRightLidarState = state;
-    }*/
+    }
 }
