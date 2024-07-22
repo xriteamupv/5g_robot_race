@@ -2,6 +2,7 @@ using Bhaptics.SDK2;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +14,9 @@ public class UIManager : MonoBehaviour
     public Image leftLidar;
     public Image rightLidar;
     public PointerIndicator speedometer;
+
+    public GameObject backMirror;
+    public GameObject xrOrigin;
 
     public Sprite leftRedLidar;
     public Sprite rightRedLidar;
@@ -61,8 +65,18 @@ public class UIManager : MonoBehaviour
     {
         if (Input.GetAxis("L2") > 0.0f && Input.GetAxis("R2") > 0.0f)
         {
+            xrOrigin.GetComponent<RecenterOrigin>().Recenter();
             PlaceSteeringWheel();
-            Debug.Log("Test");
+        }
+
+        float lev = Input.GetAxis("lev2");
+        if(lev > 0.0f)
+        {
+            backMirror.SetActive(true);
+        }
+        else
+        {
+            backMirror.SetActive(false);
         }
     }
 

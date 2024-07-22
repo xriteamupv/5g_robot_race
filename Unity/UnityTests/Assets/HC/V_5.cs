@@ -88,6 +88,7 @@ public class V_5 : MonoBehaviour
                                         offsetY: 0f  // The value to move up and down(-0.5~0.5)
                                     );
                 StartCoroutine(proxyConnection.ChangeRobotSpeedCo(0.8f, buffTime));
+                StartCoroutine(GameObject.Find("Controller").GetComponent<UIManager>().ShowMessageBox(UIManager.Sign.kSignSlower, true, 2.0f));
             }
             else
             {
@@ -99,6 +100,7 @@ public class V_5 : MonoBehaviour
                                         offsetY: 0f  // The value to move up and down(-0.5~0.5)
                                     );
                 StartCoroutine(proxyConnection.ChangeRobotSpeedCo(0.8f, buffTime));
+                StartCoroutine(GameObject.Find("Controller").GetComponent<UIManager>().ShowMessageBox(UIManager.Sign.kSignFaster, true, 2.0f));
             }
         }
     }

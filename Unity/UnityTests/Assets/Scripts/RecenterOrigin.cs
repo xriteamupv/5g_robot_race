@@ -8,7 +8,7 @@ public class RecenterOrigin : MonoBehaviour
 {
     public Transform target;
 
-    void Recenter()
+    public void Recenter()
     {
         XROrigin xrOrigin = GetComponent<XROrigin>();
         xrOrigin.MoveCameraToWorldLocation(target.position);
