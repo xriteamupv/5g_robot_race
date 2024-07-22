@@ -45,5 +45,14 @@ public class TrafficLight : MonoBehaviour
             proxyConnection.ChangeRobotSpeed(0.8f);
             doOnce = false;
         }
+
+        if (time >= sectorTimes[sectorTimes.Count - 1] + 2.0f)
+        {
+            foreach (var s in signals)
+            {
+                s.SetActive(false);
+            }
+            this.enabled = false;
+        }
     }
 }

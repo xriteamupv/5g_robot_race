@@ -54,6 +54,7 @@ public class VisibilityController_2 : MonoBehaviour
     {
         if(other.tag == "robot")
         {
+            Debug.Log("El robot ha tenido contacto con el objeto de las partículas.");
             int rand = Random.Range(0, 2);
             if(rand == 0)
             {
