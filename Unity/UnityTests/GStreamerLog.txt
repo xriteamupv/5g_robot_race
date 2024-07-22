@@ -41,3 +41,6 @@ Not Found (404)
 [10:28:12] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
 [10:28:12] Error: gst_object_unref: assertion 'object != NULL' failed
 [10:28:12] Info: Checking is active
+[10:27:12] Info: Progress: (open) Opening Stream
+[10:27:57] Info: : Pausing
+[10:27:57] Info: : Pipeline State Changes:  GST_STATE_READY--> GST_STATE_PAUSED
