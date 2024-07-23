@@ -233,6 +233,10 @@ public class ProxyConnection : MonoBehaviour
                     }
                 }
             }
+            if (socketConnection != null)
+            {
+                socketConnection.Close();
+            }
         }
         catch (SocketException socketException)
         {
@@ -302,6 +306,5 @@ public class ProxyConnection : MonoBehaviour
     private void OnApplicationQuit()
     {
         loop = false;
-        if (socketConnection != null) socketConnection.Close();
     }
 }

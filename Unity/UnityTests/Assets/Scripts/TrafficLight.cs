@@ -49,10 +49,7 @@ public class TrafficLight : MonoBehaviour
 
         if (time >= sectorTimes[sectorTimes.Count - 1] + 2.0f)
         {
-            foreach (var s in signals)
-            {
-                s.SetActive(false);
-            }
+            gameObject.SetActive(false);
             this.enabled = false;
         }
     }
