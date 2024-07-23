@@ -261,8 +261,8 @@ public class ProxyConnection : MonoBehaviour
         //gps.transform.rotation = Quaternion.Euler((float)roll, -(float)yaw, (float)pitch);
         
 
-        otherGPS.latitude = m.gps2[0];
-        otherGPS.longitude = m.gps2[1];
+        otherGPS.latitude = m.gps1[0];
+        otherGPS.longitude = m.gps1[1];
 
         //brujula
         //double roll = (m.gps2[2] * Mathf.Rad2Deg);
@@ -270,8 +270,8 @@ public class ProxyConnection : MonoBehaviour
         //double yaw = orientationOffset + (m.gps2[4] * Mathf.Rad2Deg);
         //targetRotation = Quaternion.Euler(0.0f, (float)yaw, 0.0f);
         
-        targetRotation.y = (float)m.gps2[2];
-        targetRotation.w = (float)m.gps2[3];
+        targetRotation.y = (float)m.gps1[2];
+        targetRotation.w = (float)m.gps1[3];
         targetRotation*=Quaternion.Euler(0f, (float)orientationOffset, 0f);
         //Debug.Log(targetRotation);
 
