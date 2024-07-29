@@ -105,7 +105,7 @@ public class ProxyConnection : MonoBehaviour
         //if (Input.GetAxis("Pedal") == 0.0f && Input.GetAxis("Wheel") == 0.0f) return;
 
         float pedalInput = (Input.GetAxis("Pedal") - 1.0f) * -robotSpeedMultiplier; //cambiar multiplicador para modificar velocidad
-        //Debug.Log(pedalInput);
+        Debug.Log(pedalInput);
         float pedal2Input = (Input.GetAxis("Back") - 1.0f) * 1.0f;
         float wheelInput = Input.GetAxis("Wheel") * -3.0f;
         float lev = Input.GetAxis("lev");
@@ -226,7 +226,7 @@ public class ProxyConnection : MonoBehaviour
                             else
                             {
                                 storedMessage = JsonUtility.FromJson<Message>(serverMessage);
-                                Debug.Log(serverMessage);
+                                //Debug.Log(serverMessage);
                                 updateValues = true;
                             }
                         }

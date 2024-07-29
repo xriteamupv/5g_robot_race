@@ -28,7 +28,6 @@ public class UIManager : MonoBehaviour
     public Transform rightHand;
     public Vector3 wheelOffset;
 
-    public GameObject messageBox;
     public Vector3 messageBoxMaxScale;
     public float messageBoxSpeed = 500.0f;
     public float messageBoxDistance = 50.0f;
@@ -57,8 +56,8 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         StartCoroutine(RotateWheel());
-        messageBox.GetComponent<RectTransform>().localScale = Vector3.zero;
         coroutineList = new List<Coroutine>();
+        lapTime.transform.parent.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -89,6 +88,7 @@ public class UIManager : MonoBehaviour
     public IEnumerator ShowMessageBox(Sign sign, bool hideAfterTime = false, float time = 0.0f)
     {
         RectTransform rectTransform = signs[(int)sign].GetComponent<RectTransform>();
+        Debug.Log("Show: " + (int)sign);
         float t = 0.0f;
         rectTransform.position = Vector3.Lerp(Camera.main.transform.forward, Camera.main.transform.up, messageBoxAngle).normalized * messageBoxDistance;
         Vector3 lookDirection = rectTransform.position - Camera.main.transform.position;
@@ -102,6 +102,7 @@ public class UIManager : MonoBehaviour
         rectTransform.localScale = messageBoxMaxScale;
         if(hideAfterTime)
         {
+            Debug.Log(time);
             yield return new WaitForSeconds(time);
             if(sign == Sign.kSignWarning)
             {
@@ -117,6 +118,8 @@ public class UIManager : MonoBehaviour
     public IEnumerator HideMessageBox(Sign sign)
     {
         RectTransform rectTransform = signs[(int)sign].GetComponent<RectTransform>();
+        Debug.Log("Hide: " + (int)sign);
+
         float t = 0.0f;
         while (rectTransform.localScale.x > 0.0f)
         {
@@ -134,6 +137,7 @@ public class UIManager : MonoBehaviour
 
     public void ChangeLapTime(string newLapTime)
     {
+        lapTime.transform.parent.gameObject.SetActive(true);
         lapTime.text = newLapTime;
         Debug.Log(newLapTime);
     }

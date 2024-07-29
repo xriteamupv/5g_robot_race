@@ -23,8 +23,8 @@ public class Position : MonoBehaviour
     //private float oriX, oriY, oriZ = 0.0f;
     //private float oriW = 1.0f;
     // private float posX_ref, posY_ref, posZ_ref;
-    public double latitude_ref = 39.4791670893878;
-    public double longitude_ref = -0.335499320062985;
+    private double latitude_ref = 39.4791686800947;
+    private double longitude_ref = -0.335497577647064;
     public double anguloOffset = 21.1; //Offset entre el Norte y la linea divisoria del campo de futbol (Alineada con el eje x para medir distancias en Unity)
     public double coseno;
     public double seno;
@@ -74,7 +74,8 @@ public class Position : MonoBehaviour
         // robotObject.transform.rotation = finalOri;
         // newPos = new Vector3(posX-posX_ref, posZ-posZ_ref, posY-posY_ref);
         targetPosition = new Vector3(-posX, 0.0f, posY);
-        Obj_AR.transform.localPosition = Vector3.Lerp(Obj_AR.transform.localPosition, targetPosition, Time.deltaTime * movementSpeed);
+        //Obj_AR.transform.localPosition = Vector3.Lerp(Obj_AR.transform.localPosition, targetPosition, Time.deltaTime * movementSpeed);
+        Obj_AR.transform.localPosition = Vector3.MoveTowards(Obj_AR.transform.localPosition, targetPosition, Time.deltaTime * movementSpeed);
         // scale = new Vector3(scaleValue, scaleValue, scaleValue);
         // robotObject.transform.localScale = scale;
 
