@@ -59,6 +59,7 @@ public class UIManager : MonoBehaviour
         StartCoroutine(RotateWheel());
         messageBox.GetComponent<RectTransform>().localScale = Vector3.zero;
         coroutineList = new List<Coroutine>();
+        lapTime.transform.parent.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -134,6 +135,7 @@ public class UIManager : MonoBehaviour
 
     public void ChangeLapTime(string newLapTime)
     {
+        lapTime.transform.parent.gameObject.SetActive(true);
         lapTime.text = newLapTime;
         Debug.Log(newLapTime);
     }

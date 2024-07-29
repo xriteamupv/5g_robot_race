@@ -52,6 +52,11 @@ public class V_5 : MonoBehaviour
         }
     }
 
+    private void ActivateBox()
+    {
+        gameObject.GetComponent<BoxCollider>().enabled = true;
+    }
+
     void SetParticleSystemsActive(bool state)
     {
         foreach (var ps in particleSystems)
@@ -65,6 +70,8 @@ public class V_5 : MonoBehaviour
     {
         if (other.tag == "robot")
         {
+            gameObject.GetComponent<BoxCollider>().enabled = false;
+            Invoke("ActivateBox", buffTime);
             Debug.Log("El robot ha tenido contacto con el objeto de las partículas.");
 
             // Activa el objeto que contiene el sistema de partículas
@@ -80,7 +87,7 @@ public class V_5 : MonoBehaviour
             int rand = Random.Range(0, 2);
             if (rand == 0)
             {
-                proxyConnection.ChangeRobotSpeed(0.6f);
+                proxyConnection.ChangeRobotSpeed(0.7f);
                 BhapticsLibrary.PlayParam(BhapticsEvent.SUDDENBRAKE,
                                         intensity: 1f,   // The value multiplied by the original value
                                         duration: 0.8f,    // The value multiplied by the original value
@@ -88,7 +95,7 @@ public class V_5 : MonoBehaviour
                                         offsetY: 0f  // The value to move up and down(-0.5~0.5)
                                     );
                 StartCoroutine(proxyConnection.ChangeRobotSpeedCo(0.8f, buffTime));
-                StartCoroutine(GameObject.Find("Controller").GetComponent<UIManager>().ShowMessageBox(UIManager.Sign.kSignSlower, true, 2.0f));
+                StartCoroutine(GameObject.Find("Controller").GetComponent<UIManager>().ShowMessageBox(UIManager.Sign.kSignSlower, true, buffTime));
             }
             else
             {
@@ -100,7 +107,7 @@ public class V_5 : MonoBehaviour
                                         offsetY: 0f  // The value to move up and down(-0.5~0.5)
                                     );
                 StartCoroutine(proxyConnection.ChangeRobotSpeedCo(0.8f, buffTime));
-                StartCoroutine(GameObject.Find("Controller").GetComponent<UIManager>().ShowMessageBox(UIManager.Sign.kSignFaster, true, 2.0f));
+                StartCoroutine(GameObject.Find("Controller").GetComponent<UIManager>().ShowMessageBox(UIManager.Sign.kSignFaster, true, buffTime));
             }
         }
     }

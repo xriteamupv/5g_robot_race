@@ -47,7 +47,7 @@ public class TrafficLight : MonoBehaviour
             doOnce = false;
         }
 
-        if (time >= sectorTimes[sectorTimes.Count - 1] + 2.0f)
+        if (time >= sectorTimes[sectorTimes.Count - 1] + 3.0f)
         {
             gameObject.SetActive(false);
             this.enabled = false;
