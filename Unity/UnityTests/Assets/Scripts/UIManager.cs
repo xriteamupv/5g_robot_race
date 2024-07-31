@@ -137,7 +137,11 @@ public class UIManager : MonoBehaviour
     {
         lapTime.transform.parent.gameObject.SetActive(true);
         lapTime.text = newLapTime;
-        Debug.Log(newLapTime);
+    }
+
+    public void RemoveLapTime()
+    {
+        lapTime.transform.parent.gameObject.SetActive(false);
     }
 
     public IEnumerator RotateWheel()

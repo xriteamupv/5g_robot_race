@@ -289,6 +289,10 @@ public class ProxyConnection : MonoBehaviour
             {
                 ui.ChangeLapTime(m.time1[m.time1.Length - 1]);
             }
+            else
+            {
+                ui.RemoveLapTime();
+            }
         }
         else
         {
@@ -299,6 +303,10 @@ public class ProxyConnection : MonoBehaviour
             if (m.time2.Length > 0)
             {
                 ui.ChangeLapTime(m.time2[m.time2.Length - 1]);
+            }
+            else
+            {
+                ui.RemoveLapTime();
             }
         }
     }
