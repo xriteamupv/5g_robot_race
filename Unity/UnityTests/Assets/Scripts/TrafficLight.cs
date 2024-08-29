@@ -17,10 +17,21 @@ public class TrafficLight : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        proxyConnection = GameObject.Find("Controller").GetComponent<ProxyConnection>();
+        ResetLight();
+    }
+
+    public void ResetLight()
+    {
+        gameObject.SetActive(true);
+        this.enabled = true;
         time = 0.0f;
         doOnce = true;
-        proxyConnection = GameObject.Find("Controller").GetComponent<ProxyConnection>();
         proxyConnection.ChangeRobotSpeed(0.0f);
+        foreach (var signal in signals)
+        {
+            signal.SetActive(false);
+        }
     }
 
     // Update is called once per frame

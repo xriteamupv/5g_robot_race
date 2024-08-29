@@ -9,6 +9,9 @@ public class Controller : MonoBehaviour
     public CustomPipelinePlayer pipelinePlayer;
     public GameObject mainMenu;
     public GameObject robotScene;
+    public V_5[] boxes;
+    public TrafficLight trafficLight;
+    public ProxyConnection proxyConnection;
 
     void Start()
     {
@@ -37,6 +40,11 @@ public class Controller : MonoBehaviour
         //    SwitchToRobotScene();
         //}
 
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ResetScene();
+        }
+
     }
 
     private void SwitchToRobotScene()
@@ -45,6 +53,16 @@ public class Controller : MonoBehaviour
         {
             mainMenu.SetActive(false);
             robotScene.SetActive(true);
+        }
+    }
+
+    private void ResetScene()
+    {
+        proxyConnection.ResetProxy();
+        trafficLight.ResetLight();
+        foreach (var b in boxes) 
+        {
+            b.ActivateBox();
         }
     }
 }

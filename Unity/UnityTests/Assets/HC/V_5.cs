@@ -52,7 +52,7 @@ public class V_5 : MonoBehaviour
         }
     }
 
-    private void ActivateBox()
+    public void ActivateBox()
     {
         gameObject.GetComponent<BoxCollider>().enabled = true;
     }

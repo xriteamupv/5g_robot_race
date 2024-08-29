@@ -86,6 +86,12 @@ public class ProxyConnection : MonoBehaviour
         yield return null;
     }
 
+    public void ResetProxy()
+    {
+        isTrafficEnabled = false;
+        ui.RemoveLapTime();
+    }
+
     private void Update()
     {
         if (updateValues)
@@ -95,7 +101,8 @@ public class ProxyConnection : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.P))
         {
-            SendNetworkMessage("timer");
+            isTrafficEnabled = true;
+            //SendNetworkMessage("timer");
         }
         trafficSign.enabled = isTrafficEnabled;
     }
