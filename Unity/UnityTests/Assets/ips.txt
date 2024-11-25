@@ -1,3 +1,3 @@
-rtspsrc location=rtsp://90.160.117.55:8554/mycam protocols=tcp latency=100 ! rtph264depay ! avdec_h264 ! videoconvert ! appsink name=videoSink
+rtspsrc location=rtsp://localhost:8554/ latency=40 buffer-mode=auto onvif-rate-control=false ! queue ! rtph264depay ! h264parse ! avdec_h264 ! videoconvert ! video/x-raw,format=I420 ! videoconvert ! appsink name=videoSink
 127.0.0.1
 Robot 2
