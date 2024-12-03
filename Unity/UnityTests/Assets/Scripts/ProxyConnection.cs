@@ -13,12 +13,15 @@ using TMPro;
 //using SG; // Access to SenseGlove classes.
 using System.Net.Sockets;
 using System.Net;
+using Newtonsoft.Json;
+using static ProxyConnection;
 
 public class ProxyConnection : MonoBehaviour
 {
     public string IP;
     public int port;
-    private TcpClient socketConnection;
+    private TcpClient sendingSocketConnection;
+    private TcpClient receiverSocketConnection;
     private Thread clientReceiveThread;
 
     public Position gps, otherGPS;
@@ -47,8 +50,60 @@ public class ProxyConnection : MonoBehaviour
         public float speed2;
         public string[] time2;
     }
+    public class RobotData
+    {
+        public string header;
+        public class Data
+        {
+            public float battery;
+            public int[] lidar;
+            public float[] gps;
+            public float speed;
+            public float[] time;
+        }
+        public Data data;
+    }
+
+    public class ControlData
+    {
+        public string header;
+        public class Data
+        {
+            public float[] linear;
+            public float[] angular;
+        }
+        public Data data;
+    }
+
+    public class TelemetryData
+    {
+        public string header;
+        public class Data
+        {
+            public float rsrp;
+            public float rsrq;
+            public float sinr;
+            public float lat;
+        }
+        public Data data;
+    }
+
+    public class BoundingData
+    {
+        public string header;
+        public class Data
+        {
+            public float[] coords;
+            public string type;
+        }
+        public Data data;
+    }
 
     private Message storedMessage;
+    private RobotData robotData;
+    private ControlData controlData;
+    private TelemetryData telemetryData;
+    private BoundingData boundingData;
     private bool updateValues;
     private bool loop;
     private bool isRobot1;
@@ -57,9 +112,16 @@ public class ProxyConnection : MonoBehaviour
     private Quaternion targetRotation;
     public float robotSpeedMultiplier;
 
+    public Controller controller;
+
     void Start()
     {
-        //string s = "{\"battery1\":5, \"lidar1\":[0,0], \"gps1\":[39.479353,-0.336108,0], \"speed1\":0, \"battery2\":0, \"lidar2\":[0,1], \"gps2\":[39.479353,-0.336108,-0.336108], \"speed2\":0}";
+        string d = "{\"battery\":\"5\", \"lidar\":\"[0,0]\", \"gps\":\"[39.479353,-0.336108,0]\", \"speed\":\"0\"}";
+        string s = "{\"header\":\"robot\", \"data\":{\"battery\":5, \"lidar\":[0,0], \"gps\":[39.479353,-0.336108,0], \"speed\":0, \"time\":[39.479353,-0.336108,0]}}";
+        Debug.Log(s);
+        robotData = JsonConvert.DeserializeObject<RobotData>(s);
+        Debug.Log(robotData.data.time[0]);
+
         //var o = JsonUtility.FromJson<Message>(s);
         updateValues = true;
         loop = true;
@@ -71,7 +133,13 @@ public class ProxyConnection : MonoBehaviour
             isRobot1 = true;
         InvokeRepeating("WheelInput", 0.0f, 0.1f);
 
-        
+        float[] bbcoords = new float[] { 3070, 601, 3342, 1088 };
+        string bbtype = "yellow";
+        controller = GetComponent<Controller>();
+        controller.SetBB(bbtype, bbcoords);
+
+        sendingSocketConnection = new TcpClient(IP, port + 1);
+
     }
 
     public void ChangeRobotSpeed(float newSpeed)
@@ -167,14 +235,14 @@ public class ProxyConnection : MonoBehaviour
 
     private void SendNetworkMessage(string message)
     {
-        if (socketConnection == null)
+        if (sendingSocketConnection == null)
         {
             return;
         }
         try
         {
             // Get a stream object for writing. 			
-            NetworkStream stream = socketConnection.GetStream();
+            NetworkStream stream = sendingSocketConnection.GetStream();
             if (stream.CanWrite)
             {
                 // Convert string message to byte array.
@@ -207,12 +275,12 @@ public class ProxyConnection : MonoBehaviour
     {
         try
         {
-            socketConnection = new TcpClient(IP, port);
+            receiverSocketConnection = new TcpClient(IP, port);
             Byte[] bytes = new Byte[1024];
             while (loop)
             {
                 // Get a stream object for reading 				
-                using (NetworkStream stream = socketConnection.GetStream())
+                using (NetworkStream stream = receiverSocketConnection.GetStream())
                 {
                     int length;
                     // Read incomming stream into byte arrary. 						
@@ -232,7 +300,23 @@ public class ProxyConnection : MonoBehaviour
                             }
                             else
                             {
-                                storedMessage = JsonUtility.FromJson<Message>(serverMessage);
+                                if (serverMessage.Contains("robot"))
+                                {
+                                    //robotData = JsonUtility.FromJson<RobotData>(serverMessage);
+                                } 
+                                else if (serverMessage.Contains("control"))
+                                {
+                                    controlData = JsonUtility.FromJson<ControlData>(serverMessage);
+                                }
+                                else if(serverMessage.Contains("telemetry"))
+                                {
+                                    telemetryData = JsonUtility.FromJson<TelemetryData>(serverMessage);
+                                }
+                                else if(serverMessage.Contains("boxes"))
+                                {
+                                    boundingData = JsonUtility.FromJson<BoundingData>(serverMessage);
+                                }
+                                //storedMessage = JsonUtility.FromJson<Message>(serverMessage);
                                 Debug.Log(serverMessage);
                                 updateValues = true;
                             }
@@ -240,9 +324,9 @@ public class ProxyConnection : MonoBehaviour
                     }
                 }
             }
-            if (socketConnection != null)
+            if (receiverSocketConnection != null)
             {
-                socketConnection.Close();
+                receiverSocketConnection.Close();
             }
         }
         catch (SocketException socketException)
