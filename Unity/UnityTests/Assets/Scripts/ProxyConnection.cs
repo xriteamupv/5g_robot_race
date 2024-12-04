@@ -117,18 +117,12 @@ public class ProxyConnection : MonoBehaviour
 
     void Start()
     {
-        //string d = "{\"battery\":\"5\", \"lidar\":\"[0,0]\", \"gps\":\"[39.479353,-0.336108,0]\", \"speed\":\"0\"}";
-        string s = "{\"header\":\"robot\",\"data\":{\"battery\":5,\"lidar\":[0,0],\"gps\":[39.479353,-0.336108,0],\"speed\":0,\"time\":[39.479353,-0.336108,0]}}";
-        //Debug.Log(s);
-        //robotData = JsonConvert.DeserializeObject<RobotData>(s);
-        //Debug.Log(robotData.data.time[0]);
         updateValues = true;
         loop = true;
         robotSpeedMultiplier = 0.0f;
         currentIP = new IPEndPoint(IPAddress.Parse(IP), receivingPort);
 
         if (IP != "") Connect();
-        //UpdateValues(o);
         if(selectedRobot == "Robot 1") 
             isRobot1 = true;
         InvokeRepeating("WheelInput", 0.0f, 0.1f);
@@ -180,11 +174,8 @@ public class ProxyConnection : MonoBehaviour
 
     private void WheelInput()
     {
-        //if (Input.GetAxis("Pedal") == 0.0f && Input.GetAxis("Wheel") == 0.0f) return;
-
         float pedalInput = (Input.GetAxis("Pedal") - 1.0f) * -robotSpeedMultiplier; //cambiar multiplicador para modificar velocidad
-        //Debug.Log(pedalInput);
-        float pedal2Input = (Input.GetAxis("Back") - 1.0f) * 1.0f;
+        // float pedal2Input = (Input.GetAxis("Back") - 1.0f) * 1.0f;
         float wheelInput = Input.GetAxis("Wheel") * -3.0f;
 
         ui.ChangeWheelRotation(-Input.GetAxis("Wheel") * 360.0f);
@@ -192,7 +183,7 @@ public class ProxyConnection : MonoBehaviour
         controlData.data.linear.x = pedalInput;
         controlData.data.angular.z = wheelInput;
 
-        string inputMessage = JsonConvert.SerializeObject(controlData); ;
+        string inputMessage = JsonConvert.SerializeObject(controlData);
         SendNetworkMessage(inputMessage);
         Debug.Log(inputMessage);
     }
@@ -274,39 +265,17 @@ public class ProxyConnection : MonoBehaviour
         if (m == null) return;
         if (m.data == null) return;
 
-        //gps.latitude = m.gps1[0];
-        //Debug.Log(m.gps1[0]);
-        //gps.longitude = m.gps1[1];
-
-        //double roll = (m.gps1[2] * Mathf.Rad2Deg);
-        //double pitch = (m.gps1[3] * Mathf.Rad2Deg); 
-        //double yaw = orientationOffset + (m.gps1[4] * Mathf.Rad2Deg);
-        //Debug.Log(yaw);
-
-        //gps.transform.rotation = Quaternion.Euler(0.0f, -(float)yaw, 0.0f);
-        //gps.transform.rotation = Quaternion.Euler((float)roll, -(float)yaw, (float)pitch);
-
-
         otherGPS.latitude = m.data.gps[0];
         otherGPS.longitude = m.data.gps[1];
 
-        //brujula
-        //double roll = (m.gps2[2] * Mathf.Rad2Deg);
-        //double pitch = (m.gps2[3] * Mathf.Rad2Deg);
-        //double yaw = orientationOffset + (m.gps2[4] * Mathf.Rad2Deg);
-        //targetRotation = Quaternion.Euler(0.0f, (float)yaw, 0.0f);
-        
         targetRotation.y = (float)m.data.gps[2];
         targetRotation.w = (float)m.data.gps[3];
         targetRotation*=Quaternion.Euler(0f, (float)orientationOffset, 0f);
-        //Debug.Log(targetRotation);
 
         padre.transform.localRotation = Quaternion.Slerp(padre.transform.localRotation, targetRotation, Time.deltaTime * rotationSpeed);
-        //float newYaw = (float)yaw - padre.transform.rotation.eulerAngles.y;
-        //padre.transform.RotateAround(Vector3.zero, Vector3.up, newYaw);
 
-        ui.ChangeSpeed(m.data.speed); 
-        //ui.ChangeBattery(m.battery1);
+        ui.ChangeSpeed(m.data.speed);
+        //ui.ChangeBattery(m.data.battery);
         ui.SetLeftLidar(m.data.lidar[1]);
         ui.SetRightLidar(m.data.lidar[0]);
         if (m.data.time.Length > 0)
