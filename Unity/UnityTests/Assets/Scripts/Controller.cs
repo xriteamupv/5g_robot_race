@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using ImGuiNET;
 
 public class Controller : MonoBehaviour
 {
@@ -175,13 +174,13 @@ public class Controller : MonoBehaviour
         float totalSizeY = 1920.0f;
 
         Vector2 center = new Vector2(bbcoords[0] + sizeX * 0.5f, bbcoords[1] + sizeY * 0.5f);
-        Debug.Log(center);
+        // Debug.Log(center);
 
         float elevation = center.y / totalSizeY * 180.0f;
         float azimuth = (center.x - totalSizeX * 0.5f) / totalSizeX * 360.0f;
 
-        Debug.Log("Elevation: " + elevation);
-        Debug.Log("Azimuth: " + azimuth);
+        // Debug.Log("Elevation: " + elevation);
+        // Debug.Log("Azimuth: " + azimuth);
 #if false
         Vector3 forward = Camera.main.transform.forward;
         Vector3 up = Camera.main.transform.up;

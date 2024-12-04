@@ -21,9 +21,11 @@ public class ProxyConnection : MonoBehaviour
     public string IP;
     public int receivingPort;
     public int sendingPort;
-    private TcpClient sendingSocketConnection;
-    private TcpClient receiverSocketConnection;
+    private UdpClient client;
+    Socket s;
     private Thread clientReceiveThread;
+    public IPEndPoint anyIP;
+    public IPEndPoint currentIP;
 
     public Position gps, otherGPS;
     //public GPS otherGPS;
@@ -36,31 +38,16 @@ public class ProxyConnection : MonoBehaviour
     public TrafficLight trafficSign;
 
     private bool isTrafficEnabled = false;
-
-    public class Message
-    {
-        public int battery1;
-        public int[] lidar1;
-        public double[] gps1;
-        public float speed1;
-        public string[] time1;
-
-        public int battery2;
-        public int[] lidar2;
-        public double[] gps2;
-        public float speed2;
-        public string[] time2;
-    }
     public class RobotData
     {
         public string header;
         public class Data
         {
             public float battery;
-            public int[] lidar;
             public float[] gps;
             public float speed;
             public float[] time;
+            public int[] lidar;
         }
         public Data data;
     }
@@ -100,9 +87,7 @@ public class ProxyConnection : MonoBehaviour
         public Data data;
     }
 
-    private Message storedMessage;
     private RobotData robotData;
-    private ControlData controlData;
     private TelemetryData telemetryData;
     private BoundingData boundingData;
     private bool updateValues;
@@ -117,16 +102,15 @@ public class ProxyConnection : MonoBehaviour
 
     void Start()
     {
-        // string d = "{\"battery\":\"5\", \"lidar\":\"[0,0]\", \"gps\":\"[39.479353,-0.336108,0]\", \"speed\":\"0\"}";
-        // string s = "{\"header\":\"robot\", \"data\":{\"battery\":5, \"lidar\":[0,0], \"gps\":[39.479353,-0.336108,0], \"speed\":0, \"time\":[39.479353,-0.336108,0]}}";
-        // Debug.Log(s);
-        // robotData = JsonConvert.DeserializeObject<RobotData>(s);
-        // Debug.Log(robotData.data.time[0]);
-
-        //var o = JsonUtility.FromJson<Message>(s);
+        //string d = "{\"battery\":\"5\", \"lidar\":\"[0,0]\", \"gps\":\"[39.479353,-0.336108,0]\", \"speed\":\"0\"}";
+        string s = "{\"header\":\"robot\",\"data\":{\"battery\":5,\"lidar\":[0,0],\"gps\":[39.479353,-0.336108,0],\"speed\":0,\"time\":[39.479353,-0.336108,0]}}";
+        //Debug.Log(s);
+        //robotData = JsonConvert.DeserializeObject<RobotData>(s);
+        //Debug.Log(robotData.data.time[0]);
         updateValues = true;
         loop = true;
         robotSpeedMultiplier = 0.0f;
+        currentIP = new IPEndPoint(IPAddress.Parse(IP), receivingPort);
 
         if (IP != "") Connect();
         //UpdateValues(o);
@@ -139,7 +123,6 @@ public class ProxyConnection : MonoBehaviour
         controller = GetComponent<Controller>();
         controller.SetBB(bbtype, bbcoords);
 
-        sendingSocketConnection = new TcpClient(IP, sendingPort);
 
     }
 
@@ -165,7 +148,7 @@ public class ProxyConnection : MonoBehaviour
     {
         if (updateValues)
         {
-            UpdateValues(storedMessage);
+            UpdateValues(robotData);
             updateValues = false;
         }
         if (Input.GetKeyDown(KeyCode.P))
@@ -184,73 +167,32 @@ public class ProxyConnection : MonoBehaviour
         //Debug.Log(pedalInput);
         float pedal2Input = (Input.GetAxis("Back") - 1.0f) * 1.0f;
         float wheelInput = Input.GetAxis("Wheel") * -3.0f;
-        float lev = Input.GetAxis("lev");
-        string pedal = pedalInput.ToString().Replace(',', '.');
-        string back = pedal2Input.ToString().Replace(',', '.');
-        string wheel = wheelInput.ToString().Replace(',', '.');
 
         ui.ChangeWheelRotation(-Input.GetAxis("Wheel") * 360.0f);
 
-        string inputMessage;
-        if(isRobot1)
-        {
-            //Debug.Log(pedal);
-            if (back != "0")
-            {
-                inputMessage = "{\"robot1\":[0," + wheel + "]}";
-            }
-            else
-            {
-                if (lev == 1)
-                {
-                    inputMessage = "{\"robot1\":[-" + pedal + "," + wheel + "]}";
-                }
-                else
-                {
-                    inputMessage = "{\"robot1\":[" + pedal + "," + wheel + "]}";
-                }
-            }
-        }
-        else
-        {
-            //Debug.Log(pedal);
-            if (back != "0")
-            {
-                inputMessage = "{\"robot2\":[0," + wheel + "]}";
-            }
-            else
-            {
-                if (lev == 1)
-                {
-                    inputMessage = "{\"robot2\":[-" + pedal + "," + wheel + "]}";
-                }
-                else
-                {
-                    inputMessage = "{\"robot2\":[" + pedal + "," + wheel + "]}";
-                }
-            }
-        }
-        //Debug.Log(inputMessage);
+        ControlData input = new ControlData();
+        input.data = new ControlData.Data();
+        input.data.linear = new float[3];
+        input.data.angular = new float[3];
+        input.data.linear[0] = pedalInput;
+        input.data.angular[2] = wheelInput;
+
+        string inputMessage = JsonConvert.SerializeObject(input); ;
         SendNetworkMessage(inputMessage);
     }
 
     private void SendNetworkMessage(string message)
     {
-        if (sendingSocketConnection == null)
+        if (s == null)
         {
             return;
         }
         try
         {
-            // Get a stream object for writing. 			
-            NetworkStream stream = sendingSocketConnection.GetStream();
-            if (stream.CanWrite)
-            {
-                // Convert string message to byte array.
-                byte[] clientMessageAsByteArray = Encoding.UTF8.GetBytes(message);
-                // Write byte array to socketConnection stream.                 
-                stream.Write(clientMessageAsByteArray, 0, clientMessageAsByteArray.Length);
-            }
+            s.Bind(currentIP);
+            byte[] data = Encoding.UTF8.GetBytes(message);
+            IPEndPoint ep = new IPEndPoint(IPAddress.Parse(IP), sendingPort);
+            s.SendTo(data, data.Length, SocketFlags.None, ep);
         }
         catch (SocketException socketException)
         {
@@ -265,6 +207,8 @@ public class ProxyConnection : MonoBehaviour
             clientReceiveThread = new Thread(new ThreadStart(ListenForData));
             clientReceiveThread.IsBackground = true;
             clientReceiveThread.Start();
+
+            s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
         }
         catch (Exception e)
         {
@@ -276,58 +220,32 @@ public class ProxyConnection : MonoBehaviour
     {
         try
         {
-            receiverSocketConnection = new TcpClient(IP, receivingPort);
+            client = new UdpClient(receivingPort);
             Byte[] bytes = new Byte[1024];
             while (loop)
             {
-                // Get a stream object for reading 				
-                using (NetworkStream stream = receiverSocketConnection.GetStream())
+                byte[] incommingData = client.Receive(ref anyIP);
+                string serverMessage = Encoding.ASCII.GetString(incommingData);
+                if (!updateValues)
                 {
-                    int length;
-                    // Read incomming stream into byte arrary. 						
-                    while ((length = stream.Read(bytes, 0, bytes.Length)) != 0)
+                    if (serverMessage.Contains("robot"))
                     {
-                        var incommingData = new byte[length];
-                        Array.Copy(bytes, 0, incommingData, 0, length);
-                        // Convert byte array to string message. 							
-                        string serverMessage = Encoding.ASCII.GetString(incommingData);
-                        serverMessage = serverMessage.Replace('\'', '\"');
-                        //Debug.Log(serverMessage);
-                        if (!updateValues)
-                        {
-                            if (serverMessage == "start")
-                            {
-                                isTrafficEnabled = true;
-                            }
-                            else
-                            {
-                                if (serverMessage.Contains("robot"))
-                                {
-                                    robotData = JsonConvert.DeserializeObject<RobotData>(serverMessage);
-                                } 
-                                else if (serverMessage.Contains("control"))
-                                {
-                                    controlData = JsonConvert.DeserializeObject<ControlData>(serverMessage);
-                                }
-                                else if(serverMessage.Contains("telemetry"))
-                                {
-                                    telemetryData = JsonConvert.DeserializeObject<TelemetryData>(serverMessage);
-                                }
-                                else if(serverMessage.Contains("boxes"))
-                                {
-                                    boundingData = JsonConvert.DeserializeObject<BoundingData>(serverMessage);
-                                }
-                                //storedMessage = JsonUtility.FromJson<Message>(serverMessage);
-                                Debug.Log(serverMessage);
-                                updateValues = true;
-                            }
-                        }
+                        robotData = JsonConvert.DeserializeObject<RobotData>(serverMessage);
+                    } 
+                    else if(serverMessage.Contains("telemetry"))
+                    {
+                        telemetryData = JsonConvert.DeserializeObject<TelemetryData>(serverMessage);
                     }
+                    else if(serverMessage.Contains("boxes"))
+                    {
+                        boundingData = JsonConvert.DeserializeObject<BoundingData>(serverMessage);
+                    }
+                    updateValues = true;
                 }
             }
-            if (receiverSocketConnection != null)
+            if (client != null)
             {
-                receiverSocketConnection.Close();
+                client.Close();
             }
         }
         catch (SocketException socketException)
@@ -336,9 +254,10 @@ public class ProxyConnection : MonoBehaviour
         }
     }
 
-    public void UpdateValues(Message m)
+    public void UpdateValues(RobotData m)
     {
         if (m == null) return;
+        if (m.data == null) return;
 
         //gps.latitude = m.gps1[0];
         //Debug.Log(m.gps1[0]);
@@ -348,13 +267,13 @@ public class ProxyConnection : MonoBehaviour
         //double pitch = (m.gps1[3] * Mathf.Rad2Deg); 
         //double yaw = orientationOffset + (m.gps1[4] * Mathf.Rad2Deg);
         //Debug.Log(yaw);
-        
+
         //gps.transform.rotation = Quaternion.Euler(0.0f, -(float)yaw, 0.0f);
         //gps.transform.rotation = Quaternion.Euler((float)roll, -(float)yaw, (float)pitch);
-        
 
-        otherGPS.latitude = m.gps2[0];
-        otherGPS.longitude = m.gps2[1];
+
+        otherGPS.latitude = m.data.gps[0];
+        otherGPS.longitude = m.data.gps[1];
 
         //brujula
         //double roll = (m.gps2[2] * Mathf.Rad2Deg);
@@ -362,8 +281,8 @@ public class ProxyConnection : MonoBehaviour
         //double yaw = orientationOffset + (m.gps2[4] * Mathf.Rad2Deg);
         //targetRotation = Quaternion.Euler(0.0f, (float)yaw, 0.0f);
         
-        targetRotation.y = (float)m.gps2[2];
-        targetRotation.w = (float)m.gps2[3];
+        targetRotation.y = (float)m.data.gps[2];
+        targetRotation.w = (float)m.data.gps[3];
         targetRotation*=Quaternion.Euler(0f, (float)orientationOffset, 0f);
         //Debug.Log(targetRotation);
 
@@ -371,40 +290,24 @@ public class ProxyConnection : MonoBehaviour
         //float newYaw = (float)yaw - padre.transform.rotation.eulerAngles.y;
         //padre.transform.RotateAround(Vector3.zero, Vector3.up, newYaw);
 
-        if (isRobot1)
+        ui.ChangeSpeed(m.data.speed); 
+        //ui.ChangeBattery(m.battery1);
+        ui.SetLeftLidar(m.data.lidar[1]);
+        ui.SetRightLidar(m.data.lidar[0]);
+        if (m.data.time.Length > 0)
         {
-            ui.ChangeSpeed(m.speed1); 
-            //ui.ChangeBattery(m.battery1);
-            ui.SetLeftLidar(m.lidar1[1]);
-            ui.SetRightLidar(m.lidar1[0]);
-            if (m.time1.Length > 0)
-            {
-                ui.ChangeLapTime(m.time1[m.time1.Length - 1]);
-            }
-            else
-            {
-                ui.RemoveLapTime();
-            }
+            ui.ChangeLapTime(m.data.time[m.data.time.Length - 1].ToString());
         }
         else
         {
-            ui.ChangeSpeed(m.speed2); 
-            //ui.ChangeBattery(m.battery2);
-            ui.SetLeftLidar(m.lidar2[1]);
-            ui.SetRightLidar(m.lidar2[0]);
-            if (m.time2.Length > 0)
-            {
-                ui.ChangeLapTime(m.time2[m.time2.Length - 1]);
-            }
-            else
-            {
-                ui.RemoveLapTime();
-            }
+            ui.RemoveLapTime();
         }
     }
 
     private void OnApplicationQuit()
     {
         loop = false;
+        clientReceiveThread.Abort();
+        s.Close();
     }
 }
