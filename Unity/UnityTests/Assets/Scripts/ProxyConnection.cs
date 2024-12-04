@@ -15,6 +15,7 @@ using System.Net.Sockets;
 using System.Net;
 using Newtonsoft.Json;
 using static ProxyConnection;
+using static ProxyConnection.ControlData.Data;
 
 public class ProxyConnection : MonoBehaviour
 {
@@ -57,8 +58,21 @@ public class ProxyConnection : MonoBehaviour
         public string header;
         public class Data
         {
-            public float[] linear;
-            public float[] angular;
+            public class Linear
+            {
+                public float x;
+                public float y;
+                public float z;
+            }
+
+            public class Angular
+            {
+                public float x;
+                public float y;
+                public float z;
+            }
+            public Linear linear;
+            public Angular angular;
         }
         public Data data;
     }
@@ -89,6 +103,7 @@ public class ProxyConnection : MonoBehaviour
 
     private RobotData robotData;
     private TelemetryData telemetryData;
+    private ControlData controlData;
     private BoundingData boundingData;
     private bool updateValues;
     private bool loop;
@@ -123,7 +138,11 @@ public class ProxyConnection : MonoBehaviour
         controller = GetComponent<Controller>();
         controller.SetBB(bbtype, bbcoords);
 
-
+        controlData = new ControlData();
+        controlData.data = new ControlData.Data();
+        controlData.data.linear = new Linear();
+        controlData.data.angular = new Angular();
+        controlData.header = "control";
     }
 
     public void ChangeRobotSpeed(float newSpeed)
@@ -170,15 +189,12 @@ public class ProxyConnection : MonoBehaviour
 
         ui.ChangeWheelRotation(-Input.GetAxis("Wheel") * 360.0f);
 
-        ControlData input = new ControlData();
-        input.data = new ControlData.Data();
-        input.data.linear = new float[3];
-        input.data.angular = new float[3];
-        input.data.linear[0] = pedalInput;
-        input.data.angular[2] = wheelInput;
+        controlData.data.linear.x = pedalInput;
+        controlData.data.angular.z = wheelInput;
 
-        string inputMessage = JsonConvert.SerializeObject(input); ;
+        string inputMessage = JsonConvert.SerializeObject(controlData); ;
         SendNetworkMessage(inputMessage);
+        Debug.Log(inputMessage);
     }
 
     private void SendNetworkMessage(string message)
@@ -189,7 +205,6 @@ public class ProxyConnection : MonoBehaviour
         }
         try
         {
-            s.Bind(currentIP);
             byte[] data = Encoding.UTF8.GetBytes(message);
             IPEndPoint ep = new IPEndPoint(IPAddress.Parse(IP), sendingPort);
             s.SendTo(data, data.Length, SocketFlags.None, ep);
