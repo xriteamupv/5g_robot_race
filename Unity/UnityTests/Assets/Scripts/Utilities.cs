@@ -14,7 +14,7 @@ public class Utilities : MonoBehaviour
 
         string[] lines = File.ReadAllLines(path);
 
-        if(lines.Length < 3)
+        if(lines.Length < 5)
         {
             Debug.LogError("Text file doesn't contain all necessary info");
             return;
@@ -23,6 +23,8 @@ public class Utilities : MonoBehaviour
         player.pipeline = lines[0];
         ProxyConnection pc = GetComponent<ProxyConnection>();
         pc.IP = lines[1];
-        pc.selectedRobot = lines[2];
+        pc.receivingPort = int.Parse(lines[2]);
+        pc.sendingPort = int.Parse(lines[3]);
+        pc.selectedRobot = lines[4];
     }
 }

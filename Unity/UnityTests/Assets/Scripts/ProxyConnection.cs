@@ -19,7 +19,8 @@ using static ProxyConnection;
 public class ProxyConnection : MonoBehaviour
 {
     public string IP;
-    public int port;
+    public int receivingPort;
+    public int sendingPort;
     private TcpClient sendingSocketConnection;
     private TcpClient receiverSocketConnection;
     private Thread clientReceiveThread;
@@ -116,11 +117,11 @@ public class ProxyConnection : MonoBehaviour
 
     void Start()
     {
-        string d = "{\"battery\":\"5\", \"lidar\":\"[0,0]\", \"gps\":\"[39.479353,-0.336108,0]\", \"speed\":\"0\"}";
-        string s = "{\"header\":\"robot\", \"data\":{\"battery\":5, \"lidar\":[0,0], \"gps\":[39.479353,-0.336108,0], \"speed\":0, \"time\":[39.479353,-0.336108,0]}}";
-        Debug.Log(s);
-        robotData = JsonConvert.DeserializeObject<RobotData>(s);
-        Debug.Log(robotData.data.time[0]);
+        // string d = "{\"battery\":\"5\", \"lidar\":\"[0,0]\", \"gps\":\"[39.479353,-0.336108,0]\", \"speed\":\"0\"}";
+        // string s = "{\"header\":\"robot\", \"data\":{\"battery\":5, \"lidar\":[0,0], \"gps\":[39.479353,-0.336108,0], \"speed\":0, \"time\":[39.479353,-0.336108,0]}}";
+        // Debug.Log(s);
+        // robotData = JsonConvert.DeserializeObject<RobotData>(s);
+        // Debug.Log(robotData.data.time[0]);
 
         //var o = JsonUtility.FromJson<Message>(s);
         updateValues = true;
@@ -138,7 +139,7 @@ public class ProxyConnection : MonoBehaviour
         controller = GetComponent<Controller>();
         controller.SetBB(bbtype, bbcoords);
 
-        sendingSocketConnection = new TcpClient(IP, port + 1);
+        sendingSocketConnection = new TcpClient(IP, sendingPort);
 
     }
 
@@ -275,7 +276,7 @@ public class ProxyConnection : MonoBehaviour
     {
         try
         {
-            receiverSocketConnection = new TcpClient(IP, port);
+            receiverSocketConnection = new TcpClient(IP, receivingPort);
             Byte[] bytes = new Byte[1024];
             while (loop)
             {
@@ -302,19 +303,19 @@ public class ProxyConnection : MonoBehaviour
                             {
                                 if (serverMessage.Contains("robot"))
                                 {
-                                    //robotData = JsonUtility.FromJson<RobotData>(serverMessage);
+                                    robotData = JsonConvert.DeserializeObject<RobotData>(serverMessage);
                                 } 
                                 else if (serverMessage.Contains("control"))
                                 {
-                                    controlData = JsonUtility.FromJson<ControlData>(serverMessage);
+                                    controlData = JsonConvert.DeserializeObject<ControlData>(serverMessage);
                                 }
                                 else if(serverMessage.Contains("telemetry"))
                                 {
-                                    telemetryData = JsonUtility.FromJson<TelemetryData>(serverMessage);
+                                    telemetryData = JsonConvert.DeserializeObject<TelemetryData>(serverMessage);
                                 }
                                 else if(serverMessage.Contains("boxes"))
                                 {
-                                    boundingData = JsonUtility.FromJson<BoundingData>(serverMessage);
+                                    boundingData = JsonConvert.DeserializeObject<BoundingData>(serverMessage);
                                 }
                                 //storedMessage = JsonUtility.FromJson<Message>(serverMessage);
                                 Debug.Log(serverMessage);
