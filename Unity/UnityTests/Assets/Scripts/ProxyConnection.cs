@@ -16,6 +16,8 @@ using System.Net;
 using Newtonsoft.Json;
 using static ProxyConnection;
 using static ProxyConnection.ControlData.Data;
+using static Stats;
+using static UnityEngine.Rendering.DebugUI;
 
 public class ProxyConnection : MonoBehaviour
 {
@@ -37,6 +39,7 @@ public class ProxyConnection : MonoBehaviour
     public string selectedRobot;
 
     public TrafficLight trafficSign;
+    public Stats stats;
 
     private bool isTrafficEnabled = false;
     public class RobotData
@@ -185,7 +188,6 @@ public class ProxyConnection : MonoBehaviour
 
         string inputMessage = JsonConvert.SerializeObject(controlData);
         SendNetworkMessage(inputMessage);
-        Debug.Log(inputMessage);
     }
 
     private void SendNetworkMessage(string message)
@@ -241,6 +243,10 @@ public class ProxyConnection : MonoBehaviour
                     else if(serverMessage.Contains("telemetry"))
                     {
                         telemetryData = JsonConvert.DeserializeObject<TelemetryData>(serverMessage);
+                        stats.AppendValue(telemetryData.data.rsrp, ChartType.RSRP);
+                        stats.AppendValue(telemetryData.data.rsrq, ChartType.RSRQ);
+                        stats.AppendValue(telemetryData.data.sinr, ChartType.SINR);
+                        stats.AppendValue(telemetryData.data.lat, ChartType.LAT);
                     }
                     else if(serverMessage.Contains("boxes"))
                     {
