@@ -43,7 +43,6 @@ public class Controller : MonoBehaviour
             Display.displays[i].Activate();
         }
         CreateBBPools();
-        //PlaceBB(robotRect);
     }
 
     public void ConvertTexture(Texture texture)
@@ -55,11 +54,6 @@ public class Controller : MonoBehaviour
     private void Update()
     {
         ConvertTexture(pipelinePlayer.VideoTexture);
-
-        //if(Input.GetButtonDown("Submit"))
-        //{
-        //    SwitchToRobotScene();
-        //}
 
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -97,7 +91,7 @@ public class Controller : MonoBehaviour
     {
         switch(type)
         {
-            case "red":
+            case "person":
                 {
                     for (int i = 0; i < poolSize; ++i)
                     {
@@ -168,10 +162,10 @@ public class Controller : MonoBehaviour
         float sizeX = bbcoords[2] - bbcoords[0];
         float sizeY = bbcoords[3] - bbcoords[1];
 
-        //float totalSizeX = 1920.0f;
-        //float totalSizeY = 960.0f;
-        float totalSizeX = 3840.0f;
-        float totalSizeY = 1920.0f;
+        float totalSizeX = 2560.0f;
+        float totalSizeY = 1280.0f;
+        //float totalSizeX = 3840.0f;
+        //float totalSizeY = 1920.0f;
 
         Vector2 center = new Vector2(bbcoords[0] + sizeX * 0.5f, bbcoords[1] + sizeY * 0.5f);
         // Debug.Log(center);

@@ -1,9 +1,10 @@
 using DataVisualizer;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.PackageManager.UI;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.UI;
+using static ProxyConnection;
 using static UnityEngine.Rendering.DebugUI;
 
 public class Stats : MonoBehaviour
@@ -20,8 +21,8 @@ public class Stats : MonoBehaviour
     {
         RSRP = 0,
         RSRQ,
+        LAT,
         SINR,
-        LAT
     }
 
     private float timer;
@@ -49,22 +50,9 @@ public class Stats : MonoBehaviour
 
     void Update()
     {
-        //Vector3 lookDirection = canvas.GetComponent<RectTransform>().position - Camera.main.transform.position;
-        //canvas.GetComponent<RectTransform>().rotation = Quaternion.LookRotation(lookDirection.normalized, Vector3.up);
-        /*timer += Time.deltaTime;
-        if(timer >= 0.5f)
+        if (Input.GetKeyDown(KeyCode.S)) 
         {
-            timer = 0.0f;
-            for (int i = 0; i < chart.Length; ++i)
-            {
-                //Vector3 lookDirection = chart[i].GetComponent<RectTransform>().position - Camera.main.transform.position;
-                //chart[i].GetComponent<RectTransform>().rotation = Quaternion.LookRotation(lookDirection.normalized, Vector3.up);
-                float value = Random.Range(0.0f, 200.0f);
-                AppendValue(value, ChartType.RSRP);
-                AppendValue(value, ChartType.SINR);
-                AppendValue(value, ChartType.RSRQ);
-                AppendValue(value, ChartType.LAT);
-            }
-        }*/
+            canvas.SetActive(!canvas.activeSelf);
+        }
     }
 }

@@ -88,7 +88,7 @@ public class ProxyConnection : MonoBehaviour
             public float rsrp;
             public float rsrq;
             public float sinr;
-            public float lat;
+            public float latency;
         }
         public Data data;
     }
@@ -98,8 +98,14 @@ public class ProxyConnection : MonoBehaviour
         public string header;
         public class Data
         {
-            public float[] coords;
-            public string type;
+            public class Box
+            {
+                public float[] coords;
+                public string type;
+                public float conf;
+                public float timestamp;
+            }
+            public Box[] boxes;
         }
         public Data data;
     }
@@ -109,6 +115,8 @@ public class ProxyConnection : MonoBehaviour
     private ControlData controlData;
     private BoundingData boundingData;
     private bool updateValues;
+    private bool updateTelemetry;
+    private bool updateBoxes;
     private bool loop;
     private bool isRobot1;
 
@@ -121,6 +129,8 @@ public class ProxyConnection : MonoBehaviour
     void Start()
     {
         updateValues = true;
+        updateTelemetry = false;
+        updateBoxes = false;
         loop = true;
         robotSpeedMultiplier = 0.0f;
         currentIP = new IPEndPoint(IPAddress.Parse(IP), receivingPort);
@@ -162,6 +172,8 @@ public class ProxyConnection : MonoBehaviour
 
     private void Update()
     {
+        UpdateTelemetry();
+        UpdateBoxes();
         if (updateValues)
         {
             UpdateValues(robotData);
@@ -239,20 +251,19 @@ public class ProxyConnection : MonoBehaviour
                     if (serverMessage.Contains("robot"))
                     {
                         robotData = JsonConvert.DeserializeObject<RobotData>(serverMessage);
-                    } 
+                        updateValues = true;
+                    }
                     else if(serverMessage.Contains("telemetry"))
                     {
                         telemetryData = JsonConvert.DeserializeObject<TelemetryData>(serverMessage);
-                        stats.AppendValue(telemetryData.data.rsrp, ChartType.RSRP);
-                        stats.AppendValue(telemetryData.data.rsrq, ChartType.RSRQ);
-                        stats.AppendValue(telemetryData.data.sinr, ChartType.SINR);
-                        stats.AppendValue(telemetryData.data.lat, ChartType.LAT);
+                        updateTelemetry = true;
                     }
                     else if(serverMessage.Contains("boxes"))
                     {
+                        Debug.Log(serverMessage);
                         boundingData = JsonConvert.DeserializeObject<BoundingData>(serverMessage);
+                        updateBoxes = true;
                     }
-                    updateValues = true;
                 }
             }
             if (client != null)
@@ -264,6 +275,27 @@ public class ProxyConnection : MonoBehaviour
         {
             Debug.Log("Socket exception: " + socketException);
         }
+    }
+
+    void UpdateTelemetry()
+    {
+        if (!updateTelemetry) return;
+        stats.AppendValue(telemetryData.data.rsrp, ChartType.RSRP);
+        stats.AppendValue(telemetryData.data.rsrq, ChartType.RSRQ);
+        stats.AppendValue(telemetryData.data.sinr, ChartType.SINR);
+        stats.AppendValue(telemetryData.data.latency, ChartType.LAT);
+        updateTelemetry = false;
+    }
+
+    void UpdateBoxes()
+    {
+        if (!updateBoxes) return;
+        controller.ResetBBs();
+        foreach (BoundingData.Data.Box box in boundingData.data.boxes)
+        {
+            controller.SetBB(box.type, box.coords);
+        }
+        updateBoxes = false;
     }
 
     public void UpdateValues(RobotData m)
