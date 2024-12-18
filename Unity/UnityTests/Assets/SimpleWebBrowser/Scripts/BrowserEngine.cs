@@ -89,8 +89,8 @@ namespace SimpleWebBrowser
             return path.Replace("localhost", _localhostname);
         }
         public IEnumerator InitPlugin(int width, int height, string sharedfilename,string initialURL,bool enableWebRTC,bool enableGPU) {
-            _localhostname = WWW.EscapeURL(sharedfilename);
-            initialURL = RedirectLocalhost(initialURL);
+            //_localhostname = WWW.EscapeURL(sharedfilename);
+            //initialURL = RedirectLocalhost(initialURL);
             _pollthread=new Thread(BackgroundPollThread);
             _pollthread.Start();
             //Initialization (for now) requires a predefined path to PluginServer,
@@ -237,7 +237,7 @@ namespace SimpleWebBrowser
         {
             if (Initialized)
             {
-                
+                Debug.Log(url);
                 GenericEvent ge = new GenericEvent {
                     Type = GenericEventType.Navigate,
                     GenericType = BrowserEventType.Generic,
