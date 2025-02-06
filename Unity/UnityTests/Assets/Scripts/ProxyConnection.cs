@@ -110,13 +110,36 @@ public class ProxyConnection : MonoBehaviour
         public Data data;
     }
 
+    public class RealRobotPositionData
+    {
+        public string header;
+        public class Data
+        {
+            public float[] gps;
+        }
+        public Data data;
+    }
+
+    public class VirtualRobotPositionData
+    {
+        public string header;
+        public class Data
+        {
+            public Transform transform;
+        }
+        public Data data;
+    }
+
     private RobotData robotData;
     private TelemetryData telemetryData;
     private ControlData controlData;
     private BoundingData boundingData;
+    private RealRobotPositionData realRobotPositionData;
+    private VirtualRobotPositionData virtualRobotPositionData;
     private bool updateValues;
     private bool updateTelemetry;
     private bool updateBoxes;
+    private bool updateRobot;
     private bool loop;
     private bool isRobot1;
 
@@ -125,12 +148,14 @@ public class ProxyConnection : MonoBehaviour
     public float robotSpeedMultiplier;
 
     public Controller controller;
+    public GameObject virtualRobot;
 
     void Start()
     {
         updateValues = true;
         updateTelemetry = false;
         updateBoxes = false;
+        updateRobot = false;
         loop = true;
         robotSpeedMultiplier = 0.0f;
         currentIP = new IPEndPoint(IPAddress.Parse(IP), receivingPort);
@@ -144,6 +169,10 @@ public class ProxyConnection : MonoBehaviour
         string bbtype = "yellow";
         controller = GetComponent<Controller>();
         controller.SetBB(bbtype, bbcoords);
+
+        realRobotPositionData = new RealRobotPositionData();
+        realRobotPositionData.data = new RealRobotPositionData.Data();
+        realRobotPositionData.header = "cockpit-broadcast";
 
         controlData = new ControlData();
         controlData.data = new ControlData.Data();
@@ -174,6 +203,7 @@ public class ProxyConnection : MonoBehaviour
     {
         UpdateTelemetry();
         UpdateBoxes();
+        UpdateRobot();
         if (updateValues)
         {
             UpdateValues(robotData);
@@ -190,6 +220,7 @@ public class ProxyConnection : MonoBehaviour
     private void WheelInput()
     {
         float pedalInput = (Input.GetAxis("Pedal") - 1.0f) * -robotSpeedMultiplier; //cambiar multiplicador para modificar velocidad
+        if(pedalInput > 1.0f) pedalInput = 1.0f;
         // float pedal2Input = (Input.GetAxis("Back") - 1.0f) * 1.0f;
         float wheelInput = Input.GetAxis("Wheel") * -3.0f;
 
@@ -258,11 +289,15 @@ public class ProxyConnection : MonoBehaviour
                         telemetryData = JsonConvert.DeserializeObject<TelemetryData>(serverMessage);
                         updateTelemetry = true;
                     }
-                    else if(serverMessage.Contains("boxes"))
+                    else if (serverMessage.Contains("boxes"))
                     {
-                        Debug.Log(serverMessage);
                         boundingData = JsonConvert.DeserializeObject<BoundingData>(serverMessage);
                         updateBoxes = true;
+                    }
+                    else if (serverMessage.Contains("cockpit-broadcast"))
+                    {
+                        virtualRobotPositionData = JsonConvert.DeserializeObject<VirtualRobotPositionData>(serverMessage);
+                        updateRobot = true;
                     }
                 }
             }
@@ -290,12 +325,21 @@ public class ProxyConnection : MonoBehaviour
     void UpdateBoxes()
     {
         if (!updateBoxes) return;
+        float time = (Time.timeSinceLevelLoad * 1000f) % 1000;
         controller.ResetBBs();
         foreach (BoundingData.Data.Box box in boundingData.data.boxes)
         {
             controller.SetBB(box.type, box.coords);
         }
         updateBoxes = false;
+        Debug.Log(((Time.timeSinceLevelLoad * 1000f) % 1000) - time);
+    }
+
+    void UpdateRobot()
+    {
+        if (!updateRobot) return;
+        virtualRobot.transform.localPosition = virtualRobot.transform.position;
+        virtualRobot.transform.localRotation = virtualRobot.transform.rotation;
     }
 
     public void UpdateValues(RobotData m)
@@ -324,6 +368,10 @@ public class ProxyConnection : MonoBehaviour
         {
             ui.RemoveLapTime();
         }
+
+        realRobotPositionData.data.gps = m.data.gps;
+        string inputMessage = JsonConvert.SerializeObject(realRobotPositionData);
+        SendNetworkMessage(inputMessage);
     }
 
     private void OnApplicationQuit()
