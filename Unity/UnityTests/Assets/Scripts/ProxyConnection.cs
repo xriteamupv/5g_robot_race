@@ -30,7 +30,8 @@ public class ProxyConnection : MonoBehaviour
     public IPEndPoint anyIP;
     public IPEndPoint currentIP;
 
-    public Position gps, otherGPS;
+    public GPS gps;
+    public Position otherGPS;
     //public GPS otherGPS;
     public GameObject padre; //objeto a rotar
     public GameObject objetoAR; //objeto a posicionar
@@ -149,6 +150,7 @@ public class ProxyConnection : MonoBehaviour
 
     public Controller controller;
     public GameObject virtualRobot;
+    public GameObject realRobot;
 
     void Start()
     {
@@ -170,9 +172,9 @@ public class ProxyConnection : MonoBehaviour
         controller = GetComponent<Controller>();
         controller.SetBB(bbtype, bbcoords);
 
-        realRobotPositionData = new RealRobotPositionData();
-        realRobotPositionData.data = new RealRobotPositionData.Data();
-        realRobotPositionData.header = "cockpit-broadcast";
+        virtualRobotPositionData = new VirtualRobotPositionData();
+        virtualRobotPositionData.data = new VirtualRobotPositionData.Data();
+        virtualRobotPositionData.header = "cockpit-broadcast";
 
         controlData = new ControlData();
         controlData.data = new ControlData.Data();
@@ -215,6 +217,10 @@ public class ProxyConnection : MonoBehaviour
             //SendNetworkMessage("timer");
         }
         trafficSign.enabled = isTrafficEnabled;
+
+        virtualRobotPositionData.data.transform = virtualRobot.transform;
+        string inputMessage = JsonConvert.SerializeObject(virtualRobotPositionData);
+        SendNetworkMessage(inputMessage);
     }
 
     private void WheelInput()
@@ -226,11 +232,11 @@ public class ProxyConnection : MonoBehaviour
 
         ui.ChangeWheelRotation(-Input.GetAxis("Wheel") * 360.0f);
 
-        controlData.data.linear.x = pedalInput;
-        controlData.data.angular.z = wheelInput;
+        //controlData.data.linear.x = pedalInput;
+        //controlData.data.angular.z = wheelInput;
 
-        string inputMessage = JsonConvert.SerializeObject(controlData);
-        SendNetworkMessage(inputMessage);
+        //string inputMessage = JsonConvert.SerializeObject(controlData);
+        //SendNetworkMessage(inputMessage);
     }
 
     private void SendNetworkMessage(string message)
@@ -279,7 +285,12 @@ public class ProxyConnection : MonoBehaviour
                 string serverMessage = Encoding.ASCII.GetString(incommingData);
                 if (!updateValues)
                 {
-                    if (serverMessage.Contains("robot"))
+                    if (serverMessage.Contains("cockpit-broadcast"))
+                    {
+                        realRobotPositionData = JsonConvert.DeserializeObject<RealRobotPositionData>(serverMessage);
+                        updateRobot = true;
+                    }
+                    else if (serverMessage.Contains("robot"))
                     {
                         robotData = JsonConvert.DeserializeObject<RobotData>(serverMessage);
                         updateValues = true;
@@ -293,11 +304,6 @@ public class ProxyConnection : MonoBehaviour
                     {
                         boundingData = JsonConvert.DeserializeObject<BoundingData>(serverMessage);
                         updateBoxes = true;
-                    }
-                    else if (serverMessage.Contains("cockpit-broadcast"))
-                    {
-                        virtualRobotPositionData = JsonConvert.DeserializeObject<VirtualRobotPositionData>(serverMessage);
-                        updateRobot = true;
                     }
                 }
             }
@@ -338,8 +344,8 @@ public class ProxyConnection : MonoBehaviour
     void UpdateRobot()
     {
         if (!updateRobot) return;
-        virtualRobot.transform.localPosition = virtualRobot.transform.position;
-        virtualRobot.transform.localRotation = virtualRobot.transform.rotation;
+        gps.latitude = realRobotPositionData.data.gps[0];
+        gps.longitude = realRobotPositionData.data.gps[1];
     }
 
     public void UpdateValues(RobotData m)
@@ -368,10 +374,6 @@ public class ProxyConnection : MonoBehaviour
         {
             ui.RemoveLapTime();
         }
-
-        realRobotPositionData.data.gps = m.data.gps;
-        string inputMessage = JsonConvert.SerializeObject(realRobotPositionData);
-        SendNetworkMessage(inputMessage);
     }
 
     private void OnApplicationQuit()
