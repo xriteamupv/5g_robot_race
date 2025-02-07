@@ -1,2 +1,6 @@
-[23:40:41] Info: Render API: 4
-[23:40:41] Info: Render API: 2
+[12:48:38] Info: Render API: 4
+[12:48:38] Info: Render API: 4
+[12:48:38] Info: Render API: 2
+[12:48:38] Info: Render API: 2
+[12:46:55] Info: Progress: (open) Opening Stream
+[12:46:35] Info: : GstPipelineHandler::Close 
