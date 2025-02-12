@@ -1,6 +1,99 @@
-[12:48:38] Info: Render API: 4
-[12:48:38] Info: Render API: 4
-[12:48:38] Info: Render API: 2
-[12:48:38] Info: Render API: 2
-[12:46:55] Info: Progress: (open) Opening Stream
-[12:46:35] Info: : GstPipelineHandler::Close 
+[12:39:39] Info: Render API: 4
+[12:39:39] Info: Render API: 2
+[07:40:34] mray_gstreamer_initialize
+[07:40:34] Initializing GStreamer Engine
+[07:40:34] Initializing GStreamer Engine - Done
+[07:40:34] Initializing GStreamer
+[07:40:34] GStreamerCore - Registering Elements!
+[07:40:34] GStreamerCore - GStreamer inited
+[07:40:34] Initializing GStreamer - Done
+[07:40:34] Entering main loop
+[07:40:34] Info: ProgramID CERFile looks like a UWP application, but isn't
+[07:40:34] Info: HKEY_CLASSES_ROOT\htmlfile\shell\Shell\Edit does not have a "command" subkey
+[07:40:34] Info: HKEY_CLASSES_ROOT\htmlfile\shell\Shell\Edit does not have a "command" subkey
+[07:40:34] Info: HKEY_CLASSES_ROOT\Access.MDBFile\shell\Shell\openAsReadOnly does not have a "command" subkey
+[07:40:35] Info: HKEY_CLASSES_ROOT\htmlfile\shell\Shell\Edit does not have a "command" subkey
+[07:40:35] Info: HKEY_CLASSES_ROOT\htmlfile\shell\Shell\Edit does not have a "command" subkey
+[07:40:35] Info: HKEY_CLASSES_ROOT\htmlfile\shell\Shell\Edit does not have a "command" subkey
+[07:40:35] Info: HKEY_CLASSES_ROOT\htmlfile\shell\Shell\Edit does not have a "command" subkey
+[07:40:35] Info: HKEY_CLASSES_ROOT\htmlfile\shell\Shell\Edit does not have a "command" subkey
+[07:40:35] Info: HKEY_CLASSES_ROOT\htmlfile\shell\Shell\Edit does not have a "command" subkey
+[07:40:35] Info: HKEY_CLASSES_ROOT\Access.MDBFile\shell\Shell\openAsReadOnly does not have a "command" subkey
+[07:40:35] Warning: Trying to link elements videoconvert1 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert1 is in pipeline0
+[07:40:35] Warning: Trying to link elements videoconvert1 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert1 is in pipeline0
+[07:40:35] Info: Creating Pipeline: rtspsrc location=rtsp://172.21.32.87:8554/cam protocols=tcp latency=100 ! rtph264depay ! avdec_h264 ! videoconvert ! appsink name=videoSink ! video/x-raw,format=I420 ! videoconvert ! appsink name=videoSink
+[07:40:35] Error: GstCustomVideoPlayer: Pipeline error: could not link videoSink to videoconvert1, videoSink can't handle caps video/x-raw, format=(string)I420
+[07:40:35] Info: : GstPipelineHandler::CreatePipeline 
+[07:40:35] Info: : Pipeline State Changes:  GST_STATE_NULL--> GST_STATE_READY
+[07:40:35] Info: Progress: (open) Opening Stream
+[07:40:35] Info: : Pipeline State Changes:  GST_STATE_READY--> GST_STATE_PAUSED
+[07:40:35] Info: : Playing
+[07:40:35] Info: : Playing
+[07:40:35] Info: Progress: (request) Sending PLAY request
+[07:40:36] Info: Progress: (connect) Connecting to rtsp://172.21.32.87:8554/cam
+[07:40:36] Info: Unexpectedly, UWP app `Microsoft.OutlookForWindows_1.2024.625.600_x64__8wekyb3d8bbwe' (AUMId `Microsoft.OutlookForWindows_8wekyb3d8bbwe!Microsoft.OutlookforWindows') supports 4 extensions but has no verbs
+[07:40:36] Info: _g_io_module_get_default: Found default implementation dummy (GDummyProxyResolver) for ‘gio-proxy-resolver’
+[07:40:36] Info: Unexpectedly, UWP app `Microsoft.ScreenSketch_11.2409.25.0_x64__8wekyb3d8bbwe' (AUMId `Microsoft.ScreenSketch_8wekyb3d8bbwe!App') supports 29 extensions but has no verbs
+[07:40:36] Info: Unexpectedly, UWP app `Clipchamp.Clipchamp_3.1.12020.0_neutral__yxz26nhyzhsrt' (AUMId `Clipchamp.Clipchamp_yxz26nhyzhsrt!App') supports 41 extensions but has no verbs
+[07:40:36] Info: Collecting capable appnames: 0ms
+Allocating hashtables:...... 0ms
+Reading capable apps:        94ms
+Reading URL associations:... 0ms
+Reading extension assocs:    140ms
+Reading exe-only apps:...... 63ms
+Reading classes:             406ms
+Reading UWP apps:            1219ms
+Postprocessing:..............0ms
+TOTAL:                       1922ms
+[07:40:38] Info: : GstPipelineHandler::Stop 
+[07:40:38] Info: Progress: (request) PLAY canceled
+[07:40:38] Info: Progress: (request) Sending PAUSE request
+[07:40:38] Info: Progress: (close) Closing Stream
+[07:40:38] Info: Progress: (request) PAUSE canceled
+[07:40:38] Info: : Pipeline State Changes:  GST_STATE_PAUSED--> GST_STATE_READY
+[07:40:38] Info: : GstPipelineHandler::Close 
+[07:40:38] Info: : GstPipelineHandler::Stop 
+[07:40:38] Info: Progress: (open) Opening Stream
+[07:40:38] Info: : Pipeline State Changes:  GST_STATE_READY--> GST_STATE_PAUSED
+[07:40:38] Warning: Can't seek to invalid time
+[07:40:38] Info: : GstPipelineHandler::Close 
+[07:40:38] Info: : GstPipelineHandler::Stop 
+[07:40:38] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[07:40:38] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[07:40:38] Error: gst_object_unref: assertion 'object != NULL' failed
+[07:40:38] Info: : GstPipelineHandler::Close 
+[07:40:38] Info: : GstPipelineHandler::Stop 
+[07:40:38] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[07:40:38] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[07:40:38] Error: gst_object_unref: assertion 'object != NULL' failed
+[07:40:38] Info: Checking is active
+[07:46:19] mray_gstreamer_initialize
+[07:46:19] Warning: Trying to link elements videoconvert3 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert3 is in pipeline1
+[07:46:19] Warning: Trying to link elements videoconvert3 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert3 is in pipeline1
+[07:46:19] Info: Creating Pipeline: rtspsrc location=rtsp://172.21.32.87:8554/cam protocols=tcp latency=100 ! rtph264depay ! avdec_h264 ! videoconvert ! appsink name=videoSink ! video/x-raw,format=I420 ! videoconvert ! appsink name=videoSink
+[07:46:19] Error: GstCustomVideoPlayer: Pipeline error: could not link videoSink to videoconvert3, videoSink can't handle caps video/x-raw, format=(string)I420
+[07:46:19] Info: : GstPipelineHandler::CreatePipeline 
+[07:46:19] Info: : Pipeline State Changes:  GST_STATE_NULL--> GST_STATE_READY
+[07:46:19] Info: Progress: (open) Opening Stream
+[07:46:19] Info: : Pipeline State Changes:  GST_STATE_READY--> GST_STATE_PAUSED
+[07:46:19] Info: : Playing
+[07:46:19] Info: : Playing
+[07:46:19] Info: Progress: (connect) Connecting to rtsp://172.21.32.87:8554/cam
+[07:46:19] Info: Progress: (request) Sending PLAY request
+[07:46:23] Info: : GstPipelineHandler::Stop 
+[07:46:23] Info: Progress: (request) PLAY canceled
+[07:46:23] Info: Progress: (request) Sending PAUSE request
+[07:46:23] Info: : GstPipelineHandler::Close 
+[07:46:23] Info: : GstPipelineHandler::Stop 
+[07:46:23] Warning: Can't seek to invalid time
+[07:46:23] Info: : GstPipelineHandler::Close 
+[07:46:23] Info: : GstPipelineHandler::Stop 
+[07:46:23] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[07:46:23] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[07:46:23] Error: gst_object_unref: assertion 'object != NULL' failed
+[07:46:23] Info: : GstPipelineHandler::Close 
+[07:46:23] Info: : GstPipelineHandler::Stop 
+[07:46:23] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[07:46:23] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[07:46:23] Error: gst_object_unref: assertion 'object != NULL' failed
+[07:46:23] Info: Checking is active
