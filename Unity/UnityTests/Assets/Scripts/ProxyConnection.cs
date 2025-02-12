@@ -140,7 +140,6 @@ public class ProxyConnection : MonoBehaviour
     private bool updateValues;
     private bool updateTelemetry;
     private bool updateBoxes;
-    private bool updateRobot;
     private bool loop;
     private bool isRobot1;
 
@@ -157,7 +156,6 @@ public class ProxyConnection : MonoBehaviour
         updateValues = true;
         updateTelemetry = false;
         updateBoxes = false;
-        updateRobot = false;
         loop = true;
         robotSpeedMultiplier = 0.0f;
         currentIP = new IPEndPoint(IPAddress.Parse(IP), receivingPort);
@@ -205,10 +203,9 @@ public class ProxyConnection : MonoBehaviour
     {
         UpdateTelemetry();
         UpdateBoxes();
-        UpdateRobot();
         if (updateValues)
         {
-            UpdateValues(robotData);
+            UpdateValues(realRobotPositionData);
             updateValues = false;
         }
         if (Input.GetKeyDown(KeyCode.P))
@@ -288,7 +285,7 @@ public class ProxyConnection : MonoBehaviour
                     if (serverMessage.Contains("cockpit-broadcast"))
                     {
                         realRobotPositionData = JsonConvert.DeserializeObject<RealRobotPositionData>(serverMessage);
-                        updateRobot = true;
+                        updateValues = true;
                     }
                     else if (serverMessage.Contains("robot"))
                     {
@@ -341,14 +338,7 @@ public class ProxyConnection : MonoBehaviour
         Debug.Log(((Time.timeSinceLevelLoad * 1000f) % 1000) - time);
     }
 
-    void UpdateRobot()
-    {
-        if (!updateRobot) return;
-        gps.latitude = realRobotPositionData.data.gps[0];
-        gps.longitude = realRobotPositionData.data.gps[1];
-    }
-
-    public void UpdateValues(RobotData m)
+    public void UpdateValues(RealRobotPositionData m)
     {
         if (m == null) return;
         if (m.data == null) return;
@@ -360,20 +350,6 @@ public class ProxyConnection : MonoBehaviour
         targetRotation.w = (float)m.data.gps[3];
         targetRotation*=Quaternion.Euler(0f, (float)orientationOffset, 0f);
 
-        padre.transform.localRotation = Quaternion.Slerp(padre.transform.localRotation, targetRotation, Time.deltaTime * rotationSpeed);
-
-        ui.ChangeSpeed(m.data.speed);
-        //ui.ChangeBattery(m.data.battery);
-        ui.SetLeftLidar(m.data.lidar[1]);
-        ui.SetRightLidar(m.data.lidar[0]);
-        if (m.data.time.Length > 0)
-        {
-            ui.ChangeLapTime(m.data.time[m.data.time.Length - 1].ToString());
-        }
-        else
-        {
-            ui.RemoveLapTime();
-        }
     }
 
     private void OnApplicationQuit()
