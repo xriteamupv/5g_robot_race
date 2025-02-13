@@ -18,6 +18,7 @@ using static ProxyConnection;
 using static ProxyConnection.ControlData.Data;
 using static Stats;
 using static UnityEngine.Rendering.DebugUI;
+using UnityEngine.UI;
 
 public class ProxyConnection : MonoBehaviour
 {
@@ -50,7 +51,7 @@ public class ProxyConnection : MonoBehaviour
             public float battery;
             public float[] gps;
             public float speed;
-            public float[] time;
+            public string[] time;
             public int[] lidar;
         }
         public Data data;
@@ -114,9 +115,6 @@ public class ProxyConnection : MonoBehaviour
     private TelemetryData telemetryData;
     private ControlData controlData;
     private BoundingData boundingData;
-    private bool updateValues;
-    private bool updateTelemetry;
-    private bool updateBoxes;
     private bool loop;
     private bool isRobot1;
 
@@ -125,12 +123,10 @@ public class ProxyConnection : MonoBehaviour
     public float robotSpeedMultiplier;
 
     public Controller controller;
+    SynchronizationContext mainThreadSyncContext;
 
     void Start()
     {
-        updateValues = true;
-        updateTelemetry = false;
-        updateBoxes = false;
         loop = true;
         robotSpeedMultiplier = 0.0f;
         currentIP = new IPEndPoint(IPAddress.Parse(IP), receivingPort);
@@ -150,6 +146,7 @@ public class ProxyConnection : MonoBehaviour
         controlData.data.linear = new Linear();
         controlData.data.angular = new Angular();
         controlData.header = "control";
+        mainThreadSyncContext = SynchronizationContext.Current;
     }
 
     public void ChangeRobotSpeed(float newSpeed)
@@ -170,19 +167,26 @@ public class ProxyConnection : MonoBehaviour
         ui.RemoveLapTime();
     }
 
+    bool doOnce;
+
     private void Update()
     {
-        UpdateTelemetry();
-        UpdateBoxes();
-        if (updateValues)
-        {
-            UpdateValues(robotData);
-            updateValues = false;
-        }
         if (Input.GetKeyDown(KeyCode.P))
         {
             isTrafficEnabled = true;
             //SendNetworkMessage("timer");
+        }
+        if(Input.GetKey(KeyCode.LeftControl)) {
+            robotSpeedMultiplier = 0.0f;
+            if(doOnce) 
+            {
+                Debug.LogError("Stop " + DateTime.Now.ToString("HH:mm:ss.fff"));
+                doOnce = false;
+            }
+        } else {
+            robotSpeedMultiplier = 1.0f;
+            doOnce = true;
+
         }
         trafficSign.enabled = isTrafficEnabled;
     }
@@ -194,6 +198,8 @@ public class ProxyConnection : MonoBehaviour
         float wheelInput = Input.GetAxis("Wheel") * -3.0f;
 
         ui.ChangeWheelRotation(-Input.GetAxis("Wheel") * 360.0f);
+
+        // if(pedalInput > 2.5f) pedalInput = 2.5f;
 
         controlData.data.linear.x = pedalInput;
         controlData.data.angular.z = wheelInput;
@@ -210,6 +216,7 @@ public class ProxyConnection : MonoBehaviour
         }
         try
         {
+            Debug.Log(message);
             byte[] data = Encoding.UTF8.GetBytes(message);
             IPEndPoint ep = new IPEndPoint(IPAddress.Parse(IP), sendingPort);
             s.SendTo(data, data.Length, SocketFlags.None, ep);
@@ -246,24 +253,33 @@ public class ProxyConnection : MonoBehaviour
             {
                 byte[] incommingData = client.Receive(ref anyIP);
                 string serverMessage = Encoding.ASCII.GetString(incommingData);
-                if (!updateValues)
+                if (serverMessage.Contains("robot"))
                 {
-                    if (serverMessage.Contains("robot"))
-                    {
-                        robotData = JsonConvert.DeserializeObject<RobotData>(serverMessage);
-                        updateValues = true;
-                    }
-                    else if(serverMessage.Contains("telemetry"))
-                    {
-                        telemetryData = JsonConvert.DeserializeObject<TelemetryData>(serverMessage);
-                        updateTelemetry = true;
-                    }
-                    else if(serverMessage.Contains("boxes"))
-                    {
-                        Debug.Log(serverMessage);
-                        boundingData = JsonConvert.DeserializeObject<BoundingData>(serverMessage);
-                        updateBoxes = true;
-                    }
+                    robotData = JsonConvert.DeserializeObject<RobotData>(serverMessage);
+                    Task.Run(() => {
+                        mainThreadSyncContext.Post(_ => {
+                            UpdateValues(robotData);
+                            }, null);
+                      });
+                    
+                }
+                else if(serverMessage.Contains("telemetry"))
+                {
+                    telemetryData = JsonConvert.DeserializeObject<TelemetryData>(serverMessage);
+                    Task.Run(() => {
+                        mainThreadSyncContext.Post(_ => {
+                            UpdateTelemetry();
+                        }, null);
+                    });
+                }
+                else if(serverMessage.Contains("boxes"))
+                {
+                    boundingData = JsonConvert.DeserializeObject<BoundingData>(serverMessage);
+                    Task.Run(() => {
+                        mainThreadSyncContext.Post(_ => {
+                            UpdateBoxes();
+                        }, null);
+                    });
                 }
             }
             if (client != null)
@@ -279,24 +295,23 @@ public class ProxyConnection : MonoBehaviour
 
     void UpdateTelemetry()
     {
-        if (!updateTelemetry) return;
         stats.AppendValue(telemetryData.data.rsrp, ChartType.RSRP);
         stats.AppendValue(telemetryData.data.rsrq, ChartType.RSRQ);
         stats.AppendValue(telemetryData.data.sinr, ChartType.SINR);
         stats.AppendValue(telemetryData.data.latency, ChartType.LAT);
-        updateTelemetry = false;
     }
 
     void UpdateBoxes()
     {
-        if (!updateBoxes) return;
+        //Debug.Log("Box Update");
         controller.ResetBBs();
         foreach (BoundingData.Data.Box box in boundingData.data.boxes)
         {
             controller.SetBB(box.type, box.coords);
         }
-        updateBoxes = false;
     }
+
+bool doOnce2 = true;
 
     public void UpdateValues(RobotData m)
     {
@@ -313,6 +328,15 @@ public class ProxyConnection : MonoBehaviour
         padre.transform.localRotation = Quaternion.Slerp(padre.transform.localRotation, targetRotation, Time.deltaTime * rotationSpeed);
 
         ui.ChangeSpeed(m.data.speed);
+        if(m.data.speed == 0.0f && robotSpeedMultiplier == 0.0f) 
+        {
+            if(doOnce2) {
+                Debug.LogError("0 Speed " + DateTime.Now.ToString("HH:mm:ss.fff"));
+                doOnce2 = false;
+                }
+        } else {
+            doOnce2 = true;
+        }
         //ui.ChangeBattery(m.data.battery);
         ui.SetLeftLidar(m.data.lidar[1]);
         ui.SetRightLidar(m.data.lidar[0]);
