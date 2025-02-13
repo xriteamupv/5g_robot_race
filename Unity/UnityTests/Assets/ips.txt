@@ -1,3 +1,4 @@
+
 rtspsrc location=rtsp://172.21.32.87:8554/cam protocols=tcp latency=100 ! rtph264depay ! avdec_h264 ! videoconvert ! appsink name=videoSink
 172.21.32.87
 5007
