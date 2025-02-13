@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 
 public class GPS : MonoBehaviour
@@ -28,9 +29,9 @@ public class GPS : MonoBehaviour
     public double anguloOffset = 21.1; //Offset entre el Norte y la linea divisoria del campo de futbol (Alineada con el eje x para medir distancias en Unity)
     public double coseno;
     public double seno;
+    public float movementSpeed = 1.0f;
     private Vector3 newPos, scale;
     private Quaternion receivedOri, finalOri, targetOri = new Quaternion(0.0f, 0.0f, 0.0f, 1.0f);
-
 
     // Update is called once per frame
     void Start()
@@ -72,8 +73,8 @@ public class GPS : MonoBehaviour
         // finalOri = new Quaternion(oriX, -oriZ, oriY, oriW);
         // robotObject.transform.rotation = finalOri;
         // newPos = new Vector3(posX-posX_ref, posZ-posZ_ref, posY-posY_ref);
-        newPos = new Vector3(-posX, posZ, posY);
-        robotObject.transform.position = newPos;
+        newPos = new Vector3(-posX + 0.5f, posZ, posY - 19.5f);
+        robotObject.transform.position = Vector3.Lerp(robotObject.transform.localPosition, newPos, Time.deltaTime * movementSpeed);
         // scale = new Vector3(scaleValue, scaleValue, scaleValue);
         // robotObject.transform.localScale = scale;
 

@@ -148,7 +148,7 @@ public class UIManager : MonoBehaviour
     {
         while (true)
         {
-            Quaternion newRotation = Quaternion.Lerp(steeringWheel.transform.rotation, Quaternion.Euler(0.0f, 0.0f, wheelValue), wheelSpeed * Time.deltaTime);
+            Quaternion newRotation = Quaternion.Lerp(steeringWheel.transform.rotation, Quaternion.Euler(steeringWheel.transform.rotation.eulerAngles.x, steeringWheel.transform.rotation.eulerAngles.y, wheelValue), wheelSpeed * Time.deltaTime);
             steeringWheel.transform.rotation = newRotation;
             yield return null;
         }

@@ -126,7 +126,8 @@ public class ProxyConnection : MonoBehaviour
         public string header;
         public class Data
         {
-            public Transform transform;
+            public float posX, posY , posZ;
+            public float rotX, rotY , rotZ, rotW;
         }
         public Data data;
     }
@@ -214,8 +215,13 @@ public class ProxyConnection : MonoBehaviour
             //SendNetworkMessage("timer");
         }
         trafficSign.enabled = isTrafficEnabled;
-
-        virtualRobotPositionData.data.transform = virtualRobot.transform;
+        virtualRobotPositionData.data.posX = virtualRobot.transform.position.x;
+        virtualRobotPositionData.data.posY = virtualRobot.transform.position.y;
+        virtualRobotPositionData.data.posZ = virtualRobot.transform.position.z;
+        virtualRobotPositionData.data.rotX = virtualRobot.transform.rotation.x;
+        virtualRobotPositionData.data.rotY = virtualRobot.transform.rotation.y;
+        virtualRobotPositionData.data.rotZ = virtualRobot.transform.rotation.z;
+        virtualRobotPositionData.data.rotW = virtualRobot.transform.rotation.w;
         string inputMessage = JsonConvert.SerializeObject(virtualRobotPositionData);
         SendNetworkMessage(inputMessage);
     }
@@ -286,6 +292,7 @@ public class ProxyConnection : MonoBehaviour
                     {
                         realRobotPositionData = JsonConvert.DeserializeObject<RealRobotPositionData>(serverMessage);
                         updateValues = true;
+                        Debug.Log(serverMessage);
                     }
                     else if (serverMessage.Contains("robot"))
                     {
@@ -343,12 +350,13 @@ public class ProxyConnection : MonoBehaviour
         if (m == null) return;
         if (m.data == null) return;
 
-        otherGPS.latitude = m.data.gps[0];
-        otherGPS.longitude = m.data.gps[1];
+        gps.latitude = m.data.gps[0];
+        gps.longitude = m.data.gps[1];
 
         targetRotation.y = (float)m.data.gps[2];
         targetRotation.w = (float)m.data.gps[3];
         targetRotation*=Quaternion.Euler(0f, (float)orientationOffset, 0f);
+        realRobot.transform.rotation = Quaternion.Slerp(realRobot.transform.rotation, Quaternion.Inverse(targetRotation), Time.deltaTime * rotationSpeed);
 
     }
 
