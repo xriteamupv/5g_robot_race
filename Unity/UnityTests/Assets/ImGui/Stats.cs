@@ -5,7 +5,6 @@ using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.UI;
 using static ProxyConnection;
-using static UnityEngine.Rendering.DebugUI;
 
 public class Stats : MonoBehaviour
 {

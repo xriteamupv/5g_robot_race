@@ -17,7 +17,6 @@ using Newtonsoft.Json;
 using static ProxyConnection;
 using static ProxyConnection.ControlData.Data;
 using static Stats;
-using static UnityEngine.Rendering.DebugUI;
 
 public class ProxyConnection : MonoBehaviour
 {
@@ -50,7 +49,7 @@ public class ProxyConnection : MonoBehaviour
             public float battery;
             public float[] gps;
             public float speed;
-            public float[] time;
+            public string[] time;
             public int[] lidar;
         }
         public Data data;
@@ -125,7 +124,13 @@ public class ProxyConnection : MonoBehaviour
         public string header;
         public class Data
         {
-            public Transform transform;
+            public float posX;
+            public float posY;
+            public float posZ;
+            public float rotX;
+            public float rotY;
+            public float rotZ;
+            public float rotW;
         }
         public Data data;
     }
@@ -201,6 +206,7 @@ public class ProxyConnection : MonoBehaviour
 
     private void Update()
     {
+        if (!Application.isFocused) return;
         UpdateTelemetry();
         UpdateBoxes();
         UpdateRobot();
@@ -298,6 +304,9 @@ public class ProxyConnection : MonoBehaviour
                     {
                         virtualRobotPositionData = JsonConvert.DeserializeObject<VirtualRobotPositionData>(serverMessage);
                         updateRobot = true;
+                        //Vector3 pos = new Vector3(virtualRobotPositionData.data.posX, virtualRobotPositionData.data.posY, virtualRobotPositionData.data.posZ);
+                        //Debug.Log("RobotPosition: " + pos);
+                        Debug.Log(serverMessage);
                     }
                 }
             }
@@ -325,21 +334,21 @@ public class ProxyConnection : MonoBehaviour
     void UpdateBoxes()
     {
         if (!updateBoxes) return;
-        float time = (Time.timeSinceLevelLoad * 1000f) % 1000;
         controller.ResetBBs();
         foreach (BoundingData.Data.Box box in boundingData.data.boxes)
         {
             controller.SetBB(box.type, box.coords);
         }
         updateBoxes = false;
-        Debug.Log(((Time.timeSinceLevelLoad * 1000f) % 1000) - time);
     }
 
     void UpdateRobot()
     {
         if (!updateRobot) return;
-        virtualRobot.transform.localPosition = virtualRobot.transform.position;
-        virtualRobot.transform.localRotation = virtualRobot.transform.rotation;
+        Vector3 pos = new Vector3(virtualRobotPositionData.data.posX, virtualRobotPositionData.data.posY, virtualRobotPositionData.data.posZ);
+        Quaternion rot = new Quaternion(virtualRobotPositionData.data.rotX, virtualRobotPositionData.data.rotY, virtualRobotPositionData.data.rotZ, virtualRobotPositionData.data.rotW);
+        virtualRobot.transform.localPosition = pos;
+        virtualRobot.transform.localRotation = rot;
     }
 
     public void UpdateValues(RobotData m)
