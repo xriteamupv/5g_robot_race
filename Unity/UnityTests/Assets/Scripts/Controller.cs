@@ -8,6 +8,7 @@ public class Controller : MonoBehaviour
 
     public RenderTexture rt;
     public CustomPipelinePlayer pipelinePlayer;
+    public CustomPipelinePlayer pipelinePlayer2;
     public GameObject mainMenu;
     public GameObject robotScene;
     public V_5[] boxes;
@@ -32,6 +33,8 @@ public class Controller : MonoBehaviour
 
     public LayerMask layerMask;
 
+    bool bUsePipeline2;
+
     void Start()
     {
         //Debug.Log("displays connected: " + Display.displays.Length);
@@ -43,6 +46,7 @@ public class Controller : MonoBehaviour
             Display.displays[i].Activate();
         }
         CreateBBPools();
+        bUsePipeline2 = false;
     }
 
     public void ConvertTexture(Texture texture)
@@ -53,11 +57,24 @@ public class Controller : MonoBehaviour
 
     private void Update()
     {
-        ConvertTexture(pipelinePlayer.VideoTexture);
+        if (!bUsePipeline2)
+        {
+            ConvertTexture(pipelinePlayer.VideoTexture);
+        }
+        else
+        {
+            ConvertTexture(pipelinePlayer2.VideoTexture);
+        }
 
         if (Input.GetKeyDown(KeyCode.R))
         {
             ResetScene();
+        }
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            pipelinePlayer.pipeline = GetComponent<Utilities>().pipeline2;
+            bUsePipeline2 = true;
         }
     }
 
