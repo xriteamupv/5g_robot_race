@@ -263,7 +263,7 @@ public class Controller : MonoBehaviour
     {
         startTime = DateTime.Now;  // Almacenamos el tiempo en que enviamos el comando de velocidad 0
         string currentTime = startTime.ToString("HH:mm:ss.fff");  // Formato de hora con milisegundos
-        Debug.Log("****EL ROBOT HA TENIDO CONTACTO CON LA CAJA (CONTROLLER) ****: " + currentTime);
+        Debug.Log("****EL ROBOT HA CAMBIADO LA VELOCIDAD (CONTROLLER) ****: " + currentTime);
 
         // Cambiar la velocidad a 0 en lugar de aleatoria
         var robotSpeed = baseSpeed + powerUpSpeed + (coinCounter / 10);
