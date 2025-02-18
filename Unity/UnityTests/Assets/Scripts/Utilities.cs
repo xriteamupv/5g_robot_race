@@ -7,6 +7,8 @@ public class Utilities : MonoBehaviour
 {
 
     public CustomPipelinePlayer player;
+    public string pipeline;
+    public string pipeline2;
 
     void Awake()
     {
@@ -20,11 +22,13 @@ public class Utilities : MonoBehaviour
             return;
         }
 
-        player.pipeline = lines[0];
+        pipeline = lines[0];
+        player.pipeline = pipeline;
         ProxyConnection pc = GetComponent<ProxyConnection>();
         pc.IP = lines[1];
         pc.receivingPort = int.Parse(lines[2]);
         pc.sendingPort = int.Parse(lines[3]);
         pc.selectedRobot = lines[4];
+        pipeline2 = lines[5];
     }
 }

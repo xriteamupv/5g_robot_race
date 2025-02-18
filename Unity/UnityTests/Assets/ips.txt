@@ -1,6 +1,6 @@
-
-rtspsrc location=rtsp://172.21.32.87:8554/cam protocols=tcp latency=100 ! rtph264depay ! avdec_h264 ! videoconvert ! appsink name=videoSink
+rtspsrc location=rtsp://localhost:8554/cam protocols=tcp latency=100 ! rtph264depay ! avdec_h264 ! videoconvert ! appsink name=videoSink
 172.21.32.87
-5007
-5008
-Robot 2
+5005
+5006
+Robot 1
+rtspsrc location=rtsp://localhost:8554/cam2 protocols=tcp latency=100 ! rtph264depay ! avdec_h264 ! videoconvert ! appsink name=videoSink
