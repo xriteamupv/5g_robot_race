@@ -1,5 +1,8 @@
+using Bhaptics.SDK2;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -28,6 +31,13 @@ public class Controller : MonoBehaviour
     public RectTransform[] orangeRect;
     public RectTransform[] yellowRect;
     public RectTransform[] greenRect;
+
+    //Added from UPV
+    public int coinCounter = 0;
+    public TMP_Text CoinCounterText;
+    private float baseSpeed = 0.8f;
+    private float powerUpSpeed;
+    private DateTime startTime;
 
 
     public LayerMask layerMask;
@@ -59,6 +69,9 @@ public class Controller : MonoBehaviour
         {
             ResetScene();
         }
+
+        //Added from UPV
+        CoinCounterText.text = coinCounter.ToString();
     }
 
     void CreateBBPools()
@@ -220,5 +233,47 @@ public class Controller : MonoBehaviour
         {
             b.ActivateBox();
         }
+    }
+
+    public void IncrementCoins()
+    {
+        if (coinCounter < 10)
+        {
+            coinCounter++;
+            modifySpeed();
+        }
+    }
+
+    public void ReduceCoins()
+    {
+        coinCounter = coinCounter - 3;
+        if (coinCounter < 0)
+        {
+            coinCounter = 0;
+        }
+        modifySpeed();
+    }
+
+    public void setPowerUpSpeed(float speed)
+    {
+        powerUpSpeed = speed;
+    }
+
+    public void modifySpeed()
+    {
+        startTime = DateTime.Now;  // Almacenamos el tiempo en que enviamos el comando de velocidad 0
+        string currentTime = startTime.ToString("HH:mm:ss.fff");  // Formato de hora con milisegundos
+        Debug.Log("****EL ROBOT HA TENIDO CONTACTO CON LA CAJA (CONTROLLER) ****: " + currentTime);
+
+        // Cambiar la velocidad a 0 en lugar de aleatoria
+        var robotSpeed = baseSpeed + powerUpSpeed + (coinCounter / 10);
+        proxyConnection.ChangeRobotSpeed(robotSpeed);  // Establecer la velocidad en 0
+        BhapticsLibrary.PlayParam(BhapticsEvent.SUDDENBRAKE,
+                                intensity: 1f,
+                                duration: 0.8f,
+                                angleX: 0f,
+                                offsetY: 0f
+                            );
+        StartCoroutine(proxyConnection.ChangeRobotSpeedCo(robotSpeed, 20.0f));
     }
 }
