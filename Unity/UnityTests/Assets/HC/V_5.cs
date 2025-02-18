@@ -87,28 +87,28 @@ public class V_5 : MonoBehaviour
             int rand = Random.Range(0, 2);
             if (rand == 0)
             {
-                proxyConnection.ChangeRobotSpeed(0.7f);
                 BhapticsLibrary.PlayParam(BhapticsEvent.SUDDENBRAKE,
                                         intensity: 1f,   // The value multiplied by the original value
                                         duration: 0.8f,    // The value multiplied by the original value
                                         angleX: 0f,     // The value that rotates around global Vector3.up(0~360f)
                                         offsetY: 0f  // The value to move up and down(-0.5~0.5)
                                     );
-                StartCoroutine(proxyConnection.ChangeRobotSpeedCo(0.8f, buffTime));
+                GameObject.Find("Controller").GetComponent<Controller>().setPowerUpSpeed(-0.1f);
                 StartCoroutine(GameObject.Find("Controller").GetComponent<UIManager>().ShowMessageBox(UIManager.Sign.kSignSlower, true, buffTime));
             }
             else
             {
-                proxyConnection.ChangeRobotSpeed(1.0f);
                 BhapticsLibrary.PlayParam(BhapticsEvent.HIGHSPEEDRACE,
                                         intensity: 1f,   // The value multiplied by the original value
                                         duration: 0.8f,    // The value multiplied by the original value
                                         angleX: 0f,     // The value that rotates around global Vector3.up(0~360f)
                                         offsetY: 0f  // The value to move up and down(-0.5~0.5)
                                     );
-                StartCoroutine(proxyConnection.ChangeRobotSpeedCo(0.8f, buffTime));
+                GameObject.Find("Controller").GetComponent<Controller>().setPowerUpSpeed(0.1f);
                 StartCoroutine(GameObject.Find("Controller").GetComponent<UIManager>().ShowMessageBox(UIManager.Sign.kSignFaster, true, buffTime));
             }
+            //Llamar a funcion modificar velocidad en controller
+            GameObject.Find("Controller").GetComponent<Controller>().modifySpeed();
         }
     }
 }
