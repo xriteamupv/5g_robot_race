@@ -8,6 +8,9 @@ public class Utilities : MonoBehaviour
 
     public CustomPipelinePlayer player;
 
+    public GameObject modelo1;
+    public GameObject modelo2;
+
     void Awake()
     {
         string path = Application.dataPath + "/ips.txt";
@@ -26,5 +29,19 @@ public class Utilities : MonoBehaviour
         pc.receivingPort = int.Parse(lines[2]);
         pc.sendingPort = int.Parse(lines[3]);
         pc.selectedRobot = lines[4];
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.M))
+        {
+            ChangeModels();
+        }
+    }
+
+    public void ChangeModels()
+    {
+        modelo1.SetActive(!modelo1.activeSelf);
+        modelo2.SetActive(!modelo2.activeSelf);
     }
 }

@@ -66,7 +66,7 @@ public class UIManager : MonoBehaviour
     {
         if (Input.GetAxis("L2") > 0.0f && Input.GetAxis("R2") > 0.0f)
         {
-            xrOrigin.GetComponent<RecenterOrigin>().Recenter();
+            //xrOrigin.GetComponent<RecenterOrigin>().Recenter();
             PlaceSteeringWheel();
         }
 
