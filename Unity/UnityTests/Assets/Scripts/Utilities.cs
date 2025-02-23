@@ -10,6 +10,9 @@ public class Utilities : MonoBehaviour
     public string pipeline;
     public string pipeline2;
 
+    public GameObject modelo1;
+    public GameObject modelo2;
+
     void Awake()
     {
         string path = Application.dataPath + "/ips.txt";
@@ -30,5 +33,19 @@ public class Utilities : MonoBehaviour
         pc.sendingPort = int.Parse(lines[3]);
         pc.selectedRobot = lines[4];
         pipeline2 = lines[5];
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.M))
+        {
+            ChangeModels();
+        }
+    }
+
+    public void ChangeModels()
+    {
+        modelo1.SetActive(!modelo1.activeSelf);
+        modelo2.SetActive(!modelo2.activeSelf);
     }
 }
