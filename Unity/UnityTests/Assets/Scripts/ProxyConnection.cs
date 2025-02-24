@@ -158,7 +158,7 @@ public class ProxyConnection : MonoBehaviour
         updateTelemetry = false;
         updateBoxes = false;
         loop = true;
-        robotSpeedMultiplier = 0.0f;
+        robotSpeedMultiplier = 1.0f;
         currentIP = new IPEndPoint(IPAddress.Parse(IP), receivingPort);
 
         if (IP != "") Connect();
@@ -229,9 +229,11 @@ public class ProxyConnection : MonoBehaviour
     private void WheelInput()
     {
         float pedalInput = (Input.GetAxis("Pedal") - 1.0f) * -robotSpeedMultiplier; //cambiar multiplicador para modificar velocidad
-        if(pedalInput > 1.0f) pedalInput = 1.0f;
         // float pedal2Input = (Input.GetAxis("Back") - 1.0f) * 1.0f;
         float wheelInput = Input.GetAxis("Wheel") * -3.0f;
+
+        ui.ChangeSpeed(Mathf.Abs(pedalInput * 0.8f));
+
 
         ui.ChangeWheelRotation(-Input.GetAxis("Wheel") * 360.0f);
 

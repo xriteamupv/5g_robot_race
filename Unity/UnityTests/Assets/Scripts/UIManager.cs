@@ -43,6 +43,8 @@ public class UIManager : MonoBehaviour
 
     List<Coroutine> coroutineList;
 
+    public GameObject robotRig;
+
     public enum Sign
     {
         kSignWarning,
@@ -89,9 +91,10 @@ public class UIManager : MonoBehaviour
 
     public IEnumerator ShowMessageBox(Sign sign, bool hideAfterTime = false, float time = 0.0f)
     {
+        Debug.Log(sign);
         RectTransform rectTransform = signs[(int)sign].GetComponent<RectTransform>();
         float t = 0.0f;
-        rectTransform.position = Vector3.Lerp(Camera.main.transform.forward, Camera.main.transform.up, messageBoxAngle).normalized * messageBoxDistance;
+        rectTransform.position = robotRig.transform.position + Vector3.Lerp(robotRig.transform.forward, robotRig.transform.up, messageBoxAngle).normalized * messageBoxDistance;
         Vector3 lookDirection = rectTransform.position - Camera.main.transform.position;
         rectTransform.rotation = Quaternion.LookRotation(lookDirection.normalized, Vector3.up);
         while (rectTransform.localScale.x < messageBoxMaxScale.x)

@@ -13,6 +13,8 @@ public class VirtualRobotController : MonoBehaviour
     Ray rayForward;
     Ray rayBackward;
 
+    public ProxyConnection proxyConnection;
+
     void Start()
     {
     }
@@ -29,14 +31,13 @@ public class VirtualRobotController : MonoBehaviour
         float pedalInput = Input.GetAxis("Back"); // Reversa
         float wheelInput = Input.GetAxis("Wheel"); // Volante
 
-        manager.ChangeSpeed(Mathf.Abs(pedal2Input - 1.0f));
 
         // Calcular la dirección de movimiento y giro
         float moveDirection = pedal2Input - pedalInput;
         float turnDirection = wheelInput;
         
         // Aplicar movimiento hacia adelante/atrás
-        Vector3 movement = transform.forward * moveDirection * moveSpeed * Time.deltaTime;
+        Vector3 movement = (transform.forward * moveDirection * moveSpeed * Time.deltaTime) * proxyConnection.robotSpeedMultiplier;
 
         rayForward = new Ray(transform.position, -transform.forward);
         rayBackward = new Ray(transform.position, transform.forward);

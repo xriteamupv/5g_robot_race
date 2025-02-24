@@ -53,6 +53,7 @@ public class Controller : MonoBehaviour
             Display.displays[i].Activate();
         }
         CreateBBPools();
+        baseSpeed = 1.0f;
     }
 
     public void ConvertTexture(Texture texture)
@@ -274,6 +275,6 @@ public class Controller : MonoBehaviour
                                 angleX: 0f,
                                 offsetY: 0f
                             );
-        StartCoroutine(proxyConnection.ChangeRobotSpeedCo(robotSpeed, 20.0f));
+        proxyConnection.ChangeRobotSpeed(robotSpeed);
     }
 }
