@@ -280,6 +280,7 @@ public class Controller : MonoBehaviour
     public IEnumerator setPowerUpSpeed(float speed, float time)
     {
         yield return new WaitForSeconds(time);
+        Debug.Log("Power up speed vuelve a " + speed);
         powerUpSpeed = speed;
         yield return null;
     }

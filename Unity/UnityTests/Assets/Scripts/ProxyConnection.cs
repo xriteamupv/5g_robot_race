@@ -225,6 +225,7 @@ public class ProxyConnection : MonoBehaviour
 
     private void WheelInput()
     {
+        if(!Application.isFocused) return;
         float pedalInput = (Input.GetAxis("Pedal") - 1.0f) * -robotSpeedMultiplier; //cambiar multiplicador para modificar velocidad
         //Debug.Log("Speed en proxy connection " + robotSpeedMultiplier);
         Debug.Log(Input.GetAxis("Pedal"));
