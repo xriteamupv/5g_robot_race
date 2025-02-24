@@ -150,7 +150,7 @@ public class ProxyConnection : MonoBehaviour
 
     public float rotationSpeed = 1.0f;
     private Quaternion targetRotation;
-    public float robotSpeedMultiplier;
+    public float robotSpeedMultiplier = 0.0f;
 
     public Controller controller;
     public GameObject virtualRobot;
@@ -226,7 +226,9 @@ public class ProxyConnection : MonoBehaviour
     private void WheelInput()
     {
         float pedalInput = (Input.GetAxis("Pedal") - 1.0f) * -robotSpeedMultiplier; //cambiar multiplicador para modificar velocidad
-        if(pedalInput > 1.0f) pedalInput = 1.0f;
+        //Debug.Log("Speed en proxy connection " + robotSpeedMultiplier);
+        Debug.Log(Input.GetAxis("Pedal"));
+        //if(pedalInput > 1.0f) pedalInput = 1.0f;
         // float pedal2Input = (Input.GetAxis("Back") - 1.0f) * 1.0f;
         float wheelInput = Input.GetAxis("Wheel") * -3.0f;
 
@@ -306,7 +308,7 @@ public class ProxyConnection : MonoBehaviour
                         updateRobot = true;
                         //Vector3 pos = new Vector3(virtualRobotPositionData.data.posX, virtualRobotPositionData.data.posY, virtualRobotPositionData.data.posZ);
                         //Debug.Log("RobotPosition: " + pos);
-                        Debug.Log(serverMessage);
+                        //Debug.Log(serverMessage);
                     }
                 }
             }

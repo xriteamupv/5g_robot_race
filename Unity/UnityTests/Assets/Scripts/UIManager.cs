@@ -136,6 +136,7 @@ public class UIManager : MonoBehaviour
     public void ChangeLapTime(string newLapTime)
     {
         lapTime.transform.parent.gameObject.SetActive(true);
+        newLapTime = newLapTime.Split('.')[0];
         lapTime.text = newLapTime;
     }
 

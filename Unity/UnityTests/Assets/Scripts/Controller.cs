@@ -84,7 +84,7 @@ public class Controller : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             pipelinePlayer.pipeline = GetComponent<Utilities>().pipeline2;
-            bUsePipeline2 = true;
+            //bUsePipeline2 = true;
         }
 
         //Added from UPV
@@ -277,6 +277,13 @@ public class Controller : MonoBehaviour
         powerUpSpeed = speed;
     }
 
+    public IEnumerator setPowerUpSpeed(float speed, float time)
+    {
+        yield return new WaitForSeconds(time);
+        powerUpSpeed = speed;
+        yield return null;
+    }
+
     public void modifySpeed()
     {
         startTime = DateTime.Now;  // Almacenamos el tiempo en que enviamos el comando de velocidad 0
@@ -285,6 +292,7 @@ public class Controller : MonoBehaviour
 
         // Cambiar la velocidad a 0 en lugar de aleatoria
         var robotSpeed = baseSpeed + powerUpSpeed + (coinCounter / 10);
+        Debug.Log("Power up speed " + powerUpSpeed + "total speed " + robotSpeed);
         proxyConnection.ChangeRobotSpeed(robotSpeed);  // Establecer la velocidad en 0
         BhapticsLibrary.PlayParam(BhapticsEvent.SUDDENBRAKE,
                                 intensity: 1f,
