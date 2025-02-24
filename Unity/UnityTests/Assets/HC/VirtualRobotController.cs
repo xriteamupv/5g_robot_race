@@ -8,11 +8,16 @@ public class VirtualRobotController : MonoBehaviour
     public float turnSpeed = 100f;
     public UIManager manager;
 
+    RaycastHit rayHitForward;
+    RaycastHit rayHitBackward;
+    Ray rayForward;
+    Ray rayBackward;
+
     void Start()
     {
     }
 
-    void Update()
+    void FixedUpdate()
     {
         MoveRobot();
     }
@@ -32,8 +37,22 @@ public class VirtualRobotController : MonoBehaviour
         
         // Aplicar movimiento hacia adelante/atrás
         Vector3 movement = transform.forward * moveDirection * moveSpeed * Time.deltaTime;
-        transform.position += movement;
-        
+
+        rayForward = new Ray(transform.position, -transform.forward);
+        rayBackward = new Ray(transform.position, transform.forward);
+        if (Physics.Raycast(rayForward, out rayHitForward, 1.75f) || Physics.Raycast(rayBackward, out rayHitBackward, 1.75f))
+        {
+            if((rayHitForward.collider?.gameObject.tag != "walls" || moveDirection > 0.0f) && (rayHitBackward.collider?.gameObject.tag != "walls" || moveDirection < 0.0f))
+            {
+                transform.position += movement;
+            }
+        }
+        else
+        {
+            transform.position += movement;
+        }
+
+
         // Aplicar giro
         transform.Rotate(Vector3.up, turnDirection * turnSpeed * Time.deltaTime);
     }
