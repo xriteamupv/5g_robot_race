@@ -35,7 +35,7 @@ public class Controller : MonoBehaviour
     //Added from UPV
     public int coinCounter = 0;
     public TMP_Text CoinCounterText;
-    private float baseSpeed = 0.8f;
+    private float baseSpeed = 1.0f;
     private float powerUpSpeed;
     private DateTime startTime;
 
@@ -260,6 +260,20 @@ public class Controller : MonoBehaviour
         powerUpSpeed = speed;
     }
 
+    public IEnumerator setPowerUpSpeedCo(float newSpeed, float time)
+    {
+        yield return new WaitForSeconds(time);
+        powerUpSpeed = newSpeed;
+        modifySpeed();
+        yield return null;
+    }
+
+    public void setBaseSpeed(float speed)
+    {
+        baseSpeed = speed;
+        modifySpeed();
+    }
+
     public void modifySpeed()
     {
         startTime = DateTime.Now;  // Almacenamos el tiempo en que enviamos el comando de velocidad 0
@@ -267,14 +281,9 @@ public class Controller : MonoBehaviour
         Debug.Log("****EL ROBOT HA CAMBIADO LA VELOCIDAD (CONTROLLER) ****: " + currentTime);
 
         // Cambiar la velocidad a 0 en lugar de aleatoria
-        var robotSpeed = baseSpeed + powerUpSpeed + (coinCounter / 10);
+        var robotSpeed = baseSpeed + powerUpSpeed + ((float)coinCounter / 100);
+        Debug.Log("New Speed " + robotSpeed);
         proxyConnection.ChangeRobotSpeed(robotSpeed);  // Establecer la velocidad en 0
-        BhapticsLibrary.PlayParam(BhapticsEvent.SUDDENBRAKE,
-                                intensity: 1f,
-                                duration: 0.8f,
-                                angleX: 0f,
-                                offsetY: 0f
-                            );
         proxyConnection.ChangeRobotSpeed(robotSpeed);
     }
 }

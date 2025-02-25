@@ -87,7 +87,7 @@ public class V_5 : MonoBehaviour
             int rand = Random.Range(0, 2);
             if (rand == 0)
             {
-                BhapticsLibrary.PlayParam(BhapticsEvent.SUDDENBRAKE,
+                BhapticsLibrary.PlayParam(BhapticsEvent.FASTER_SPEED,
                                         intensity: 1f,   // The value multiplied by the original value
                                         duration: 0.8f,    // The value multiplied by the original value
                                         angleX: 0f,     // The value that rotates around global Vector3.up(0~360f)
@@ -98,7 +98,7 @@ public class V_5 : MonoBehaviour
             }
             else
             {
-                BhapticsLibrary.PlayParam(BhapticsEvent.HIGHSPEEDRACE,
+                BhapticsLibrary.PlayParam(BhapticsEvent.LOWER_SPEED,
                                         intensity: 1f,   // The value multiplied by the original value
                                         duration: 0.8f,    // The value multiplied by the original value
                                         angleX: 0f,     // The value that rotates around global Vector3.up(0~360f)
@@ -109,6 +109,7 @@ public class V_5 : MonoBehaviour
             }
             //Llamar a funcion modificar velocidad en controller
             GameObject.Find("Controller").GetComponent<Controller>().modifySpeed();
+            StartCoroutine(GameObject.Find("Controller").GetComponent<Controller>().setPowerUpSpeedCo(0.0f, buffTime));
         }
     }
 }

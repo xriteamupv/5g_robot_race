@@ -47,7 +47,7 @@ public class TrafficLight : MonoBehaviour
         }
         if(time >= sectorTimes[sectorTimes.Count - 1] && doOnce)
         {
-            BhapticsLibrary.PlayParam(BhapticsEvent.STARTINGRACE,
+            BhapticsLibrary.PlayParam(BhapticsEvent.FORBIDDEN_ZONE,
                                     intensity: 1f,   // The value multiplied by the original value
                                     duration: 0.8f,    // The value multiplied by the original value
                                     angleX: 0f,     // The value that rotates around global Vector3.up(0~360f)

@@ -209,7 +209,7 @@ public class UIManager : MonoBehaviour
                 }
                 coroutineList.Clear();
                 coroutineList.Add(StartCoroutine(ShowMessageBox(Sign.kSignWarning)));
-                BhapticsLibrary.PlayParam(BhapticsEvent.CARWARNINGLEFT,
+                BhapticsLibrary.PlayParam(BhapticsEvent.WARNING_LEFT,
                                         intensity: 1f,   // The value multiplied by the original value
                                         duration: 0.8f,    // The value multiplied by the original value
                                         angleX: 0f,     // The value that rotates around global Vector3.up(0~360f)
@@ -247,7 +247,7 @@ public class UIManager : MonoBehaviour
                 }
                 coroutineList.Clear();
                 coroutineList.Add(StartCoroutine(ShowMessageBox(Sign.kSignWarning)));
-                BhapticsLibrary.PlayParam(BhapticsEvent.CARWARNINGRIGHT,
+                BhapticsLibrary.PlayParam(BhapticsEvent.WARNING_RIGHT,
                                         intensity: 1f,   // The value multiplied by the original value
                                         duration: 0.8f,    // The value multiplied by the original value
                                         angleX: 0f,     // The value that rotates around global Vector3.up(0~360f)

@@ -17,22 +17,14 @@ namespace Bhaptics.SDK2
     public class BhapticsEvent
     {
         
-        public const string SUDDENBRAKE = "suddenbrake";
+        public const string WARNING_LEFT = "warning_left";
         
-        public const string GAME_START = "game_start";
+        public const string WARNING_RIGHT = "warning_right";
         
-        public const string STARTINGRACE = "startingrace";
+        public const string LOWER_SPEED = "lower_speed";
         
-        public const string FINISHINGRACE = "finishingrace";
+        public const string FASTER_SPEED = "faster_speed";
         
-        public const string BOXHAPTICANIMATION = "boxhapticanimation";
-        
-        public const string CARWARNINGRIGHT = "carwarningright";
-        
-        public const string CARWARNINGLEFT = "carwarningleft";
-        
-        public const string HIGHSPEEDRACE = "highspeedrace";
-        
-        public const string COLLISION = "collision";
+        public const string FORBIDDEN_ZONE = "forbidden_zone";
     }
 }
