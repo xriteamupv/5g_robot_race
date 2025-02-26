@@ -24,7 +24,6 @@ public class SlowZone : MonoBehaviour
     {
         if (other.CompareTag("robot") && controller != null)
         {
-            Debug.Log("Entering slow zone");
             controller.setBaseSpeed(0.4f);
             BhapticsLibrary.PlayParam(BhapticsEvent.FORBIDDEN_ZONE,
                         intensity: 1f,
@@ -39,7 +38,6 @@ public class SlowZone : MonoBehaviour
     {
         if (other.CompareTag("robot") && controller != null)
         {
-            Debug.Log("Exiting slow zone");
             controller.setBaseSpeed(1.0f);
         }
     }

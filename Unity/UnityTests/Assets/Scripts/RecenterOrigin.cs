@@ -15,8 +15,6 @@ public class RecenterOrigin : MonoBehaviour
         //xrOrigin.MatchOriginUpCameraForward(target.up, target.forward);
 
         Vector3 desplazamiento = target.position - xrOrigin.Camera.transform.position;
-        Debug.Log("target"+target.position);
-        Debug.Log("camera" + xrOrigin.Camera.transform.position);
         xrOrigin.CameraFloorOffsetObject.transform.position += desplazamiento;
     }
 

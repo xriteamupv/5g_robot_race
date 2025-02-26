@@ -85,14 +85,12 @@ public class UIManager : MonoBehaviour
 
     public void PlaceSteeringWheel()
     {
-        Debug.Log("Placing wheel");
         steeringWheel.transform.position = Vector3.Lerp(leftHand.position, rightHand.position, 0.5f);
         //steeringWheel.transform.position += wheelOffset;
     }
 
     public IEnumerator ShowMessageBox(Sign sign, bool hideAfterTime = false, float time = 0.0f)
     {
-        Debug.Log(sign);
         RectTransform rectTransform = signs[(int)sign].GetComponent<RectTransform>();
         float t = 0.0f;
         rectTransform.position = robotRig.transform.position + Vector3.Lerp(robotRig.transform.forward, robotRig.transform.up, messageBoxAngle).normalized * messageBoxDistance;

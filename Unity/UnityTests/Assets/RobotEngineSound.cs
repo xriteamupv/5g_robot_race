@@ -30,7 +30,6 @@ public class RobotEngineSound : MonoBehaviour
 
         // Obtener la velocidad del robot
         float velocidad = -Input.GetAxis("Pedal")+1.0f;
-        Debug.Log(velocidad);
 
         // Normalizar entre 0 y 1
         float velocidadNormalizada = Mathf.Clamp01(velocidad / maxSpeed);

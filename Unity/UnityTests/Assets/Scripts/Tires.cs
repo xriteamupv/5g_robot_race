@@ -45,7 +45,6 @@ public class Tires : MonoBehaviour
             // Nueva lógica: siempre establecer la velocidad a 0 y registrar el tiempo de envío
             startTime = DateTime.Now;  // Almacenamos el tiempo en que enviamos el comando de velocidad 0
             string currentTime = startTime.ToString("HH:mm:ss.fff");  // Formato de hora con milisegundos
-            Debug.Log("****EL ROBOT HA TENIDO CONTACTO CON LA RUEDA****: " + currentTime);
             audioSource.Play();
 
             controller.ReduceCoins();
