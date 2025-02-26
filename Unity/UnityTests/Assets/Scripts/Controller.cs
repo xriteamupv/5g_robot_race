@@ -73,6 +73,7 @@ public class Controller : MonoBehaviour
 
         //Added from UPV
         CoinCounterText.text = coinCounter.ToString();
+
     }
 
     void CreateBBPools()
@@ -284,6 +285,5 @@ public class Controller : MonoBehaviour
         var robotSpeed = baseSpeed + powerUpSpeed + ((float)coinCounter / 100);
         Debug.Log("New Speed " + robotSpeed);
         proxyConnection.ChangeRobotSpeed(robotSpeed);  // Establecer la velocidad en 0
-        proxyConnection.ChangeRobotSpeed(robotSpeed);
     }
 }

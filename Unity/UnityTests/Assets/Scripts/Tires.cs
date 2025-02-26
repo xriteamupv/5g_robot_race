@@ -10,11 +10,13 @@ public class Tires : MonoBehaviour
     public GameObject player = null;  // Asigna el objeto del jugador desde el inspector
     public float visibilityDistance = 50.0f;  // Distancia a la que los objetos se vuelven visibles
     Controller controller;
+    AudioSource audioSource;
 
 
     private void Start()
     {
         controller = GameObject.Find("Controller").GetComponent<Controller>();
+        audioSource = GameObject.Find("Tires").GetComponent<AudioSource>();
         if (player == null)
         {
             player = GameObject.Find("Robot");
@@ -44,10 +46,10 @@ public class Tires : MonoBehaviour
             startTime = DateTime.Now;  // Almacenamos el tiempo en que enviamos el comando de velocidad 0
             string currentTime = startTime.ToString("HH:mm:ss.fff");  // Formato de hora con milisegundos
             Debug.Log("****EL ROBOT HA TENIDO CONTACTO CON LA RUEDA****: " + currentTime);
+            audioSource.Play();
 
             controller.ReduceCoins();
         }
-        //Destroy(gameObject);
 
     }
 }

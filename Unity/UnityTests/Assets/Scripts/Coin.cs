@@ -11,11 +11,13 @@ public class Coin : MonoBehaviour
     public GameObject player = null;  // Asigna el objeto del jugador desde el inspector
     public float visibilityDistance = 30.0f;  // Distancia a la que los objetos se vuelven visibles
     Controller controller;
+    AudioSource audioSource;
 
 
     private void Start()
     {
         controller = GameObject.Find("Controller").GetComponent<Controller>();
+        audioSource = GameObject.Find("Coins").GetComponent<AudioSource>();
         if (player == null)
         {
             player = GameObject.Find("Robot");
@@ -56,9 +58,11 @@ public class Coin : MonoBehaviour
                         angleX: 0f,     // The value that rotates around global Vector3.up(0~360f)
                         offsetY: 0f  // The value to move up and down(-0.5~0.5)
                     );
+            audioSource.Play();
+            CoinGlow.Play();
+            Destroy(gameObject);
         }
-        CoinGlow.Play();
-        Destroy(gameObject);
+        
         
     }
 }

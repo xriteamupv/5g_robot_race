@@ -85,6 +85,7 @@ public class UIManager : MonoBehaviour
 
     public void PlaceSteeringWheel()
     {
+        Debug.Log("Placing wheel");
         steeringWheel.transform.position = Vector3.Lerp(leftHand.position, rightHand.position, 0.5f);
         //steeringWheel.transform.position += wheelOffset;
     }
