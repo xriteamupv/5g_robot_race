@@ -47,7 +47,7 @@ public class Tires : MonoBehaviour
             string currentTime = startTime.ToString("HH:mm:ss.fff");  // Formato de hora con milisegundos
             audioSource.Play();
 
-            controller.ReduceCoins();
+            controller.ReduceCoins(3);
         }
 
     }

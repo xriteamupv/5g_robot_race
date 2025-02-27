@@ -158,7 +158,7 @@ public class ProxyConnection : MonoBehaviour
         updateTelemetry = false;
         updateBoxes = false;
         loop = true;
-        robotSpeedMultiplier = 1.0f;
+        robotSpeedMultiplier = 0.0f;
         currentIP = new IPEndPoint(IPAddress.Parse(IP), receivingPort);
 
         if (IP != "") Connect();

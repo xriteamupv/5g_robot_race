@@ -246,9 +246,9 @@ public class Controller : MonoBehaviour
         }
     }
 
-    public void ReduceCoins()
+    public void ReduceCoins(int amount)
     {
-        coinCounter = coinCounter - 3;
+        coinCounter = coinCounter - amount;
         if (coinCounter < 0)
         {
             coinCounter = 0;

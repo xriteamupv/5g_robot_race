@@ -20,6 +20,11 @@ public class SlowZone : MonoBehaviour
         }
     }
 
+    void ReduceCoinTrigger()
+    {
+        controller.ReduceCoins(1);
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("robot") && controller != null)
@@ -31,14 +36,17 @@ public class SlowZone : MonoBehaviour
                         angleX: 0f,
                         offsetY: 0f
                     );
+            InvokeRepeating("ReduceCoinTrigger", 2, 1);
         }
     }
+
 
     void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("robot") && controller != null)
         {
             controller.setBaseSpeed(1.0f);
+            CancelInvoke("ReduceCoinTrigger");
         }
     }
 }

@@ -61,6 +61,7 @@ public class TrafficLight : MonoBehaviour
         if (time >= sectorTimes[sectorTimes.Count - 1] + 3.0f)
         {
             gameObject.SetActive(false);
+            proxyConnection.robotSpeedMultiplier = 1.0f;
             this.enabled = false;
         }
     }

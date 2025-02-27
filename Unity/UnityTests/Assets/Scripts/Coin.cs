@@ -2,6 +2,7 @@ using Bhaptics.SDK2;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UI;
 using UnityEngine;
 
 public class Coin : MonoBehaviour
@@ -9,7 +10,7 @@ public class Coin : MonoBehaviour
     private DateTime startTime;  // Variable para registrar el tiempo en que se envía la velocidad a 0
     public ParticleSystem CoinGlow;
     public GameObject player = null;  // Asigna el objeto del jugador desde el inspector
-    public float visibilityDistance = 30.0f;  // Distancia a la que los objetos se vuelven visibles
+    private float visibilityDistance = 30.0f;  // Distancia a la que los objetos se vuelven visibles
     Controller controller;
     AudioSource audioSource;
 
@@ -60,7 +61,6 @@ public class Coin : MonoBehaviour
                     );
             audioSource.Play();
             CoinGlow.Play();
-            Destroy(gameObject);
         }
         
         
