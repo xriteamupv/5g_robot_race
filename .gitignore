@@ -72,5 +72,6 @@ Obj/*
 Lib/*
 ipch/*
 Bin/*
+Assets/Vuplex/*
 Dependencies/*
 Unity/UnityTests/GStreamerLog.txt

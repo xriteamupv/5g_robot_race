@@ -1,39 +1,757 @@
-[13:07:44] Info: Render API: 4
-[13:07:44] Info: Render API: 2
-[13:07:44] Info: Render API: 2
-[13:08:20] mray_gstreamer_initialize
-[13:08:20] Warning: Trying to link elements videoconvert9 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert9 is in pipeline4
-[13:08:20] Warning: Trying to link elements videoconvert9 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert9 is in pipeline4
-[13:08:20] Info: Creating Pipeline: rtspsrc location=rtsp://localhost:8554/cam protocols=tcp latency=100 ! rtph264depay ! avdec_h264 ! videoconvert ! appsink name=videoSink ! video/x-raw,format=I420 ! videoconvert ! appsink name=videoSink
-[13:08:20] Error: GstCustomVideoPlayer: Pipeline error: could not link videoSink to videoconvert9, videoSink can't handle caps video/x-raw, format=(string)I420
-[13:08:20] Info: : GstPipelineHandler::CreatePipeline 
-[13:08:20] Info: : Pipeline State Changes:  GST_STATE_NULL--> GST_STATE_READY
-[13:08:20] Info: Progress: (open) Opening Stream
-[13:08:20] Info: : Pausing
-[13:08:20] Info: : Pipeline State Changes:  GST_STATE_READY--> GST_STATE_PAUSED
-[13:08:20] Info: : Playing
-[13:08:20] Info: : Playing
-[13:08:20] Info: Progress: (connect) Connecting to rtsp://localhost:8554/cam
-[13:08:20] Info: Progress: (request) Sending PLAY request
-[13:08:24] Warning: : GstPipelineHandler::HandleMessage(): error in module rtspsrc4  reported: Could not open resource for reading and writing. - ../gst/rtsp/gstrtspsrc.c(8340): gst_rtspsrc_retrieve_sdp (): /GstPipeline:pipeline4/GstRTSPSrc:rtspsrc4:
+[11:41:45] Info: Render API: 4
+[11:41:45] Info: Render API: 2
+[11:41:45] Info: Render API: 2
+[11:48:28] mray_gstreamer_initialize
+[11:48:28] Initializing GStreamer Engine
+[11:48:28] Initializing GStreamer Engine - Done
+[11:48:28] Initializing GStreamer
+[11:48:28] GStreamerCore - Registering Elements!
+[11:48:28] GStreamerCore - GStreamer inited
+[11:48:28] Initializing GStreamer - Done
+[11:48:28] Entering main loop
+[11:48:28] Warning: Trying to link elements videoconvert1 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert1 is in pipeline0
+[11:48:28] Warning: Trying to link elements videoconvert1 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert1 is in pipeline0
+[11:48:28] Info: Creating Pipeline: rtspsrc location=rtsp://localhost:8554/cam protocols=tcp latency=100 ! rtph264depay ! avdec_h264 ! videoconvert ! appsink name=videoSink ! video/x-raw,format=I420 ! videoconvert ! appsink name=videoSink
+[11:48:28] Error: GstCustomVideoPlayer: Pipeline error: could not link videoSink to videoconvert1, videoSink can't handle caps video/x-raw, format=(string)I420
+[11:48:28] Info: : GstPipelineHandler::CreatePipeline 
+[11:48:28] Info: : Pipeline State Changes:  GST_STATE_NULL--> GST_STATE_READY
+[11:48:28] Info: Progress: (open) Opening Stream
+[11:48:28] Info: : Pausing
+[11:48:28] Info: : Playing
+[11:48:28] Info: : Playing
+[11:48:28] Info: Progress: (connect) Connecting to rtsp://localhost:8554/cam
+[11:48:28] Info: Progress: (request) Sending PLAY request
+[11:48:28] Info: _g_io_module_get_default: Found default implementation dummy (GDummyProxyResolver) for ‘gio-proxy-resolver’
+[11:48:28] Info: HKEY_CLASSES_ROOT\VisualStudio.edmx.17.0.0.0.c0964493\shell\Shell\Open does not have a "command" subkey
+[11:48:29] Info: Unexpectedly, UWP app `Microsoft.ScreenSketch_11.2409.25.0_x64__8wekyb3d8bbwe' (AUMId `Microsoft.ScreenSketch_8wekyb3d8bbwe!App') supports 29 extensions but has no verbs
+[11:48:29] Info: Unexpectedly, UWP app `Microsoft.OutlookForWindows_1.2025.109.100_x64__8wekyb3d8bbwe' (AUMId `Microsoft.OutlookForWindows_8wekyb3d8bbwe!Microsoft.OutlookforWindows') supports 4 extensions but has no verbs
+[11:48:29] Info: Unexpectedly, UWP app `Clipchamp.Clipchamp_3.1.12020.0_neutral__yxz26nhyzhsrt' (AUMId `Clipchamp.Clipchamp_yxz26nhyzhsrt!App') supports 41 extensions but has no verbs
+[11:48:29] Info: Collecting capable appnames: 0ms
+Allocating hashtables:...... 0ms
+Reading capable apps:        94ms
+Reading URL associations:... 16ms
+Reading extension assocs:    109ms
+Reading exe-only apps:...... 16ms
+Reading classes:             390ms
+Reading UWP apps:            407ms
+Postprocessing:..............15ms
+TOTAL:                       1047ms
+[11:48:30] Info: : GstPipelineHandler::Stop 
+[11:48:30] Info: Progress: (request) PLAY canceled
+[11:48:30] Info: Progress: (request) Sending PAUSE request
+[11:48:30] Info: : GstPipelineHandler::Close 
+[11:48:30] Warning: Can't seek to invalid time
+[11:48:30] Info: : GstPipelineHandler::Stop 
+[11:48:30] Info: Progress: (close) Closing Stream
+[11:48:30] Info: Progress: (request) PAUSE canceled
+[11:48:30] Info: : GstPipelineHandler::Close 
+[11:48:30] Info: : GstPipelineHandler::Stop 
+[11:48:30] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:48:30] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:48:30] Error: gst_object_unref: assertion 'object != NULL' failed
+[11:48:30] Info: : GstPipelineHandler::Close 
+[11:48:30] Info: : GstPipelineHandler::Stop 
+[11:48:30] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:48:30] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:48:30] Error: gst_object_unref: assertion 'object != NULL' failed
+[11:48:30] Info: Checking is active
+[11:48:46] mray_gstreamer_initialize
+[11:48:46] Warning: Trying to link elements videoconvert3 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert3 is in pipeline1
+[11:48:46] Warning: Trying to link elements videoconvert3 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert3 is in pipeline1
+[11:48:46] Info: Creating Pipeline: rtspsrc location=rtsp://localhost:8554/cam protocols=tcp latency=100 ! rtph264depay ! avdec_h264 ! videoconvert ! appsink name=videoSink ! video/x-raw,format=I420 ! videoconvert ! appsink name=videoSink
+[11:48:46] Error: GstCustomVideoPlayer: Pipeline error: could not link videoSink to videoconvert3, videoSink can't handle caps video/x-raw, format=(string)I420
+[11:48:46] Info: : GstPipelineHandler::CreatePipeline 
+[11:48:46] Info: : Pipeline State Changes:  GST_STATE_NULL--> GST_STATE_READY
+[11:48:46] Info: Progress: (open) Opening Stream
+[11:48:46] Info: : Pausing
+[11:48:46] Info: : Pipeline State Changes:  GST_STATE_READY--> GST_STATE_PAUSED
+[11:48:46] Info: : Playing
+[11:48:46] Info: : Playing
+[11:48:46] Info: Progress: (connect) Connecting to rtsp://localhost:8554/cam
+[11:48:46] Info: Progress: (request) Sending PLAY request
+[11:48:50] Warning: : GstPipelineHandler::HandleMessage(): error in module rtspsrc1  reported: Could not open resource for reading and writing. - ../gst/rtsp/gstrtspsrc.c(8340): gst_rtspsrc_retrieve_sdp (): /GstPipeline:pipeline1/GstRTSPSrc:rtspsrc1:
 Failed to connect. (Generic error)
-[13:08:24] Info: Progress: (open) Open failed
-[13:08:24] Info: Progress: (request) PLAY failed
-[13:08:35] Info: : GstPipelineHandler::Stop 
-[13:08:35] Info: Progress: (request) Sending PAUSE request
-[13:08:35] Info: : GstPipelineHandler::Close 
-[13:08:35] Info: Progress: (request) PAUSE failed
-[13:08:35] Info: : GstPipelineHandler::Stop 
-[13:08:35] Info: Progress: (close) Closing Stream
-[13:08:35] Info: Progress: (close) Closed Stream
-[13:08:35] Info: : GstPipelineHandler::Close 
-[13:08:35] Info: : GstPipelineHandler::Stop 
-[13:08:35] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
-[13:08:35] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
-[13:08:35] Error: gst_object_unref: assertion 'object != NULL' failed
-[13:08:35] Info: : GstPipelineHandler::Close 
-[13:08:35] Info: : GstPipelineHandler::Stop 
-[13:08:35] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
-[13:08:35] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
-[13:08:35] Error: gst_object_unref: assertion 'object != NULL' failed
-[13:08:35] Info: Checking is active
+[11:48:50] Info: Progress: (open) Open failed
+[11:48:50] Info: Progress: (request) PLAY failed
+[11:48:53] Info: : GstPipelineHandler::Stop 
+[11:48:53] Info: Progress: (request) Sending PAUSE request
+[11:48:53] Info: : GstPipelineHandler::Close 
+[11:48:53] Info: : GstPipelineHandler::Stop 
+[11:48:53] Info: Progress: (close) Closing Stream
+[11:48:53] Info: Progress: (close) Closed Stream
+[11:48:53] Info: : GstPipelineHandler::Close 
+[11:48:53] Info: : GstPipelineHandler::Stop 
+[11:48:53] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:48:53] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:48:53] Error: gst_object_unref: assertion 'object != NULL' failed
+[11:48:53] Info: : GstPipelineHandler::Close 
+[11:48:53] Info: : GstPipelineHandler::Stop 
+[11:48:53] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:48:53] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:48:53] Error: gst_object_unref: assertion 'object != NULL' failed
+[11:48:53] Info: Checking is active
+[11:50:59] mray_gstreamer_initialize
+[11:50:59] Warning: Trying to link elements videoconvert5 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert5 is in pipeline2
+[11:50:59] Warning: Trying to link elements videoconvert5 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert5 is in pipeline2
+[11:50:59] Info: Creating Pipeline: rtspsrc location=rtsp://localhost:8554/cam protocols=tcp latency=100 ! rtph264depay ! avdec_h264 ! videoconvert ! appsink name=videoSink ! video/x-raw,format=I420 ! videoconvert ! appsink name=videoSink
+[11:50:59] Error: GstCustomVideoPlayer: Pipeline error: could not link videoSink to videoconvert5, videoSink can't handle caps video/x-raw, format=(string)I420
+[11:50:59] Info: : GstPipelineHandler::CreatePipeline 
+[11:50:59] Info: : Pipeline State Changes:  GST_STATE_NULL--> GST_STATE_READY
+[11:50:59] Info: Progress: (open) Opening Stream
+[11:50:59] Info: : Pipeline State Changes:  GST_STATE_READY--> GST_STATE_PAUSED
+[11:50:59] Info: : Playing
+[11:50:59] Info: : Playing
+[11:50:59] Info: Progress: (connect) Connecting to rtsp://localhost:8554/cam
+[11:50:59] Info: Progress: (request) Sending PLAY request
+[11:51:03] Warning: : GstPipelineHandler::HandleMessage(): error in module rtspsrc2  reported: Could not open resource for reading and writing. - ../gst/rtsp/gstrtspsrc.c(8340): gst_rtspsrc_retrieve_sdp (): /GstPipeline:pipeline2/GstRTSPSrc:rtspsrc2:
+Failed to connect. (Generic error)
+[11:51:03] Info: Progress: (open) Open failed
+[11:51:03] Info: Progress: (request) PLAY failed
+[11:51:13] Info: : GstPipelineHandler::Stop 
+[11:51:13] Info: Progress: (request) Sending PAUSE request
+[11:51:13] Info: : GstPipelineHandler::Close 
+[11:51:13] Info: Progress: (request) PAUSE failed
+[11:51:13] Info: Progress: (close) Closing Stream
+[11:51:13] Info: : GstPipelineHandler::Close 
+[11:51:13] Info: : GstPipelineHandler::Stop 
+[11:51:13] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:51:13] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:51:13] Error: gst_object_unref: assertion 'object != NULL' failed
+[11:51:13] Info: : GstPipelineHandler::Close 
+[11:51:13] Info: : GstPipelineHandler::Stop 
+[11:51:13] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:51:13] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:51:13] Error: gst_object_unref: assertion 'object != NULL' failed
+[11:51:13] Info: Checking is active
+[11:51:43] mray_gstreamer_initialize
+[11:51:43] Warning: Trying to link elements videoconvert7 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert7 is in pipeline3
+[11:51:43] Warning: Trying to link elements videoconvert7 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert7 is in pipeline3
+[11:51:43] Info: Creating Pipeline: rtspsrc location=rtsp://localhost:8554/cam protocols=tcp latency=100 ! rtph264depay ! avdec_h264 ! videoconvert ! appsink name=videoSink ! video/x-raw,format=I420 ! videoconvert ! appsink name=videoSink
+[11:51:43] Error: GstCustomVideoPlayer: Pipeline error: could not link videoSink to videoconvert7, videoSink can't handle caps video/x-raw, format=(string)I420
+[11:51:43] Info: : GstPipelineHandler::CreatePipeline 
+[11:51:43] Info: : Pipeline State Changes:  GST_STATE_NULL--> GST_STATE_READY
+[11:51:43] Info: Progress: (open) Opening Stream
+[11:51:43] Info: : Pausing
+[11:51:43] Info: : Playing
+[11:51:43] Info: : Playing
+[11:51:43] Info: Progress: (connect) Connecting to rtsp://localhost:8554/cam
+[11:51:43] Info: Progress: (request) Sending PLAY request
+[11:51:47] Warning: : GstPipelineHandler::HandleMessage(): error in module rtspsrc3  reported: Could not open resource for reading and writing. - ../gst/rtsp/gstrtspsrc.c(8340): gst_rtspsrc_retrieve_sdp (): /GstPipeline:pipeline3/GstRTSPSrc:rtspsrc3:
+Failed to connect. (Generic error)
+[11:51:47] Info: Progress: (open) Open failed
+[11:51:47] Info: Progress: (request) PLAY failed
+[11:51:51] Info: : GstPipelineHandler::Stop 
+[11:51:51] Info: Progress: (request) Sending PAUSE request
+[11:51:51] Info: : GstPipelineHandler::Close 
+[11:51:51] Info: : GstPipelineHandler::Stop 
+[11:51:51] Info: Progress: (close) Closing Stream
+[11:51:51] Info: Progress: (close) Closed Stream
+[11:51:51] Info: : GstPipelineHandler::Close 
+[11:51:51] Info: : GstPipelineHandler::Stop 
+[11:51:51] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:51:51] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:51:51] Error: gst_object_unref: assertion 'object != NULL' failed
+[11:51:51] Info: : GstPipelineHandler::Close 
+[11:51:51] Info: : GstPipelineHandler::Stop 
+[11:51:51] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:51:51] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:51:51] Error: gst_object_unref: assertion 'object != NULL' failed
+[11:51:51] Info: Checking is active
+[11:52:30] mray_gstreamer_initialize
+[11:52:30] Warning: Trying to link elements videoconvert9 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert9 is in pipeline4
+[11:52:30] Warning: Trying to link elements videoconvert9 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert9 is in pipeline4
+[11:52:30] Info: Creating Pipeline: rtspsrc location=rtsp://localhost:8554/cam protocols=tcp latency=100 ! rtph264depay ! avdec_h264 ! videoconvert ! appsink name=videoSink ! video/x-raw,format=I420 ! videoconvert ! appsink name=videoSink
+[11:52:30] Error: GstCustomVideoPlayer: Pipeline error: could not link videoSink to videoconvert9, videoSink can't handle caps video/x-raw, format=(string)I420
+[11:52:30] Info: : GstPipelineHandler::CreatePipeline 
+[11:52:30] Info: : Pipeline State Changes:  GST_STATE_NULL--> GST_STATE_READY
+[11:52:30] Info: Progress: (open) Opening Stream
+[11:52:30] Info: : Pipeline State Changes:  GST_STATE_READY--> GST_STATE_PAUSED
+[11:52:30] Info: : Playing
+[11:52:30] Info: : Playing
+[11:52:30] Info: Progress: (connect) Connecting to rtsp://localhost:8554/cam
+[11:52:30] Info: Progress: (request) Sending PLAY request
+[11:52:34] Warning: : GstPipelineHandler::HandleMessage(): error in module rtspsrc4  reported: Could not open resource for reading and writing. - ../gst/rtsp/gstrtspsrc.c(8340): gst_rtspsrc_retrieve_sdp (): /GstPipeline:pipeline4/GstRTSPSrc:rtspsrc4:
+Failed to connect. (Generic error)
+[11:52:34] Info: Progress: (open) Open failed
+[11:52:34] Info: Progress: (request) PLAY failed
+[11:52:36] Info: : GstPipelineHandler::Stop 
+[11:52:36] Info: Progress: (request) Sending PAUSE request
+[11:52:36] Info: : GstPipelineHandler::Close 
+[11:52:36] Info: Progress: (request) PAUSE failed
+[11:52:36] Info: : GstPipelineHandler::Stop 
+[11:52:36] Info: Progress: (close) Closing Stream
+[11:52:36] Info: Progress: (close) Closed Stream
+[11:52:36] Info: : GstPipelineHandler::Close 
+[11:52:36] Info: : GstPipelineHandler::Stop 
+[11:52:36] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:52:36] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:52:36] Error: gst_object_unref: assertion 'object != NULL' failed
+[11:52:36] Info: : GstPipelineHandler::Close 
+[11:52:36] Info: : GstPipelineHandler::Stop 
+[11:52:36] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:52:36] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:52:36] Error: gst_object_unref: assertion 'object != NULL' failed
+[11:52:37] Info: Checking is active
+[11:53:24] mray_gstreamer_initialize
+[11:53:24] Warning: Trying to link elements videoconvert11 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert11 is in pipeline5
+[11:53:24] Warning: Trying to link elements videoconvert11 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert11 is in pipeline5
+[11:53:24] Info: Creating Pipeline: rtspsrc location=rtsp://localhost:8554/cam protocols=tcp latency=100 ! rtph264depay ! avdec_h264 ! videoconvert ! appsink name=videoSink ! video/x-raw,format=I420 ! videoconvert ! appsink name=videoSink
+[11:53:24] Error: GstCustomVideoPlayer: Pipeline error: could not link videoSink to videoconvert11, videoSink can't handle caps video/x-raw, format=(string)I420
+[11:53:24] Info: : GstPipelineHandler::CreatePipeline 
+[11:53:24] Info: : Pipeline State Changes:  GST_STATE_NULL--> GST_STATE_READY
+[11:53:24] Info: Progress: (open) Opening Stream
+[11:53:24] Info: : Pausing
+[11:53:24] Info: : Playing
+[11:53:24] Info: : Playing
+[11:53:24] Info: Progress: (connect) Connecting to rtsp://localhost:8554/cam
+[11:53:24] Info: Progress: (request) Sending PLAY request
+[11:53:28] Info: : GstPipelineHandler::Stop 
+[11:53:28] Info: Progress: (request) PLAY canceled
+[11:53:28] Info: : GstPipelineHandler::Close 
+[11:53:28] Info: : GstPipelineHandler::Stop 
+[11:53:28] Warning: Can't seek to invalid time
+[11:53:28] Info: : GstPipelineHandler::Close 
+[11:53:28] Info: : GstPipelineHandler::Stop 
+[11:53:28] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:53:28] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:53:28] Error: gst_object_unref: assertion 'object != NULL' failed
+[11:53:28] Info: : GstPipelineHandler::Close 
+[11:53:28] Info: : GstPipelineHandler::Stop 
+[11:53:28] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:53:28] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:53:28] Error: gst_object_unref: assertion 'object != NULL' failed
+[11:53:28] Info: Checking is active
+[11:53:42] mray_gstreamer_initialize
+[11:53:42] Warning: Trying to link elements videoconvert13 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert13 is in pipeline6
+[11:53:42] Warning: Trying to link elements videoconvert13 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert13 is in pipeline6
+[11:53:42] Info: Creating Pipeline: rtspsrc location=rtsp://localhost:8554/cam protocols=tcp latency=100 ! rtph264depay ! avdec_h264 ! videoconvert ! appsink name=videoSink ! video/x-raw,format=I420 ! videoconvert ! appsink name=videoSink
+[11:53:42] Error: GstCustomVideoPlayer: Pipeline error: could not link videoSink to videoconvert13, videoSink can't handle caps video/x-raw, format=(string)I420
+[11:53:42] Info: : GstPipelineHandler::CreatePipeline 
+[11:53:42] Info: : Pipeline State Changes:  GST_STATE_NULL--> GST_STATE_READY
+[11:53:42] Info: Progress: (open) Opening Stream
+[11:53:42] Info: : Pausing
+[11:53:42] Info: : Playing
+[11:53:42] Info: : Playing
+[11:53:42] Info: Progress: (connect) Connecting to rtsp://localhost:8554/cam
+[11:53:42] Info: Progress: (request) Sending PLAY request
+[11:53:46] Warning: : GstPipelineHandler::HandleMessage(): error in module rtspsrc6  reported: Could not open resource for reading and writing. - ../gst/rtsp/gstrtspsrc.c(8340): gst_rtspsrc_retrieve_sdp (): /GstPipeline:pipeline6/GstRTSPSrc:rtspsrc6:
+Failed to connect. (Generic error)
+[11:53:46] Info: Progress: (open) Open failed
+[11:53:46] Info: Progress: (request) PLAY failed
+[11:54:16] Info: : GstPipelineHandler::Stop 
+[11:54:16] Info: Progress: (request) Sending PAUSE request
+[11:54:16] Info: : GstPipelineHandler::Close 
+[11:54:16] Info: Progress: (request) PAUSE failed
+[11:54:16] Info: : GstPipelineHandler::Stop 
+[11:54:16] Info: Progress: (close) Closing Stream
+[11:54:16] Info: : GstPipelineHandler::Close 
+[11:54:16] Info: : GstPipelineHandler::Stop 
+[11:54:16] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:54:16] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:54:16] Error: gst_object_unref: assertion 'object != NULL' failed
+[11:54:16] Info: : GstPipelineHandler::Close 
+[11:54:16] Info: : GstPipelineHandler::Stop 
+[11:54:16] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:54:16] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:54:16] Error: gst_object_unref: assertion 'object != NULL' failed
+[11:54:16] Info: Checking is active
+[11:55:14] mray_gstreamer_initialize
+[11:55:14] Warning: Trying to link elements videoconvert15 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert15 is in pipeline7
+[11:55:14] Warning: Trying to link elements videoconvert15 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert15 is in pipeline7
+[11:55:14] Info: Creating Pipeline: rtspsrc location=rtsp://localhost:8554/cam protocols=tcp latency=100 ! rtph264depay ! avdec_h264 ! videoconvert ! appsink name=videoSink ! video/x-raw,format=I420 ! videoconvert ! appsink name=videoSink
+[11:55:14] Error: GstCustomVideoPlayer: Pipeline error: could not link videoSink to videoconvert15, videoSink can't handle caps video/x-raw, format=(string)I420
+[11:55:14] Info: : GstPipelineHandler::CreatePipeline 
+[11:55:14] Info: : Pipeline State Changes:  GST_STATE_NULL--> GST_STATE_READY
+[11:55:14] Info: Progress: (open) Opening Stream
+[11:55:14] Info: : Pausing
+[11:55:14] Info: : Playing
+[11:55:14] Info: : Playing
+[11:55:14] Info: Progress: (connect) Connecting to rtsp://localhost:8554/cam
+[11:55:14] Info: Progress: (request) Sending PLAY request
+[11:55:18] Warning: : GstPipelineHandler::HandleMessage(): error in module rtspsrc7  reported: Could not open resource for reading and writing. - ../gst/rtsp/gstrtspsrc.c(8340): gst_rtspsrc_retrieve_sdp (): /GstPipeline:pipeline7/GstRTSPSrc:rtspsrc7:
+Failed to connect. (Generic error)
+[11:55:18] Info: Progress: (open) Open failed
+[11:55:18] Info: Progress: (request) PLAY failed
+[11:55:24] Info: : GstPipelineHandler::Stop 
+[11:55:24] Info: Progress: (request) Sending PAUSE request
+[11:55:24] Info: : GstPipelineHandler::Close 
+[11:55:24] Info: Progress: (request) PAUSE failed
+[11:55:24] Info: : GstPipelineHandler::Stop 
+[11:55:24] Info: Progress: (close) Closing Stream
+[11:55:24] Info: Progress: (close) Closed Stream
+[11:55:24] Info: : GstPipelineHandler::Close 
+[11:55:24] Info: : GstPipelineHandler::Stop 
+[11:55:24] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:55:24] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:55:24] Error: gst_object_unref: assertion 'object != NULL' failed
+[11:55:24] Info: : GstPipelineHandler::Close 
+[11:55:24] Info: : GstPipelineHandler::Stop 
+[11:55:24] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:55:24] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:55:24] Error: gst_object_unref: assertion 'object != NULL' failed
+[11:55:24] Info: Checking is active
+[11:57:19] mray_gstreamer_initialize
+[11:57:19] Warning: Trying to link elements videoconvert17 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert17 is in pipeline8
+[11:57:19] Warning: Trying to link elements videoconvert17 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert17 is in pipeline8
+[11:57:19] Info: Creating Pipeline: rtspsrc location=rtsp://localhost:8554/cam protocols=tcp latency=100 ! rtph264depay ! avdec_h264 ! videoconvert ! appsink name=videoSink ! video/x-raw,format=I420 ! videoconvert ! appsink name=videoSink
+[11:57:19] Error: GstCustomVideoPlayer: Pipeline error: could not link videoSink to videoconvert17, videoSink can't handle caps video/x-raw, format=(string)I420
+[11:57:19] Info: : GstPipelineHandler::CreatePipeline 
+[11:57:19] Info: : Pipeline State Changes:  GST_STATE_NULL--> GST_STATE_READY
+[11:57:19] Info: Progress: (open) Opening Stream
+[11:57:19] Info: : Pausing
+[11:57:19] Info: : Pipeline State Changes:  GST_STATE_READY--> GST_STATE_PAUSED
+[11:57:19] Info: : Playing
+[11:57:19] Info: : Playing
+[11:57:19] Info: Progress: (connect) Connecting to rtsp://localhost:8554/cam
+[11:57:19] Info: Progress: (request) Sending PLAY request
+[11:57:23] Warning: : GstPipelineHandler::HandleMessage(): error in module rtspsrc8  reported: Could not open resource for reading and writing. - ../gst/rtsp/gstrtspsrc.c(8340): gst_rtspsrc_retrieve_sdp (): /GstPipeline:pipeline8/GstRTSPSrc:rtspsrc8:
+Failed to connect. (Generic error)
+[11:57:23] Info: Progress: (open) Open failed
+[11:57:23] Info: Progress: (request) PLAY failed
+[11:57:26] Info: : GstPipelineHandler::Stop 
+[11:57:26] Info: Progress: (request) Sending PAUSE request
+[11:57:26] Info: : GstPipelineHandler::Close 
+[11:57:26] Info: Progress: (request) PAUSE failed
+[11:57:26] Info: : GstPipelineHandler::Stop 
+[11:57:26] Info: Progress: (close) Closing Stream
+[11:57:26] Info: Progress: (close) Closed Stream
+[11:57:26] Info: : GstPipelineHandler::Close 
+[11:57:26] Info: : GstPipelineHandler::Stop 
+[11:57:26] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:57:26] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:57:26] Error: gst_object_unref: assertion 'object != NULL' failed
+[11:57:26] Info: : GstPipelineHandler::Close 
+[11:57:26] Info: : GstPipelineHandler::Stop 
+[11:57:26] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:57:26] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:57:26] Error: gst_object_unref: assertion 'object != NULL' failed
+[11:57:26] Info: Checking is active
+[11:57:47] mray_gstreamer_initialize
+[11:57:47] Warning: Trying to link elements videoconvert19 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert19 is in pipeline9
+[11:57:47] Warning: Trying to link elements videoconvert19 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert19 is in pipeline9
+[11:57:47] Info: Creating Pipeline: rtspsrc location=rtsp://localhost:8554/cam protocols=tcp latency=100 ! rtph264depay ! avdec_h264 ! videoconvert ! appsink name=videoSink ! video/x-raw,format=I420 ! videoconvert ! appsink name=videoSink
+[11:57:47] Error: GstCustomVideoPlayer: Pipeline error: could not link videoSink to videoconvert19, videoSink can't handle caps video/x-raw, format=(string)I420
+[11:57:47] Info: : GstPipelineHandler::CreatePipeline 
+[11:57:47] Info: : Pipeline State Changes:  GST_STATE_NULL--> GST_STATE_READY
+[11:57:47] Info: Progress: (open) Opening Stream
+[11:57:47] Info: : Pausing
+[11:57:47] Info: : Pipeline State Changes:  GST_STATE_READY--> GST_STATE_PAUSED
+[11:57:47] Info: : Playing
+[11:57:47] Info: : Playing
+[11:57:47] Info: Progress: (connect) Connecting to rtsp://localhost:8554/cam
+[11:57:47] Info: Progress: (request) Sending PLAY request
+[11:57:51] Warning: : GstPipelineHandler::HandleMessage(): error in module rtspsrc9  reported: Could not open resource for reading and writing. - ../gst/rtsp/gstrtspsrc.c(8340): gst_rtspsrc_retrieve_sdp (): /GstPipeline:pipeline9/GstRTSPSrc:rtspsrc9:
+Failed to connect. (Generic error)
+[11:57:51] Info: Progress: (open) Open failed
+[11:57:51] Info: Progress: (request) PLAY failed
+[11:58:38] Info: : GstPipelineHandler::Stop 
+[11:58:38] Info: Progress: (request) Sending PAUSE request
+[11:58:38] Info: : GstPipelineHandler::Close 
+[11:58:38] Info: Progress: (request) PAUSE failed
+[11:58:38] Info: : GstPipelineHandler::Stop 
+[11:58:38] Info: Progress: (close) Closing Stream
+[11:58:38] Info: Progress: (close) Closed Stream
+[11:58:38] Info: : GstPipelineHandler::Close 
+[11:58:38] Info: : GstPipelineHandler::Stop 
+[11:58:38] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:58:38] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:58:38] Error: gst_object_unref: assertion 'object != NULL' failed
+[11:58:38] Info: : GstPipelineHandler::Close 
+[11:58:38] Info: : GstPipelineHandler::Stop 
+[11:58:38] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:58:38] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:58:38] Error: gst_object_unref: assertion 'object != NULL' failed
+[11:58:38] Info: Checking is active
+[11:58:42] mray_gstreamer_initialize
+[11:58:42] Warning: Trying to link elements videoconvert21 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert21 is in pipeline10
+[11:58:42] Warning: Trying to link elements videoconvert21 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert21 is in pipeline10
+[11:58:42] Info: Creating Pipeline: rtspsrc location=rtsp://localhost:8554/cam protocols=tcp latency=100 ! rtph264depay ! avdec_h264 ! videoconvert ! appsink name=videoSink ! video/x-raw,format=I420 ! videoconvert ! appsink name=videoSink
+[11:58:42] Error: GstCustomVideoPlayer: Pipeline error: could not link videoSink to videoconvert21, videoSink can't handle caps video/x-raw, format=(string)I420
+[11:58:42] Info: : GstPipelineHandler::CreatePipeline 
+[11:58:42] Info: : Pipeline State Changes:  GST_STATE_NULL--> GST_STATE_READY
+[11:58:42] Info: Progress: (open) Opening Stream
+[11:58:42] Info: : Pausing
+[11:58:42] Info: : Pipeline State Changes:  GST_STATE_READY--> GST_STATE_PAUSED
+[11:58:42] Info: : Playing
+[11:58:42] Info: : Playing
+[11:58:42] Info: Progress: (connect) Connecting to rtsp://localhost:8554/cam
+[11:58:42] Info: Progress: (request) Sending PLAY request
+[11:58:46] Warning: : GstPipelineHandler::HandleMessage(): error in module rtspsrc10  reported: Could not open resource for reading and writing. - ../gst/rtsp/gstrtspsrc.c(8340): gst_rtspsrc_retrieve_sdp (): /GstPipeline:pipeline10/GstRTSPSrc:rtspsrc10:
+Failed to connect. (Generic error)
+[11:58:46] Info: Progress: (open) Open failed
+[11:58:46] Info: Progress: (request) PLAY failed
+[11:58:47] Info: : GstPipelineHandler::Stop 
+[11:58:47] Info: Progress: (request) Sending PAUSE request
+[11:58:47] Info: Progress: (request) PAUSE failed
+[11:58:47] Info: Progress: (close) Closing Stream
+[11:58:47] Info: : GstPipelineHandler::Stop 
+[11:58:47] Info: Progress: (close) Closed Stream
+[11:58:47] Info: : Pipeline State Changes:  GST_STATE_PAUSED--> GST_STATE_READY
+[11:58:47] Info: : GstPipelineHandler::Close 
+[11:58:47] Info: : GstPipelineHandler::Stop 
+[11:58:47] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:58:47] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:58:47] Error: gst_object_unref: assertion 'object != NULL' failed
+[11:58:47] Info: : GstPipelineHandler::Close 
+[11:58:47] Info: : GstPipelineHandler::Stop 
+[11:58:47] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:58:47] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[11:58:47] Error: gst_object_unref: assertion 'object != NULL' failed
+[11:58:47] Info: Checking is active
+[12:06:20] mray_gstreamer_initialize
+[12:06:20] Warning: Trying to link elements videoconvert23 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert23 is in pipeline11
+[12:06:20] Warning: Trying to link elements videoconvert23 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert23 is in pipeline11
+[12:06:20] Info: Creating Pipeline: rtspsrc location=rtsp://localhost:8554/cam protocols=tcp latency=100 ! rtph264depay ! avdec_h264 ! videoconvert ! appsink name=videoSink ! video/x-raw,format=I420 ! videoconvert ! appsink name=videoSink
+[12:06:20] Error: GstCustomVideoPlayer: Pipeline error: could not link videoSink to videoconvert23, videoSink can't handle caps video/x-raw, format=(string)I420
+[12:06:20] Info: : GstPipelineHandler::CreatePipeline 
+[12:06:20] Info: : Pipeline State Changes:  GST_STATE_NULL--> GST_STATE_READY
+[12:06:20] Info: Progress: (open) Opening Stream
+[12:06:20] Info: : Pausing
+[12:06:20] Info: : Pipeline State Changes:  GST_STATE_READY--> GST_STATE_PAUSED
+[12:06:20] Info: : Playing
+[12:06:20] Info: : Playing
+[12:06:20] Info: Progress: (connect) Connecting to rtsp://localhost:8554/cam
+[12:06:20] Info: Progress: (request) Sending PLAY request
+[12:06:24] Warning: : GstPipelineHandler::HandleMessage(): error in module rtspsrc11  reported: Could not open resource for reading and writing. - ../gst/rtsp/gstrtspsrc.c(8340): gst_rtspsrc_retrieve_sdp (): /GstPipeline:pipeline11/GstRTSPSrc:rtspsrc11:
+Failed to connect. (Generic error)
+[12:06:24] Info: Progress: (open) Open failed
+[12:06:24] Info: Progress: (request) PLAY failed
+[12:06:26] Info: : GstPipelineHandler::Stop 
+[12:06:26] Info: Progress: (request) Sending PAUSE request
+[12:06:26] Info: : GstPipelineHandler::Close 
+[12:06:26] Info: : GstPipelineHandler::Stop 
+[12:06:26] Info: Progress: (close) Closed Stream
+[12:06:26] Info: : Pipeline State Changes:  GST_STATE_PAUSED--> GST_STATE_READY
+[12:06:26] Info: Progress: (open) Opening Stream
+[12:06:26] Info: : Pipeline State Changes:  GST_STATE_READY--> GST_STATE_PAUSED
+[12:06:26] Warning: Can't seek to invalid time
+[12:06:26] Info: : GstPipelineHandler::Close 
+[12:06:26] Info: : GstPipelineHandler::Stop 
+[12:06:26] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:06:26] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:06:26] Error: gst_object_unref: assertion 'object != NULL' failed
+[12:06:26] Info: : GstPipelineHandler::Close 
+[12:06:26] Info: : GstPipelineHandler::Stop 
+[12:06:26] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:06:26] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:06:26] Error: gst_object_unref: assertion 'object != NULL' failed
+[12:06:26] Info: Checking is active
+[12:07:33] mray_gstreamer_initialize
+[12:07:33] Warning: Trying to link elements videoconvert25 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert25 is in pipeline12
+[12:07:33] Warning: Trying to link elements videoconvert25 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert25 is in pipeline12
+[12:07:33] Info: Creating Pipeline: rtspsrc location=rtsp://localhost:8554/cam protocols=tcp latency=100 ! rtph264depay ! avdec_h264 ! videoconvert ! appsink name=videoSink ! video/x-raw,format=I420 ! videoconvert ! appsink name=videoSink
+[12:07:33] Error: GstCustomVideoPlayer: Pipeline error: could not link videoSink to videoconvert25, videoSink can't handle caps video/x-raw, format=(string)I420
+[12:07:33] Info: : GstPipelineHandler::CreatePipeline 
+[12:07:33] Info: : Pipeline State Changes:  GST_STATE_NULL--> GST_STATE_READY
+[12:07:33] Info: Progress: (open) Opening Stream
+[12:07:33] Info: : Pausing
+[12:07:33] Info: : Pipeline State Changes:  GST_STATE_READY--> GST_STATE_PAUSED
+[12:07:33] Info: : Playing
+[12:07:33] Info: : Playing
+[12:07:33] Info: Progress: (connect) Connecting to rtsp://localhost:8554/cam
+[12:07:33] Info: Progress: (request) Sending PLAY request
+[12:07:37] Warning: : GstPipelineHandler::HandleMessage(): error in module rtspsrc12  reported: Could not open resource for reading and writing. - ../gst/rtsp/gstrtspsrc.c(8340): gst_rtspsrc_retrieve_sdp (): /GstPipeline:pipeline12/GstRTSPSrc:rtspsrc12:
+Failed to connect. (Generic error)
+[12:07:37] Info: Progress: (open) Open failed
+[12:07:37] Info: Progress: (request) PLAY failed
+[12:07:37] Info: : GstPipelineHandler::Stop 
+[12:07:37] Info: Progress: (request) Sending PAUSE request
+[12:07:37] Info: Progress: (request) PAUSE failed
+[12:07:37] Info: : GstPipelineHandler::Close 
+[12:07:37] Info: Progress: (close) Closing Stream
+[12:07:37] Info: Progress: (close) Closed Stream
+[12:07:37] Info: : Pipeline State Changes:  GST_STATE_PAUSED--> GST_STATE_READY
+[12:07:37] Info: : GstPipelineHandler::Close 
+[12:07:37] Info: : GstPipelineHandler::Stop 
+[12:07:37] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:07:37] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:07:37] Error: gst_object_unref: assertion 'object != NULL' failed
+[12:07:37] Info: : GstPipelineHandler::Close 
+[12:07:37] Info: : GstPipelineHandler::Stop 
+[12:07:37] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:07:37] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:07:37] Error: gst_object_unref: assertion 'object != NULL' failed
+[12:07:37] Info: Checking is active
+[12:07:46] mray_gstreamer_initialize
+[12:07:46] Warning: Trying to link elements videoconvert27 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert27 is in pipeline13
+[12:07:46] Warning: Trying to link elements videoconvert27 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert27 is in pipeline13
+[12:07:46] Info: Creating Pipeline: rtspsrc location=rtsp://localhost:8554/cam protocols=tcp latency=100 ! rtph264depay ! avdec_h264 ! videoconvert ! appsink name=videoSink ! video/x-raw,format=I420 ! videoconvert ! appsink name=videoSink
+[12:07:46] Error: GstCustomVideoPlayer: Pipeline error: could not link videoSink to videoconvert27, videoSink can't handle caps video/x-raw, format=(string)I420
+[12:07:46] Info: : GstPipelineHandler::CreatePipeline 
+[12:07:46] Info: : Pipeline State Changes:  GST_STATE_NULL--> GST_STATE_READY
+[12:07:46] Info: Progress: (open) Opening Stream
+[12:07:46] Info: : Pausing
+[12:07:46] Info: : Pipeline State Changes:  GST_STATE_READY--> GST_STATE_PAUSED
+[12:07:46] Info: : Playing
+[12:07:46] Info: : Playing
+[12:07:46] Info: Progress: (connect) Connecting to rtsp://localhost:8554/cam
+[12:07:46] Info: Progress: (request) Sending PLAY request
+[12:07:50] Warning: : GstPipelineHandler::HandleMessage(): error in module rtspsrc13  reported: Could not open resource for reading and writing. - ../gst/rtsp/gstrtspsrc.c(8340): gst_rtspsrc_retrieve_sdp (): /GstPipeline:pipeline13/GstRTSPSrc:rtspsrc13:
+Failed to connect. (Generic error)
+[12:07:50] Info: Progress: (open) Open failed
+[12:07:50] Info: Progress: (request) PLAY failed
+[12:08:03] Info: : GstPipelineHandler::Stop 
+[12:08:03] Info: Progress: (request) Sending PAUSE request
+[12:08:03] Info: : GstPipelineHandler::Close 
+[12:08:03] Info: : GstPipelineHandler::Stop 
+[12:08:03] Info: Progress: (close) Closing Stream
+[12:08:03] Info: Progress: (close) Closed Stream
+[12:08:03] Info: : GstPipelineHandler::Close 
+[12:08:03] Info: : GstPipelineHandler::Stop 
+[12:08:03] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:08:03] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:08:03] Error: gst_object_unref: assertion 'object != NULL' failed
+[12:08:03] Info: : GstPipelineHandler::Close 
+[12:08:03] Info: : GstPipelineHandler::Stop 
+[12:08:03] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:08:03] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:08:03] Error: gst_object_unref: assertion 'object != NULL' failed
+[12:08:03] Info: Checking is active
+[12:08:20] mray_gstreamer_initialize
+[12:08:20] Warning: Trying to link elements videoconvert29 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert29 is in pipeline14
+[12:08:20] Warning: Trying to link elements videoconvert29 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert29 is in pipeline14
+[12:08:20] Info: Creating Pipeline: rtspsrc location=rtsp://localhost:8554/cam protocols=tcp latency=100 ! rtph264depay ! avdec_h264 ! videoconvert ! appsink name=videoSink ! video/x-raw,format=I420 ! videoconvert ! appsink name=videoSink
+[12:08:20] Error: GstCustomVideoPlayer: Pipeline error: could not link videoSink to videoconvert29, videoSink can't handle caps video/x-raw, format=(string)I420
+[12:08:20] Info: : GstPipelineHandler::CreatePipeline 
+[12:08:20] Info: : Pipeline State Changes:  GST_STATE_NULL--> GST_STATE_READY
+[12:08:20] Info: Progress: (open) Opening Stream
+[12:08:20] Info: : Pausing
+[12:08:20] Info: : Pipeline State Changes:  GST_STATE_READY--> GST_STATE_PAUSED
+[12:08:20] Info: : Playing
+[12:08:20] Info: : Playing
+[12:08:20] Info: Progress: (connect) Connecting to rtsp://localhost:8554/cam
+[12:08:20] Info: Progress: (request) Sending PLAY request
+[12:08:24] Warning: : GstPipelineHandler::HandleMessage(): error in module rtspsrc14  reported: Could not open resource for reading and writing. - ../gst/rtsp/gstrtspsrc.c(8340): gst_rtspsrc_retrieve_sdp (): /GstPipeline:pipeline14/GstRTSPSrc:rtspsrc14:
+Failed to connect. (Generic error)
+[12:08:24] Info: Progress: (open) Open failed
+[12:08:24] Info: Progress: (request) PLAY failed
+[12:29:02] Info: : GstPipelineHandler::Stop 
+[12:29:02] Info: Progress: (request) Sending PAUSE request
+[12:29:02] Info: : GstPipelineHandler::Close 
+[12:29:02] Info: : GstPipelineHandler::Stop 
+[12:29:02] Info: Progress: (close) Closing Stream
+[12:29:02] Info: Progress: (close) Closed Stream
+[12:29:02] Info: : GstPipelineHandler::Close 
+[12:29:02] Info: : GstPipelineHandler::Stop 
+[12:29:02] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:29:02] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:29:02] Error: gst_object_unref: assertion 'object != NULL' failed
+[12:29:02] Info: : GstPipelineHandler::Close 
+[12:29:02] Info: : GstPipelineHandler::Stop 
+[12:29:02] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:29:02] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:29:02] Error: gst_object_unref: assertion 'object != NULL' failed
+[12:29:02] Info: Checking is active
+[12:30:10] mray_gstreamer_initialize
+[12:30:10] Warning: Trying to link elements videoconvert31 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert31 is in pipeline15
+[12:30:10] Warning: Trying to link elements videoconvert31 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert31 is in pipeline15
+[12:30:10] Info: Creating Pipeline: rtspsrc location=rtsp://localhost:8554/cam protocols=tcp latency=100 ! rtph264depay ! avdec_h264 ! videoconvert ! appsink name=videoSink ! video/x-raw,format=I420 ! videoconvert ! appsink name=videoSink
+[12:30:10] Error: GstCustomVideoPlayer: Pipeline error: could not link videoSink to videoconvert31, videoSink can't handle caps video/x-raw, format=(string)I420
+[12:30:10] Info: : GstPipelineHandler::CreatePipeline 
+[12:30:10] Info: : Pipeline State Changes:  GST_STATE_NULL--> GST_STATE_READY
+[12:30:10] Info: Progress: (open) Opening Stream
+[12:30:10] Info: : Pausing
+[12:30:10] Info: : Pipeline State Changes:  GST_STATE_READY--> GST_STATE_PAUSED
+[12:30:10] Info: : Playing
+[12:30:10] Info: : Playing
+[12:30:10] Info: Progress: (connect) Connecting to rtsp://localhost:8554/cam
+[12:30:10] Info: Progress: (request) Sending PLAY request
+[12:30:14] Warning: : GstPipelineHandler::HandleMessage(): error in module rtspsrc15  reported: Could not open resource for reading and writing. - ../gst/rtsp/gstrtspsrc.c(8340): gst_rtspsrc_retrieve_sdp (): /GstPipeline:pipeline15/GstRTSPSrc:rtspsrc15:
+Failed to connect. (Generic error)
+[12:30:14] Info: Progress: (open) Open failed
+[12:30:14] Info: Progress: (request) PLAY failed
+[12:30:26] Info: : GstPipelineHandler::Stop 
+[12:30:26] Info: Progress: (request) Sending PAUSE request
+[12:30:26] Info: : GstPipelineHandler::Close 
+[12:30:26] Info: : GstPipelineHandler::Stop 
+[12:30:26] Info: Progress: (close) Closing Stream
+[12:30:26] Info: Progress: (close) Closed Stream
+[12:30:26] Info: : Pipeline State Changes:  GST_STATE_PAUSED--> GST_STATE_READY
+[12:30:26] Info: : GstPipelineHandler::Close 
+[12:30:26] Info: : GstPipelineHandler::Stop 
+[12:30:26] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:30:26] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:30:26] Error: gst_object_unref: assertion 'object != NULL' failed
+[12:30:26] Info: : GstPipelineHandler::Close 
+[12:30:26] Info: : GstPipelineHandler::Stop 
+[12:30:26] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:30:26] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:30:26] Error: gst_object_unref: assertion 'object != NULL' failed
+[12:30:26] Info: Checking is active
+[12:32:56] mray_gstreamer_initialize
+[12:32:56] Warning: Trying to link elements videoconvert33 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert33 is in pipeline16
+[12:32:56] Warning: Trying to link elements videoconvert33 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert33 is in pipeline16
+[12:32:56] Info: Creating Pipeline: rtspsrc location=rtsp://localhost:8554/cam protocols=tcp latency=100 ! rtph264depay ! avdec_h264 ! videoconvert ! appsink name=videoSink ! video/x-raw,format=I420 ! videoconvert ! appsink name=videoSink
+[12:32:56] Error: GstCustomVideoPlayer: Pipeline error: could not link videoSink to videoconvert33, videoSink can't handle caps video/x-raw, format=(string)I420
+[12:32:56] Info: : GstPipelineHandler::CreatePipeline 
+[12:32:56] Info: : Pipeline State Changes:  GST_STATE_NULL--> GST_STATE_READY
+[12:32:56] Info: Progress: (open) Opening Stream
+[12:32:56] Info: : Pausing
+[12:32:56] Info: : Playing
+[12:32:56] Info: : Playing
+[12:32:56] Info: Progress: (connect) Connecting to rtsp://localhost:8554/cam
+[12:32:56] Info: Progress: (request) Sending PLAY request
+[12:33:00] Warning: : GstPipelineHandler::HandleMessage(): error in module rtspsrc16  reported: Could not open resource for reading and writing. - ../gst/rtsp/gstrtspsrc.c(8340): gst_rtspsrc_retrieve_sdp (): /GstPipeline:pipeline16/GstRTSPSrc:rtspsrc16:
+Failed to connect. (Generic error)
+[12:33:00] Info: Progress: (open) Open failed
+[12:33:00] Info: Progress: (request) PLAY failed
+[12:33:08] Info: : GstPipelineHandler::Stop 
+[12:33:08] Info: Progress: (request) Sending PAUSE request
+[12:33:08] Info: : GstPipelineHandler::Close 
+[12:33:08] Info: Progress: (request) PAUSE failed
+[12:33:08] Info: : GstPipelineHandler::Stop 
+[12:33:08] Info: Progress: (close) Closing Stream
+[12:33:08] Info: Progress: (close) Closed Stream
+[12:33:08] Info: : GstPipelineHandler::Close 
+[12:33:08] Info: : GstPipelineHandler::Stop 
+[12:33:08] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:33:08] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:33:08] Error: gst_object_unref: assertion 'object != NULL' failed
+[12:33:08] Info: : GstPipelineHandler::Close 
+[12:33:08] Info: : GstPipelineHandler::Stop 
+[12:33:08] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:33:08] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:33:08] Error: gst_object_unref: assertion 'object != NULL' failed
+[12:33:08] Info: Checking is active
+[12:34:29] mray_gstreamer_initialize
+[12:34:29] Warning: Trying to link elements videoconvert35 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert35 is in pipeline17
+[12:34:29] Warning: Trying to link elements videoconvert35 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert35 is in pipeline17
+[12:34:29] Info: Creating Pipeline: rtspsrc location=rtsp://localhost:8554/cam protocols=tcp latency=100 ! rtph264depay ! avdec_h264 ! videoconvert ! appsink name=videoSink ! video/x-raw,format=I420 ! videoconvert ! appsink name=videoSink
+[12:34:29] Error: GstCustomVideoPlayer: Pipeline error: could not link videoSink to videoconvert35, videoSink can't handle caps video/x-raw, format=(string)I420
+[12:34:29] Info: : GstPipelineHandler::CreatePipeline 
+[12:34:29] Info: : Pipeline State Changes:  GST_STATE_NULL--> GST_STATE_READY
+[12:34:29] Info: Progress: (open) Opening Stream
+[12:34:29] Info: : Pausing
+[12:34:29] Info: : Pipeline State Changes:  GST_STATE_READY--> GST_STATE_PAUSED
+[12:34:29] Info: : Playing
+[12:34:29] Info: : Playing
+[12:34:29] Info: Progress: (connect) Connecting to rtsp://localhost:8554/cam
+[12:34:29] Info: Progress: (request) Sending PLAY request
+[12:34:33] Warning: : GstPipelineHandler::HandleMessage(): error in module rtspsrc17  reported: Could not open resource for reading and writing. - ../gst/rtsp/gstrtspsrc.c(8340): gst_rtspsrc_retrieve_sdp (): /GstPipeline:pipeline17/GstRTSPSrc:rtspsrc17:
+Failed to connect. (Generic error)
+[12:34:33] Info: Progress: (open) Open failed
+[12:34:33] Info: Progress: (request) PLAY failed
+[12:39:26] Info: : GstPipelineHandler::Stop 
+[12:39:26] Info: Progress: (request) Sending PAUSE request
+[12:39:26] Info: Progress: (request) PAUSE failed
+[12:39:26] Info: : GstPipelineHandler::Stop 
+[12:39:26] Info: Progress: (close) Closing Stream
+[12:39:26] Info: Progress: (close) Closed Stream
+[12:39:26] Info: : GstPipelineHandler::Close 
+[12:39:26] Info: : GstPipelineHandler::Stop 
+[12:39:26] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:39:26] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:39:26] Error: gst_object_unref: assertion 'object != NULL' failed
+[12:39:26] Info: : GstPipelineHandler::Close 
+[12:39:26] Info: : GstPipelineHandler::Stop 
+[12:39:26] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:39:26] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:39:26] Error: gst_object_unref: assertion 'object != NULL' failed
+[12:39:27] Info: Checking is active
+[12:55:03] mray_gstreamer_initialize
+[12:55:03] Warning: Trying to link elements videoconvert37 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert37 is in pipeline18
+[12:55:03] Warning: Trying to link elements videoconvert37 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert37 is in pipeline18
+[12:55:03] Info: Creating Pipeline: rtspsrc location=rtsp://localhost:8554/cam protocols=tcp latency=100 ! rtph264depay ! avdec_h264 ! videoconvert ! appsink name=videoSink ! video/x-raw,format=I420 ! videoconvert ! appsink name=videoSink
+[12:55:03] Error: GstCustomVideoPlayer: Pipeline error: could not link videoSink to videoconvert37, videoSink can't handle caps video/x-raw, format=(string)I420
+[12:55:03] Info: : GstPipelineHandler::CreatePipeline 
+[12:55:03] Info: : Pipeline State Changes:  GST_STATE_NULL--> GST_STATE_READY
+[12:55:03] Info: Progress: (open) Opening Stream
+[12:55:03] Info: : Pausing
+[12:55:03] Info: : Pipeline State Changes:  GST_STATE_READY--> GST_STATE_PAUSED
+[12:55:03] Info: : Playing
+[12:55:03] Info: : Playing
+[12:55:03] Info: Progress: (connect) Connecting to rtsp://localhost:8554/cam
+[12:55:03] Info: Progress: (request) Sending PLAY request
+[12:55:07] Warning: : GstPipelineHandler::HandleMessage(): error in module rtspsrc18  reported: Could not open resource for reading and writing. - ../gst/rtsp/gstrtspsrc.c(8340): gst_rtspsrc_retrieve_sdp (): /GstPipeline:pipeline18/GstRTSPSrc:rtspsrc18:
+Failed to connect. (Generic error)
+[12:55:07] Info: Progress: (open) Open failed
+[12:55:07] Info: Progress: (request) PLAY failed
+[12:55:13] Info: : GstPipelineHandler::Stop 
+[12:55:13] Info: Progress: (request) Sending PAUSE request
+[12:55:13] Info: : GstPipelineHandler::Close 
+[12:55:13] Info: Progress: (request) PAUSE failed
+[12:55:13] Info: : GstPipelineHandler::Stop 
+[12:55:13] Info: Progress: (close) Closing Stream
+[12:55:13] Info: Progress: (close) Closed Stream
+[12:55:13] Info: : GstPipelineHandler::Close 
+[12:55:13] Info: : GstPipelineHandler::Stop 
+[12:55:13] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:55:13] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:55:13] Error: gst_object_unref: assertion 'object != NULL' failed
+[12:55:13] Info: : GstPipelineHandler::Close 
+[12:55:13] Info: : GstPipelineHandler::Stop 
+[12:55:13] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:55:13] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:55:13] Error: gst_object_unref: assertion 'object != NULL' failed
+[12:55:14] Info: Checking is active
+[12:55:32] mray_gstreamer_initialize
+[12:55:32] Warning: Trying to link elements videoconvert39 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert39 is in pipeline19
+[12:55:32] Warning: Trying to link elements videoconvert39 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert39 is in pipeline19
+[12:55:32] Info: Creating Pipeline: rtspsrc location=rtsp://localhost:8554/cam protocols=tcp latency=100 ! rtph264depay ! avdec_h264 ! videoconvert ! appsink name=videoSink ! video/x-raw,format=I420 ! videoconvert ! appsink name=videoSink
+[12:55:32] Error: GstCustomVideoPlayer: Pipeline error: could not link videoSink to videoconvert39, videoSink can't handle caps video/x-raw, format=(string)I420
+[12:55:32] Info: : GstPipelineHandler::CreatePipeline 
+[12:55:32] Info: : Pipeline State Changes:  GST_STATE_NULL--> GST_STATE_READY
+[12:55:32] Info: Progress: (open) Opening Stream
+[12:55:32] Info: : Pipeline State Changes:  GST_STATE_READY--> GST_STATE_PAUSED
+[12:55:32] Info: : Playing
+[12:55:32] Info: : Playing
+[12:55:32] Info: Progress: (connect) Connecting to rtsp://localhost:8554/cam
+[12:55:32] Info: Progress: (request) Sending PLAY request
+[12:55:36] Warning: : GstPipelineHandler::HandleMessage(): error in module rtspsrc19  reported: Could not open resource for reading and writing. - ../gst/rtsp/gstrtspsrc.c(8340): gst_rtspsrc_retrieve_sdp (): /GstPipeline:pipeline19/GstRTSPSrc:rtspsrc19:
+Failed to connect. (Generic error)
+[12:55:36] Info: Progress: (open) Open failed
+[12:55:36] Info: Progress: (request) PLAY failed
+[12:55:41] Info: : GstPipelineHandler::Stop 
+[12:55:41] Info: Progress: (request) Sending PAUSE request
+[12:55:41] Info: : GstPipelineHandler::Close 
+[12:55:41] Info: Progress: (request) PAUSE failed
+[12:55:41] Info: : GstPipelineHandler::Stop 
+[12:55:41] Info: Progress: (close) Closing Stream
+[12:55:41] Info: Progress: (close) Closed Stream
+[12:55:41] Info: : GstPipelineHandler::Close 
+[12:55:41] Info: : GstPipelineHandler::Stop 
+[12:55:41] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:55:41] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:55:41] Error: gst_object_unref: assertion 'object != NULL' failed
+[12:55:41] Info: : GstPipelineHandler::Close 
+[12:55:41] Info: : GstPipelineHandler::Stop 
+[12:55:41] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:55:41] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:55:41] Error: gst_object_unref: assertion 'object != NULL' failed
+[12:55:41] Info: Checking is active
+[12:57:21] mray_gstreamer_initialize
+[12:57:21] Warning: Trying to link elements videoconvert41 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert41 is in pipeline20
+[12:57:21] Warning: Trying to link elements videoconvert41 and videoSink that don't share a common ancestor: videoSink hasn't been added to a bin or pipeline, and videoconvert41 is in pipeline20
+[12:57:21] Info: Creating Pipeline: rtspsrc location=rtsp://localhost:8554/cam protocols=tcp latency=100 ! rtph264depay ! avdec_h264 ! videoconvert ! appsink name=videoSink ! video/x-raw,format=I420 ! videoconvert ! appsink name=videoSink
+[12:57:21] Error: GstCustomVideoPlayer: Pipeline error: could not link videoSink to videoconvert41, videoSink can't handle caps video/x-raw, format=(string)I420
+[12:57:21] Info: : GstPipelineHandler::CreatePipeline 
+[12:57:21] Info: : Pipeline State Changes:  GST_STATE_NULL--> GST_STATE_READY
+[12:57:21] Info: Progress: (open) Opening Stream
+[12:57:21] Info: : Pausing
+[12:57:21] Info: : Pipeline State Changes:  GST_STATE_READY--> GST_STATE_PAUSED
+[12:57:21] Info: : Playing
+[12:57:21] Info: : Playing
+[12:57:21] Info: Progress: (connect) Connecting to rtsp://localhost:8554/cam
+[12:57:21] Info: Progress: (request) Sending PLAY request
+[12:57:25] Warning: : GstPipelineHandler::HandleMessage(): error in module rtspsrc20  reported: Could not open resource for reading and writing. - ../gst/rtsp/gstrtspsrc.c(8340): gst_rtspsrc_retrieve_sdp (): /GstPipeline:pipeline20/GstRTSPSrc:rtspsrc20:
+Failed to connect. (Generic error)
+[12:57:25] Info: Progress: (open) Open failed
+[12:57:25] Info: Progress: (request) PLAY failed
+[12:57:41] Info: : GstPipelineHandler::Stop 
+[12:57:41] Info: Progress: (request) Sending PAUSE request
+[12:57:41] Info: : GstPipelineHandler::Close 
+[12:57:41] Info: Progress: (request) PAUSE failed
+[12:57:41] Info: : GstPipelineHandler::Stop 
+[12:57:41] Info: Progress: (close) Closed Stream
+[12:57:41] Info: : Pipeline State Changes:  GST_STATE_PAUSED--> GST_STATE_READY
+[12:57:41] Info: : GstPipelineHandler::Close 
+[12:57:41] Info: : GstPipelineHandler::Stop 
+[12:57:41] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:57:41] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:57:41] Error: gst_object_unref: assertion 'object != NULL' failed
+[12:57:41] Info: : GstPipelineHandler::Close 
+[12:57:41] Info: : GstPipelineHandler::Stop 
+[12:57:41] Error: gst_element_set_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:57:41] Error: gst_element_get_state: assertion 'GST_IS_ELEMENT (element)' failed
+[12:57:41] Error: gst_object_unref: assertion 'object != NULL' failed
+[12:57:41] Info: Checking is active
