@@ -15,6 +15,7 @@ public class Stats : MonoBehaviour
     public double TotalPoints = 20;
     int[] pos;
     CategoryDataHolder[] data;
+    string[] units;
 
     public enum ChartType
     {
@@ -35,13 +36,20 @@ public class Stats : MonoBehaviour
             data[i].Clear(); // clear the category
             pos[i] = 0;
         }
+
+        units = new string[chart.Length];
+
+        units[0] = "dBm";
+        units[1] = "dB";
+        units[2] = "ms";
+        units[3] = "dB";
     }
 
     public void AppendValue(float value, ChartType type)
     {
         int typeInt = (int)type;
         data[typeInt].Append(pos[typeInt], value); // append a random point
-        currentValues[typeInt].text = type.ToString() + ": " + value.ToString();
+        currentValues[typeInt].text = type.ToString() + ": " + value.ToString() + " " + units[(int)type];
         if (data[typeInt].Count > TotalPoints) // if the amount of points in the chart is larger then the maximum
             data[typeInt].RemoveAllBefore(chart[typeInt].Axis.View.HorizontalViewStart); // remove all points that are before the beginning of the view portion.
         pos[typeInt]++;

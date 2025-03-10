@@ -170,10 +170,10 @@ public class ProxyConnection : MonoBehaviour
             isRobot1 = true;
         InvokeRepeating("WheelInput", 0.0f, 0.1f);
 
-        float[] bbcoords = new float[] { 3070, 601, 3342, 1088 };
-        string bbtype = "yellow";
-        controller = GetComponent<Controller>();
-        controller.SetBB(bbtype, bbcoords);
+        // float[] bbcoords = new float[] { 3070, 601, 3342, 1088 };
+        // string bbtype = "yellow";
+        // controller = GetComponent<Controller>();
+        // controller.SetBB(bbtype, bbcoords);
 
         realRobotPositionData = new RealRobotPositionData();
         realRobotPositionData.data = new RealRobotPositionData.Data();
@@ -227,15 +227,16 @@ public class ProxyConnection : MonoBehaviour
     {
         if(!Application.isFocused) return;
         float pedalInput = (Input.GetAxis("Pedal") - 1.0f) * -robotSpeedMultiplier; //cambiar multiplicador para modificar velocidad
+        Debug.Log(Input.GetAxis("Back"));
         //Debug.Log("Speed en proxy connection " + robotSpeedMultiplier);
-        Debug.Log(Input.GetAxis("Pedal"));
+        //Debug.Log(Input.GetAxis("Pedal"));
         //if(pedalInput > 1.0f) pedalInput = 1.0f;
-        // float pedal2Input = (Input.GetAxis("Back") - 1.0f) * 1.0f;
+        float pedal2Input = (Input.GetAxis("Back") - 1.0f) * robotSpeedMultiplier;
         float wheelInput = Input.GetAxis("Wheel") * -3.0f;
 
         ui.ChangeWheelRotation(-Input.GetAxis("Wheel") * 360.0f);
 
-        controlData.data.linear.x = pedalInput;
+        controlData.data.linear.x = pedalInput + pedal2Input;
         controlData.data.angular.z = wheelInput;
 
         string inputMessage = JsonConvert.SerializeObject(controlData);
@@ -297,6 +298,7 @@ public class ProxyConnection : MonoBehaviour
                     {
                         telemetryData = JsonConvert.DeserializeObject<TelemetryData>(serverMessage);
                         updateTelemetry = true;
+                        //Debug.Log(serverMessage);
                     }
                     else if (serverMessage.Contains("boxes"))
                     {

@@ -1,6 +1,6 @@
-rtspsrc location=rtsp://localhost:8554/cam protocols=tcp latency=100 ! rtph264depay ! avdec_h264 ! videoconvert ! appsink name=videoSink
+udpsrc port=8000 ! application/x-rtp,clock-rate=90000,payload=96 !  queue ! rtph264depay ! h264parse ! avdec_h264 ! queue ! videoconvert ! appsink name=videoSink
 172.21.32.87
 5005
 5006
 Robot 1
-rtspsrc location=rtsp://localhost:8554/cam2 protocols=tcp latency=100 ! rtph264depay ! avdec_h264 ! videoconvert ! appsink name=videoSink
+udpsrc port=8000 ! application/x-rtp,clock-rate=90000,payload=96 !  queue ! rtph264depay ! h264parse ! avdec_h264 ! queue ! videoconvert ! appsink name=videoSink

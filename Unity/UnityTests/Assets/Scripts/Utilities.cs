@@ -13,6 +13,10 @@ public class Utilities : MonoBehaviour
     public GameObject modelo1;
     public GameObject modelo2;
 
+    public GameObject grafanaBrowser;
+    public GameObject robotnikBrowser;
+    public GameObject browserKeyboard;
+
     void Awake()
     {
         string path = Application.dataPath + "/ips.txt";
@@ -40,6 +44,18 @@ public class Utilities : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.M))
         {
             ChangeModels();
+        }
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            grafanaBrowser.SetActive(!grafanaBrowser.activeSelf);
+            browserKeyboard.SetActive(grafanaBrowser.activeSelf);
+        }
+
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            robotnikBrowser.SetActive(!robotnikBrowser.activeSelf);
+            browserKeyboard.SetActive(robotnikBrowser.activeSelf);
         }
     }
 

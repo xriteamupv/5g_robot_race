@@ -14,7 +14,7 @@ public class Controller : MonoBehaviour
     public CustomPipelinePlayer pipelinePlayer2;
     public GameObject mainMenu;
     public GameObject robotScene;
-    public V_5[] boxes;
+    public Boxes[] boxes;
     public TrafficLight trafficLight;
     public ProxyConnection proxyConnection;
 
@@ -76,7 +76,7 @@ public class Controller : MonoBehaviour
             ConvertTexture(pipelinePlayer2.VideoTexture);
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.O))
         {
             ResetScene();
         }
@@ -262,9 +262,9 @@ public class Controller : MonoBehaviour
         }
     }
 
-    public void ReduceCoins()
+    public void ReduceCoins(int amount)
     {
-        coinCounter = coinCounter - 3;
+        coinCounter = coinCounter - amount;
         if (coinCounter < 0)
         {
             coinCounter = 0;
@@ -277,30 +277,27 @@ public class Controller : MonoBehaviour
         powerUpSpeed = speed;
     }
 
-    public IEnumerator setPowerUpSpeed(float speed, float time)
+    public IEnumerator setPowerUpSpeedCo(float newSpeed, float time)
     {
         yield return new WaitForSeconds(time);
-        Debug.Log("Power up speed vuelve a " + speed);
-        powerUpSpeed = speed;
+        powerUpSpeed = newSpeed;
+        modifySpeed();
         yield return null;
+    }
+
+    public void setBaseSpeed(float speed)
+    {
+        baseSpeed = speed;
+        modifySpeed();
     }
 
     public void modifySpeed()
     {
         startTime = DateTime.Now;  // Almacenamos el tiempo en que enviamos el comando de velocidad 0
         string currentTime = startTime.ToString("HH:mm:ss.fff");  // Formato de hora con milisegundos
-        Debug.Log("****EL ROBOT HA TENIDO CONTACTO CON LA CAJA (CONTROLLER) ****: " + currentTime);
 
         // Cambiar la velocidad a 0 en lugar de aleatoria
-        var robotSpeed = baseSpeed + powerUpSpeed + (coinCounter / 10);
-        Debug.Log("Power up speed " + powerUpSpeed + "total speed " + robotSpeed);
+        var robotSpeed = baseSpeed + powerUpSpeed + ((float)coinCounter / 100);
         proxyConnection.ChangeRobotSpeed(robotSpeed);  // Establecer la velocidad en 0
-        BhapticsLibrary.PlayParam(BhapticsEvent.SUDDENBRAKE,
-                                intensity: 1f,
-                                duration: 0.8f,
-                                angleX: 0f,
-                                offsetY: 0f
-                            );
-        StartCoroutine(proxyConnection.ChangeRobotSpeedCo(robotSpeed, 20.0f));
     }
 }

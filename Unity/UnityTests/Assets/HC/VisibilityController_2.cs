@@ -52,31 +52,19 @@ public class VisibilityController_2 : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "robot")
+        if (other.tag == "robot")
         {
             Debug.Log("El robot ha tenido contacto con el objeto de las partículas.");
             int rand = Random.Range(0, 2);
-            if(rand == 0)
+            if (rand == 0)
             {
                 proxyConnection.ChangeRobotSpeed(0.6f);
-                BhapticsLibrary.PlayParam(BhapticsEvent.SUDDENBRAKE,
-                                        intensity: 1f,   // The value multiplied by the original value
-                                        duration: 0.8f,    // The value multiplied by the original value
-                                        angleX: 0f,     // The value that rotates around global Vector3.up(0~360f)
-                                        offsetY: 0f  // The value to move up and down(-0.5~0.5)
-                                    );
                 StartCoroutine(proxyConnection.ChangeRobotSpeedCo(0.8f, buffTime));
                 StartCoroutine(GameObject.Find("Controller").GetComponent<UIManager>().ShowMessageBox(UIManager.Sign.kSignSlower, true, 2.0f));
             }
             else
             {
                 proxyConnection.ChangeRobotSpeed(1.0f);
-                BhapticsLibrary.PlayParam(BhapticsEvent.HIGHSPEEDRACE,
-                                        intensity: 1f,   // The value multiplied by the original value
-                                        duration: 0.8f,    // The value multiplied by the original value
-                                        angleX: 0f,     // The value that rotates around global Vector3.up(0~360f)
-                                        offsetY: 0f  // The value to move up and down(-0.5~0.5)
-                                    );
                 StartCoroutine(proxyConnection.ChangeRobotSpeedCo(0.8f, buffTime));
                 StartCoroutine(GameObject.Find("Controller").GetComponent<UIManager>().ShowMessageBox(UIManager.Sign.kSignFaster, true, 2.0f));
             }

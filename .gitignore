@@ -74,3 +74,4 @@ ipch/*
 Bin/*
 Dependencies/*
 Unity/UnityTests/GStreamerLog.txt
+Unity/UnityTests/Assets/Vuplex/
