@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Controller : MonoBehaviour
 {
@@ -66,7 +67,7 @@ public class Controller : MonoBehaviour
     {
         ConvertTexture(pipelinePlayer.VideoTexture);
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.O))
         {
             ResetScene();
         }
@@ -229,12 +230,7 @@ public class Controller : MonoBehaviour
 
     private void ResetScene()
     {
-        proxyConnection.ResetProxy();
-        trafficLight.ResetLight();
-        foreach (var b in boxes) 
-        {
-            b.ActivateBox();
-        }
+        SceneManager.LoadScene(0);
     }
 
     public void IncrementCoins()

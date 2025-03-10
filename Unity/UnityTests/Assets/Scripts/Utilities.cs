@@ -11,6 +11,10 @@ public class Utilities : MonoBehaviour
     public GameObject modelo1;
     public GameObject modelo2;
 
+    public GameObject HMI;
+    public GameObject grafana;
+
+
     void Awake()
     {
         string path = Application.dataPath + "/ips.txt";
@@ -36,6 +40,16 @@ public class Utilities : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.M))
         {
             ChangeModels();
+        }
+
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            HMI.SetActive(!HMI.activeSelf);
+        }
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            grafana.SetActive(!HMI.activeSelf);
         }
     }
 

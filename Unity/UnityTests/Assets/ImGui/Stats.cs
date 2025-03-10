@@ -50,9 +50,9 @@ public class Stats : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S)) 
-        {
-            canvas.SetActive(!canvas.activeSelf);
-        }
+        // if (Input.GetKeyDown(KeyCode.S)) 
+        // {
+        //     canvas.SetActive(!canvas.activeSelf);
+        // }
     }
 }

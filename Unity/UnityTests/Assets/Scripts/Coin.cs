@@ -13,6 +13,8 @@ public class Coin : MonoBehaviour
     Controller controller;
     AudioSource audioSource;
 
+    float animationTime;
+    float animationMultiplier;
 
     private void Start()
     {
@@ -22,13 +24,27 @@ public class Coin : MonoBehaviour
         {
             player = GameObject.Find("Robot");
         }
-
+        animationMultiplier = 1.0f;
+        animationTime = UnityEngine.Random.Range(0.0f, 1.0f);
     }
     void Update()
     {
         
         // Calcula la distancia entre el jugador y el objeto
         float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
+
+        if(animationTime > 1.0f)
+        {
+            animationMultiplier = -1.0f;
+        }
+        if (animationTime < 0.0f)
+        {
+            animationMultiplier = 1.0f;
+        }
+        animationTime += Time.deltaTime * animationMultiplier;
+
+        transform.localPosition = Vector3.Lerp(Vector3.zero, new Vector3(0.2f, 0.0f, 0.0f), animationTime);
+        transform.Rotate(new Vector3(50.0f * Time.deltaTime, 0.0f, 0.0f));
 
         // Activa o desactiva los ParticleSystem en función de la distancia
         if (distanceToPlayer <= visibilityDistance)

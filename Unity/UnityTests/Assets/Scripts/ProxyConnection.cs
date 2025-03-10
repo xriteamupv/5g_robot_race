@@ -166,10 +166,10 @@ public class ProxyConnection : MonoBehaviour
             isRobot1 = true;
         InvokeRepeating("WheelInput", 0.0f, 0.1f);
 
-        float[] bbcoords = new float[] { 3070, 601, 3342, 1088 };
-        string bbtype = "yellow";
-        controller = GetComponent<Controller>();
-        controller.SetBB(bbtype, bbcoords);
+        // float[] bbcoords = new float[] { 3070, 601, 3342, 1088 };
+        // string bbtype = "yellow";
+        // controller = GetComponent<Controller>();
+        // controller.SetBB(bbtype, bbcoords);
 
         virtualRobotPositionData = new VirtualRobotPositionData();
         virtualRobotPositionData.data = new VirtualRobotPositionData.Data();
@@ -294,7 +294,6 @@ public class ProxyConnection : MonoBehaviour
                     {
                         realRobotPositionData = JsonConvert.DeserializeObject<RealRobotPositionData>(serverMessage);
                         updateValues = true;
-                        Debug.Log(serverMessage);
                     }
                     else if (serverMessage.Contains("robot"))
                     {
@@ -362,10 +361,15 @@ public class ProxyConnection : MonoBehaviour
 
     }
 
-    private void OnApplicationQuit()
+    public void CloseSocket()
     {
         loop = false;
         clientReceiveThread.Abort();
         s.Close();
+    }
+
+    private void OnApplicationQuit()
+    {
+        CloseSocket();
     }
 }

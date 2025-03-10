@@ -40,6 +40,20 @@ public class SlowZone : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("robot") && controller != null)
+        {
+            controller.setBaseSpeed(0.4f);
+            BhapticsLibrary.PlayParam(BhapticsEvent.FORBIDDEN_ZONE,
+                        intensity: 1f,
+                        duration: 0.8f,
+                        angleX: 0f,
+                        offsetY: 0f
+                    );
+        }
+    }
+
 
     void OnTriggerExit(Collider other)
     {
