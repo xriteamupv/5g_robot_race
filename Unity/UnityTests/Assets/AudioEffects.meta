@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Unity/UnityTests/Assets/AudioEffects.meta
 guid: 58422cdf49a910e448a82f405fb8b74c
+========
+guid: ef595a71880834a50a4aea19f85c4139
+>>>>>>>> 04d714ecd3b033f0817da6f94c9505c96e328114:Unity/UnityTests/Assets/Vuplex.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
