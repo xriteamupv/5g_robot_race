@@ -85,7 +85,7 @@ public abstract class BaseVideoPlayer : DependencyRoot {
 			}
 		}
 
-		Debug.Log ("Starting Base");
+		//Debug.Log ("Starting Base");
 		base.Start ();
 	}
 

@@ -49,7 +49,7 @@ public class Utilities : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.G))
         {
             grafanaBrowser.SetActive(!grafanaBrowser.activeSelf);
-            browserKeyboard.SetActive(grafanaBrowser.activeSelf);
+            //browserKeyboard.SetActive(grafanaBrowser.activeSelf);
         }
 
         if (Input.GetKeyDown(KeyCode.H))

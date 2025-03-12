@@ -9,7 +9,7 @@ public class Coin : MonoBehaviour
     private DateTime startTime;  // Variable para registrar el tiempo en que se envía la velocidad a 0
     public ParticleSystem CoinGlow;
     public GameObject player = null;  // Asigna el objeto del jugador desde el inspector
-    private float visibilityDistance = 30.0f;  // Distancia a la que los objetos se vuelven visibles
+    private float visibilityDistance = 15.0f;  // Distancia a la que los objetos se vuelven visibles
     Controller controller;
     AudioSource audioSource;
 
@@ -22,7 +22,7 @@ public class Coin : MonoBehaviour
         audioSource = GameObject.Find("Coins").GetComponent<AudioSource>();
         if(audioSource != null)
         {
-            Debug.Log("Audio source found");
+            //Debug.Log("Audio source found");
         }
         if (player == null)
         {

@@ -221,6 +221,7 @@ public class ProxyConnection : MonoBehaviour
             //SendNetworkMessage("timer");
         }
         trafficSign.enabled = isTrafficEnabled;
+        Debug.Log(robotSpeedMultiplier);
     }
 
     private void WheelInput()
@@ -285,8 +286,10 @@ public class ProxyConnection : MonoBehaviour
             Byte[] bytes = new Byte[1024];
             while (loop)
             {
+            Debug.Log("d");
                 byte[] incommingData = client.Receive(ref anyIP);
                 string serverMessage = Encoding.ASCII.GetString(incommingData);
+                Debug.Log(serverMessage);
                 if (!updateValues)
                 {
                     if (serverMessage.Contains("robot"))
