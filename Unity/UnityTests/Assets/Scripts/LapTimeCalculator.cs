@@ -40,6 +40,7 @@ public class LapTimeCalculator : MonoBehaviour
                 string lapTimeString = lapTime.ToString().Split('.')[0];
                 Debug.Log(lapTimeString);
                 uiManager?.ChangeLapTime(lapTimeString);
+                initialTime = DateTime.Now;
             }
         }
     }

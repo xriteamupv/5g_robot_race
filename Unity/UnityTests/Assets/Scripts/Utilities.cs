@@ -49,7 +49,7 @@ public class Utilities : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.G))
         {
-            grafana.SetActive(!HMI.activeSelf);
+            grafana.SetActive(!grafana.activeSelf);
         }
     }
 

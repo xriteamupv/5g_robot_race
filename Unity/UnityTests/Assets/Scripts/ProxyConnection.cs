@@ -198,6 +198,7 @@ public class ProxyConnection : MonoBehaviour
     {
         isTrafficEnabled = false;
         ui.RemoveLapTime();
+        virtualRobot.transform.position = new Vector3 (17.09f, 0f, 0f);
     }
 
     private void Update()
@@ -224,6 +225,7 @@ public class ProxyConnection : MonoBehaviour
         virtualRobotPositionData.data.rotW = virtualRobot.transform.rotation.w;
         string inputMessage = JsonConvert.SerializeObject(virtualRobotPositionData);
         SendNetworkMessage(inputMessage);
+        Debug.Log(robotSpeedMultiplier);
     }
 
     private void WheelInput()
@@ -232,7 +234,7 @@ public class ProxyConnection : MonoBehaviour
         // float pedal2Input = (Input.GetAxis("Back") - 1.0f) * 1.0f;
         float wheelInput = Input.GetAxis("Wheel") * -3.0f;
 
-        ui.ChangeSpeed(Mathf.Abs(pedalInput * 0.8f));
+        ui.ChangeSpeed(Mathf.Abs(pedalInput * robotSpeedMultiplier));
 
 
         ui.ChangeWheelRotation(-Input.GetAxis("Wheel") * 360.0f);

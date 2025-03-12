@@ -14,7 +14,7 @@ public class Controller : MonoBehaviour
     public CustomPipelinePlayer pipelinePlayer;
     public GameObject mainMenu;
     public GameObject robotScene;
-    public V_5[] boxes;
+    public Boxes[] boxes;
     public TrafficLight trafficLight;
     public ProxyConnection proxyConnection;
 
@@ -54,7 +54,7 @@ public class Controller : MonoBehaviour
             Display.displays[i].Activate();
         }
         CreateBBPools();
-        baseSpeed = 1.0f;
+        baseSpeed = 0.8f;
     }
 
     public void ConvertTexture(Texture texture)
@@ -230,7 +230,15 @@ public class Controller : MonoBehaviour
 
     private void ResetScene()
     {
-        SceneManager.LoadScene(0);
+        //SceneManager.LoadScene(0);
+        proxyConnection.ResetProxy();
+        trafficLight.ResetLight();
+        foreach (var b in boxes)
+        {
+            b.ActivateBox();
+        }
+        coinCounter = 0;
+        modifySpeed();
     }
 
     public void IncrementCoins()

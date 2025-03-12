@@ -19,7 +19,6 @@ public class TrafficLight : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        proxyConnection = GameObject.Find("Controller").GetComponent<ProxyConnection>();
         ResetLight();
     }
 
@@ -58,13 +57,12 @@ public class TrafficLight : MonoBehaviour
             proxyConnection.ChangeRobotSpeed(0.8f);
             StartCoroutine(GameObject.Find("Controller").GetComponent<UIManager>().ShowMessageBox(UIManager.Sign.kSignGo, true, 2.0f));
             doOnce = false;
-            timeCalculator.initialTime = DateTime.Now;
         }
 
         if (time >= sectorTimes[sectorTimes.Count - 1] + 3.0f)
         {
             gameObject.SetActive(false);
-            proxyConnection.robotSpeedMultiplier = 1.0f;
+            proxyConnection.robotSpeedMultiplier = 0.8f;
             this.enabled = false;
         }
     }

@@ -1,3 +1,4 @@
+using Bhaptics.SDK2;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -46,6 +47,17 @@ public class VirtualRobotController : MonoBehaviour
             if((rayHitForward.collider?.gameObject.tag != "walls" || moveDirection > 0.0f) && (rayHitBackward.collider?.gameObject.tag != "walls" || moveDirection < 0.0f))
             {
                 transform.position += movement;
+                manager.SetRightLidar(0);
+            }
+            else
+            {
+                manager.SetRightLidar(1);
+                BhapticsLibrary.PlayParam(BhapticsEvent.FORBIDDEN_ZONE,
+                        intensity: 1f,
+                        duration: 0.8f,
+                        angleX: 0f,
+                        offsetY: 0f
+                    );
             }
         }
         else
