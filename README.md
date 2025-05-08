@@ -116,7 +116,75 @@ Once the model is trained, the YOLO algorithm processes a real-time video stream
 
 # Unity structure
 
-WiP
+The Assets folder contains the following elements:
+- Animated racing arrows: ?
+- AudioEffects: ?
+- BEDRILL: Contains the models used for the tyres and stadium grades (virtual mode only)
+- Bhaptics: Contains the plugin for bHaptis devices
+- Bitsplash: Contains the plugin Graph and Chart, used for the RSRP/RSRQ/SINR/latency graphs received via MQTT from the Fivecomm modem
+- GStreamerUnity: Contains the scripts for the GStreamer plugin
+- HC: Contains the scripts for the AR boosters and reducers
+- ImGui: ?
+- JMO Assets: Contains the particles for the visual effect of the AR boosters and reducers
+- LiquidFire Package 4 - BSH games: Contains the models used for the virtual coins
+- MGAssets: Contains the plugin of the velocimeter and back mirror
+- Plugins: GStreamer DLLs
+- Powerup FX: ?
+- Prefabs: ?
+- RacingSignBoardsPack: ?
+- Resources: Contains the models, textures and images used by the application that do not belong to an external plugin, such as the velodrome 3D model, mini-map, skybox, sprites (logos, battery)
+- Samples: Contains the XR plugins
+- Scenes: Contains the main scene, as well as other test scenes of the GStreamer plugin that have not been modified
+- Scripts: Contains the scripts created for the application, explained in the following section
+- SimplePoly City - Low Poly Assets: Contains the assets used for the virtual city/stadium (virtual mode only)
+- SimpleWebBrowser: ?
+- Songs: ?
+- TextMesh Pro: ?
+- Traffic_light: Contains the resources needed for the virtual traffic light
+- UnityCam: Contains scripts used by GStreamer to convert from video to texture
+- Vuplex: ???? (why is it not updated to Github?): Contains the 3D Web View plugin for integrating the Robotnik HMI in the UI
+- XR: Contains XR configuration files that should not be modified
+- XRI: Contains XR configuration files that should not be modified
+- 1.fbx: ?
+- 2.fbx: ?
+- Canvas.prefab: ?
+- System.Runtime.CompilerServices.Unsafe.dll: ?
+- System.Runtime.CompilerServices.Unsafe.xml: ?
+- coin.png: ?
+- ips.txt: Configuration file for connecting to the proxy and receiving the video stream. Every time a build is created, make sure that this file is placed in the folder UnityTests_Data.
+
+The main scene contains the following objects:
+- EventSystem: Configures the UI, should not be modified
+- bhaptics: Contains bHaptics SDK, allowing access to its functionaliities from other scripts and objects in the scene
+- XR Origin Hands (XR Rig): XR camera and hands
+- Robot 2: Physical robot
+- Cube: Contains the GStreamer scripts
+- Controller: Contains the core scripts of the logic
+- Directional Light: Illumination parameters, should not be modified
+- Back Camera: Camera used by the back mirror
+- Virtual Camera Overlay: ?
+- Robot Control: Contains the UI Canvas
+- Wheel: Represents the driving wheel in the scene
+- Padre: Contains all the 3D objects in the scene, including the AR objects, the UPV campus, the Digital Twin of the Velodrome, and the virtual robot
+- Recenter: Reference object that marks the center of the scene
+
+The role of the main scripts is:
+- ProxyConnection.cs: Manages the connection between Unity and the Proxy through the Connect() method, reads the inputs from the wheel and pedals using Input.GetAxis(), sends the inputs to the proxy through the SendNetworkMessage() method, updates the speed of the robot via ChangeRobotSpeed(), stores the data received from the proxy in JSON format using the class Message, sends the received data to UIManager.cs and GPS.cs through the UpdateValues() method
+- UIManager.cs: Enables or disables functionalities of the UI according to the data received from the proxy (e.g. in ShowMessageBox()), recenters the camera using Input.GetAxis() and enables the back mirror using PlaceSteeringWheel()
+- GPS.cs: Transforms from latitude and longitude to Unity coordinates in meters
+- Utiliities.cs: Reads the ips.txt file to update the Unity variables, manages the change between virtual models (virtual mode only)
+- Controlles.cs: Enables the visualization in the 3 displays, converts the Gstreamer texture to a render texture and applies it to the Skybox
+- RecenterOrigin.cs: Centers the camera when pressing Space key to align with the UI and the Skybox
+- TrafficLight.cs: Manages the lights at the beginning of the race, calls the bHaptics plugin
+- Position.cs: Positions the 3D objects contained in Obj_AR based on the GPS data received
+- Boxes.cs: Implements the logic and visual effects of the boosters and reducers, including update of velocity, visual effect, haptics and sound
+- Coins.cs: Implements the logic and visual effects of the coins, including update of velocity, visual effect, update of the UI, haptics and sound
+- Tires.cs: Implements the logic and visual effects of the tires, including update of velocity, haptics and sound
+- SlowZone.cs: Implements the logic and visual effects of the slow zones, including update of velocity, update of the UI and haptics
+- RobotEngineSound.cs: Reproduces motor sounds adjusting the volume based on velocity
+- VirtualRobotController.cs: Links the input of the wheel to the movement of the 3D object instead of communicating with the proxy and defines the boundaries based on collisions (virtual mode only)
+- LapTimeCalculator.cs: Calculates the laptime of the virtual robot and communicates it to the UIManager (virtual mode only)
+- Stats.cs: Manages the representation of the RSRP/RSRQ/SINR/latency graphs
 
 # 5G Robot Race Setup Guide
 
