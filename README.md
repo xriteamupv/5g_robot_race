@@ -117,40 +117,40 @@ Once the model is trained, the YOLO algorithm processes a real-time video stream
 # Unity structure
 
 The Assets folder contains the following elements:
-- Animated racing arrows: ?
-- AudioEffects: ?
-- BEDRILL: Contains the models used for the tyres and stadium grades (virtual mode only)
-- Bhaptics: Contains the plugin for bHaptis devices
-- Bitsplash: Contains the plugin Graph and Chart, used for the RSRP/RSRQ/SINR/latency graphs received via MQTT from the Fivecomm modem
+- Animated racing arrows: Unity Asset store package with assets that implement animated arrows to be placed in the circuit curves and indicate the player the circuit path.
+- AudioEffects: Contains audio effects for different circunstances ingame such as coin catching or bumping into the tires.
+- BEDRILL: Contains the models used for the tyres and stadium grades (virtual mode only).
+- Bhaptics: Contains the plugin for bHaptis devices.
+- Bitsplash: Contains the plugin Graph and Chart, used for the RSRP/RSRQ/SINR/latency graphs received via MQTT from the Fivecomm modem.
 - GStreamerUnity: Contains the scripts for the GStreamer plugin
 - HC: Contains the scripts for the AR boosters and reducers
-- ImGui: ?
-- JMO Assets: Contains the particles for the visual effect of the AR boosters and reducers
-- LiquidFire Package 4 - BSH games: Contains the models used for the virtual coins
-- MGAssets: Contains the plugin of the velocimeter and back mirror
-- Plugins: GStreamer DLLs
-- Powerup FX: ?
-- Prefabs: ?
-- RacingSignBoardsPack: ?
-- Resources: Contains the models, textures and images used by the application that do not belong to an external plugin, such as the velodrome 3D model, mini-map, skybox, sprites (logos, battery)
-- Samples: Contains the XR plugins
-- Scenes: Contains the main scene, as well as other test scenes of the GStreamer plugin that have not been modified
-- Scripts: Contains the scripts created for the application, explained in the following section
-- SimplePoly City - Low Poly Assets: Contains the assets used for the virtual city/stadium (virtual mode only)
-- SimpleWebBrowser: ?
-- Songs: ?
-- TextMesh Pro: ?
-- Traffic_light: Contains the resources needed for the virtual traffic light
-- UnityCam: Contains scripts used by GStreamer to convert from video to texture
-- Vuplex: ???? (why is it not updated to Github?): Contains the 3D Web View plugin for integrating the Robotnik HMI in the UI
-- XR: Contains XR configuration files that should not be modified
-- XRI: Contains XR configuration files that should not be modified
-- 1.fbx: ?
-- 2.fbx: ?
-- Canvas.prefab: ?
-- System.Runtime.CompilerServices.Unsafe.dll: ?
-- System.Runtime.CompilerServices.Unsafe.xml: ?
-- coin.png: ?
+- ImGui: Panel with graphical information about signal quality statistics activated with key S.
+- JMO Assets: Contains the particles for the visual effect of the AR boosters and reducers.
+- LiquidFire Package 4 - BSH games: Contains the models used for the virtual coins.
+- MGAssets: Contains the plugin of the velocimeter and back mirror.
+- Plugins: GStreamer DLLs.
+- Powerup FX: Unity Asset Store package for the power up boxes placed in the circuit.
+- Prefabs: Contains several assets with the proper configuration to be placed in the scene such as the virtual environment, the coins or the tires with the necessary scripts.
+- RacingSignBoardsPack: Unity Asset Store package with Racing sign boards that are placed in the circuit.
+- Resources: Contains the models, textures and images used by the application that do not belong to an external plugin, such as the velodrome 3D model, mini-map, skybox, sprites (logos, battery).
+- Samples: Contains the XR plugins.
+- Scenes: Contains the main scene, as well as other test scenes of the GStreamer plugin that have not been modified.
+- Scripts: Contains the scripts created for the application, explained in the following section.
+- SimplePoly City - Low Poly Assets: Contains the assets used for the virtual city/stadium (virtual mode only).
+- SimpleWebBrowser: Unity Asset Store package including a web browser that was inteded to be used in game, but was substituted by Vuplex premium solution.
+- Songs: Contains audio clips that are played as background music.
+- TextMesh Pro: Unity package to format text strings including fonts or emojis.
+- Traffic_light: Contains the resources needed for the virtual traffic light.
+- UnityCam: Contains scripts used by GStreamer to convert from video to texture.
+- Vuplex: NOT UPLOADED TO GITHUB, SINCE IT IS A PREMIUM NOT-FREE PACKAGE WITH RESTRICTED LICENSE: Contains the 3D Web View plugin for integrating the Robotnik HMI in the UI.
+- XR: Contains XR configuration files that should not be modified.
+- XRI: Contains XR configuration files that should not be modified.
+- 1.fbx: Mesh created in Blender to complete the velodrome 3D object (size 1).
+- 2.fbx: Mesh created in Blender to complete the velodrome 3D object (size 2).
+- Canvas.prefab: Canvas including a 2D browser from the SimpleWebBrowser folder and an activation button.
+- System.Runtime.CompilerServices.Unsafe.dll: File including Warning detected at compilation time in DLL format.
+- System.Runtime.CompilerServices.Unsafe.xml: File including Warning detected at compilation time in XML format.
+- coin.png: Png coin image used in the coin counter from the main Canvas.
 - ips.txt: Configuration file for connecting to the proxy and receiving the video stream. Every time a build is created, make sure that this file is placed in the folder UnityTests_Data.
 
 The main scene contains the following objects:
